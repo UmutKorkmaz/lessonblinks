@@ -1,28 +1,25 @@
+import Link from "next/link";
+
 interface BlinkTestLinkProps {
-  inspectorUrl: string;
+  lessonPath: string;
   disabled?: boolean;
 }
 
-export function BlinkTestLink({ inspectorUrl, disabled = false }: BlinkTestLinkProps) {
+export function BlinkTestLink({ lessonPath, disabled = false }: BlinkTestLinkProps) {
   if (disabled) {
     return (
       <span className="blink-link blink-link--disabled" aria-disabled="true">
-        Test on blinks.xyz
+        Coming soon
       </span>
     );
   }
 
   return (
-    <a
-      href={inspectorUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="blink-link"
-    >
-      Test on blinks.xyz
+    <Link href={lessonPath} className="blink-link">
+      Try this lesson
       <span className="blink-link__arrow" aria-hidden="true">
-        ↗
+        →
       </span>
-    </a>
+    </Link>
   );
 }

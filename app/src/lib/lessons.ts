@@ -25,24 +25,42 @@ export function getBaseUrl(): string {
   return process.env.NEXT_PUBLIC_BASE_URL ?? DEFAULT_BASE_URL;
 }
 
-/** Official Solana Blinks Inspector — paste or deep-link an Action API URL. */
-export const BLINKS_INSPECTOR_ORIGIN = "https://www.blinks.xyz/inspector";
-
 export function getActionUrl(actionPath: string, baseUrl = getBaseUrl()): string {
   return `${baseUrl.replace(/\/$/, "")}${actionPath}`;
 }
 
+/** `solana-action:` URL for @dialectlabs/blinks and wallet clients. */
+export function getSolanaActionUrl(
+  actionPathOrUrl: string,
+  baseUrl = getBaseUrl(),
+): string {
+  const actionUrl = actionPathOrUrl.startsWith("http")
+    ? actionPathOrUrl
+    : getActionUrl(actionPathOrUrl, baseUrl);
+  return `solana-action:${actionUrl}`;
+}
+
+/**
+ * Hosted inspector (blinks.xyz) is parked as of 2026-06 — redirects to /lander.
+ * For protocol debugging, run the local inspector:
+ * https://github.com/solana-developers/blinks-xyz
+ */
+export const LOCAL_BLINK_INSPECTOR_REPO =
+  "https://github.com/solana-developers/blinks-xyz";
+
+/** @deprecated Hosted blinks.xyz/inspector is parked; use embedded LessonBlink or local inspector. */
 export function getBlinkInspectorUrl(
   actionPath: string,
   baseUrl = getBaseUrl(),
 ): string {
   const actionUrl = getActionUrl(actionPath, baseUrl);
-  return `${BLINKS_INSPECTOR_ORIGIN}?url=${encodeURIComponent(actionUrl)}`;
+  return `${LOCAL_BLINK_INSPECTOR_REPO}#action=${encodeURIComponent(actionUrl)}`;
 }
 
-/** @deprecated dial.to is unreliable; use getBlinkInspectorUrl */
+/** @deprecated dial.to interstitial is down (DEPLOYMENT_PAUSED). */
 export function getDialToUrl(actionPath: string, baseUrl = getBaseUrl()): string {
-  return getBlinkInspectorUrl(actionPath, baseUrl);
+  const actionUrl = getActionUrl(actionPath, baseUrl);
+  return `https://dial.to/?action=${encodeURIComponent(getSolanaActionUrl(actionUrl))}`;
 }
 
 export const LESSONS: Lesson[] = [

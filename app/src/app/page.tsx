@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { LessonCard } from "@/components/LessonCard";
 import { ProgressBar } from "@/components/ProgressBar";
-import { getActionUrl, getBaseUrl, getBlinkInspectorUrl, LESSONS } from "@/lib/lessons";
+import { getBaseUrl, LESSONS } from "@/lib/lessons";
 
 export default function Home() {
   const baseUrl = getBaseUrl();
@@ -11,9 +11,7 @@ export default function Home() {
     title: lesson.title,
     description: lesson.description,
     status: lesson.status,
-    actionUrl: getActionUrl(lesson.actionPath, baseUrl),
-    inspectorUrl: getBlinkInspectorUrl(lesson.actionPath, baseUrl),
-    lessonPath: `/lesson/${lesson.slug}`,
+    lessonPath: `/lessons/${lesson.id}`,
   }));
 
   return (
@@ -39,11 +37,8 @@ export default function Home() {
 
       <footer className="page__footer">
         <p>
-          Test Blinks with{" "}
-          <a href="https://www.blinks.xyz/inspector" target="_blank" rel="noopener noreferrer">
-            blinks.xyz/inspector
-          </a>{" "}
-          · Solana Devnet
+          Connect a devnet wallet on each lesson page to complete the Blink inline · Solana
+          Devnet
         </p>
       </footer>
     </div>

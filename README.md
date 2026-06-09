@@ -16,23 +16,31 @@ npm run dev
 
 Open http://localhost:3000
 
-## Test a Blink (Blinks Inspector)
+## Test a Blink (June 2026)
 
-Primary testing tool — [blinks.xyz/inspector](https://www.blinks.xyz/inspector) (official Solana Actions debugger).
+Hosted testing tools are currently broken:
 
-**Lesson 1 — direct Inspector link:**
+| Tool | Status |
+|------|--------|
+| **Embedded Blink on lesson page** | ✅ Recommended — connect devnet wallet, sign inline |
+| **`npm run verify:actions`** | ✅ API smoke test (OPTIONS + GET) |
+| **Local Inspector** ([blinks-xyz repo](https://github.com/solana-developers/blinks-xyz)) | ✅ Full protocol debug — run `npm run dev` locally |
+| **dial.to** | ❌ Down (`DEPLOYMENT_PAUSED`) |
+| **blinks.xyz/inspector** | ❌ Parked domain (redirects to `/lander`) |
 
-```
-https://www.blinks.xyz/inspector?url=https%3A%2F%2Fblinks.umutkorkmaz.net%2Fapi%2Factions%2Flesson-1-usdc
-```
+**Try Lesson 1:** open https://blinks.umutkorkmaz.net/lessons/1, connect Phantom (devnet), complete the Blink.
 
-Or paste the Action URL into the Inspector:
+**Action API URL:**
 
 ```
 https://blinks.umutkorkmaz.net/api/actions/lesson-1-usdc
 ```
 
-> **Note:** dial.to (Dialect interstitial) has been unreliable (Vercel `DEPLOYMENT_PAUSED`). Use Blinks Inspector for development and QA.
+**Local Inspector** (after cloning blinks-xyz):
+
+```
+http://localhost:3000/inspector?url=https%3A%2F%2Fblinks.umutkorkmaz.net%2Fapi%2Factions%2Flesson-1-usdc
+```
 
 ## Curriculum
 
@@ -47,7 +55,7 @@ https://blinks.umutkorkmaz.net/api/actions/lesson-1-usdc
 ## Stack
 
 - Next.js 15 (App Router)
-- `@solana/actions`, `@solana/web3.js`, `@solana/spl-token`
+- `@solana/actions`, `@dialectlabs/blinks`, `@solana/web3.js`, `@solana/spl-token`
 - Devnet USDC mint: `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
 
 ## Deploy
@@ -57,7 +65,7 @@ Hosted on DigitalOcean (`blinks.umutkorkmaz.net`). See `deploy/` for nginx confi
 ```bash
 ssh root@YOUR_SERVER
 cd /var/www/lessonblinks && git pull
-cd app && npm ci && npm run build && pm2 restart lessonblinks
+bash deploy/deploy.sh
 ```
 
 ## Documentation

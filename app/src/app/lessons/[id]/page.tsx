@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BlinkTestLink } from "@/components/BlinkTestLink";
 import { Header } from "@/components/Header";
+import { LessonBlink } from "@/components/LessonBlink";
 import {
-  getBaseUrl,
   getActionUrl,
-  getBlinkInspectorUrl,
+  getBaseUrl,
   getLessonById,
   LESSON_IDS,
   LESSONS,
@@ -70,7 +69,6 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const inspectorUrl = getBlinkInspectorUrl(lesson.actionPath, getBaseUrl());
   const actionUrl = getActionUrl(lesson.actionPath, getBaseUrl());
   const prevLesson = getLessonById(lesson.id - 1);
   const nextLesson = getLessonById(lesson.id + 1);
@@ -103,20 +101,16 @@ export default async function LessonPage({ params }: LessonPageProps) {
         <section className="lesson-detail__card lesson-detail__card--highlight">
           <h3>What you&apos;ll do in the Blink</h3>
           <p>{lesson.blinkAction}</p>
-          <div className="lesson-detail__cta">
-            <BlinkTestLink
-              inspectorUrl={inspectorUrl}
-              disabled={lesson.status === "coming-soon"}
-            />
-          </div>
-          <p className="lesson-detail__hint">
-            Opens{" "}
-            <a href="https://www.blinks.xyz/inspector" target="_blank" rel="noopener noreferrer">
-              blinks.xyz/inspector
-            </a>{" "}
-            with Action URL{" "}
-            <code className="lesson-detail__code">{actionUrl}</code>
-          </p>
+          {lesson.status === "active" ? (
+            <>
+              <LessonBlink actionUrl={actionUrl} />
+              <p className="lesson-detail__hint">
+                Action API: <code className="lesson-detail__code">{actionUrl}</code>
+              </p>
+            </>
+          ) : (
+            <p className="lesson-detail__soon">This lesson is coming soon.</p>
+          )}
         </section>
 
         <section className="lesson-detail__card">

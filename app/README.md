@@ -20,23 +20,16 @@ BASE_URL=https://blinks.umutkorkmaz.net npm run verify:actions
 
 ## Test Blinks in the browser
 
-Use the official **[Blinks Inspector](https://www.blinks.xyz/inspector)** — not dial.to (currently down).
-
-1. Click **Test in Inspector** on any active lesson card, or
-2. Open Inspector and paste an Action URL, e.g.:
+**Recommended:** open a lesson page, connect a devnet wallet, complete the embedded Blink.
 
 ```
-https://blinks.umutkorkmaz.net/api/actions/lesson-1-usdc
+http://localhost:3000/lessons/1
 ```
 
-Deep-link format used by the UI:
-
-```
-https://www.blinks.xyz/inspector?url=<url-encoded-action-api-url>
-```
+Hosted inspectors (`dial.to`, `blinks.xyz/inspector`) are down/parked as of June 2026. For protocol debugging, run the local Inspector from [solana-developers/blinks-xyz](https://github.com/solana-developers/blinks-xyz).
 
 ## Production
 
 - PM2: `ecosystem.config.cjs` (port `3210`)
 - nginx config: `../deploy/nginx-blinks.umutkorkmaz.net.conf`
-- Env: `.env.local` on server (not committed)
+- Env: `.env.local` on server (not committed) — include `NEXT_PUBLIC_SOLANA_RPC_URL`

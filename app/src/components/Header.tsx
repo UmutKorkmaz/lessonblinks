@@ -13,12 +13,12 @@ export function Header() {
         </div>
         <nav className="site-header__nav">
           <a
-            href="https://www.blinks.xyz/inspector"
+            href="https://github.com/solana-developers/blinks-xyz"
             target="_blank"
             rel="noopener noreferrer"
             className="site-header__registry-link"
           >
-            Blinks Inspector
+            Local Inspector
           </a>
           <a
             href="https://dial.to/register"

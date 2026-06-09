@@ -2,13 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Header } from "@/components/Header";
-import { BlinkTestLink } from "@/components/BlinkTestLink";
-import {
-  getActionUrl,
-  getBaseUrl,
-  getBlinkInspectorUrl,
-  getLessonBySlug,
-} from "@/lib/lessons";
+import { LessonBlink } from "@/components/LessonBlink";
+import { getActionUrl, getBaseUrl, getLessonBySlug } from "@/lib/lessons";
 
 interface LessonPageProps {
   params: Promise<{ slug: string }>;
@@ -54,23 +49,17 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </section>
 
         <div className="lesson-detail__actions">
-          <BlinkTestLink
-            inspectorUrl={getBlinkInspectorUrl(lesson.actionPath, baseUrl)}
-            disabled={!isActive}
-          />
-          {isActive && (
-            <p className="lesson-detail__hint">
-              Opens{" "}
-              <a href="https://www.blinks.xyz/inspector" target="_blank" rel="noopener noreferrer">
-                blinks.xyz/inspector
-              </a>{" "}
-              with Action URL{" "}
-              <code className="lesson-detail__code">
-                {getActionUrl(lesson.actionPath, baseUrl)}
-              </code>
-            </p>
-          )}
-          {!isActive && (
+          {isActive ? (
+            <>
+              <LessonBlink actionUrl={getActionUrl(lesson.actionPath, baseUrl)} />
+              <p className="lesson-detail__hint">
+                Action API:{" "}
+                <code className="lesson-detail__code">
+                  {getActionUrl(lesson.actionPath, baseUrl)}
+                </code>
+              </p>
+            </>
+          ) : (
             <p className="lesson-detail__soon">This lesson is coming soon.</p>
           )}
         </div>

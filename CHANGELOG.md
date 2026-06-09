@@ -1,13 +1,20 @@
 # Changelog
 
-## 2026-06-09
+## 2026-06-09 (b)
 
-### Changed — Blinks Inspector as primary test surface
+### Changed — Embedded `@dialectlabs/blinks` replaces broken hosted inspectors
 
-- Replaced dial.to interstitial links with [blinks.xyz/inspector](https://www.blinks.xyz/inspector) deep-links (`?url=` encoded Action API URL).
-- UI buttons now read **Test on blinks.xyz**; header links to the official Inspector.
-- `getBlinkInspectorUrl()` added in `app/src/lib/lessons.ts`; `getDialToUrl()` kept as deprecated alias.
-- README and dev checklist updated; dial.to noted as unreliable (`DEPLOYMENT_PAUSED` on Vercel).
+- **dial.to** — down (`DEPLOYMENT_PAUSED` / timeout).
+- **blinks.xyz/inspector** — parked (redirects to `/lander`).
+- Lesson pages now render an inline Blink via `@dialectlabs/blinks` + wallet adapter (Phantom/Solflare, devnet).
+- Homepage cards link to `/lessons/[id]` instead of external inspector URLs.
+- Dev protocol debugging: run local [solana-developers/blinks-xyz](https://github.com/solana-developers/blinks-xyz) Inspector.
+
+## 2026-06-09 (a)
+
+### Changed — Blinks Inspector as primary test surface (superseded)
+
+- Attempted switch from dial.to to blinks.xyz/inspector; hosted inspector later found parked.
 
 ### Fixed — Action metadata origin behind nginx
 
