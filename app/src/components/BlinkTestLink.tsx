@@ -7,7 +7,7 @@ export function BlinkTestLink({ inspectorUrl, disabled = false }: BlinkTestLinkP
   if (disabled) {
     return (
       <span className="blink-link blink-link--disabled" aria-disabled="true">
-        Test in Inspector
+        Test on blinks.xyz
       </span>
     );
   }
@@ -19,7 +19,7 @@ export function BlinkTestLink({ inspectorUrl, disabled = false }: BlinkTestLinkP
       rel="noopener noreferrer"
       className="blink-link"
     >
-      Test in Inspector
+      Test on blinks.xyz
       <span className="blink-link__arrow" aria-hidden="true">
         ↗
       </span>

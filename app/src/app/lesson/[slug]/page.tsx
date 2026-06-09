@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 
 import { Header } from "@/components/Header";
 import { BlinkTestLink } from "@/components/BlinkTestLink";
-import { getBaseUrl, getBlinkInspectorUrl, getLessonBySlug } from "@/lib/lessons";
+import {
+  getActionUrl,
+  getBaseUrl,
+  getBlinkInspectorUrl,
+  getLessonBySlug,
+} from "@/lib/lessons";
 
 interface LessonPageProps {
   params: Promise<{ slug: string }>;
@@ -53,6 +58,18 @@ export default async function LessonPage({ params }: LessonPageProps) {
             inspectorUrl={getBlinkInspectorUrl(lesson.actionPath, baseUrl)}
             disabled={!isActive}
           />
+          {isActive && (
+            <p className="lesson-detail__hint">
+              Opens{" "}
+              <a href="https://www.blinks.xyz/inspector" target="_blank" rel="noopener noreferrer">
+                blinks.xyz/inspector
+              </a>{" "}
+              with Action URL{" "}
+              <code className="lesson-detail__code">
+                {getActionUrl(lesson.actionPath, baseUrl)}
+              </code>
+            </p>
+          )}
           {!isActive && (
             <p className="lesson-detail__soon">This lesson is coming soon.</p>
           )}
