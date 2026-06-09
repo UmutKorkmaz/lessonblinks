@@ -2,7 +2,7 @@ import type { LessonExplainerMetadata } from "./types";
 import { LESSON_02_ID, LESSON_02_TIP_SOL } from "./constants";
 
 export const LESSON_02_TITLE = "Lesson 2 · Tip a creator 0.001 SOL";
-export const LESSON_02_ICON_PATH = "/lessons/02/icon.png";
+export const LESSON_02_ICON_PATH = "/icon.svg";
 
 export const LESSON_02_EXPLAINER: LessonExplainerMetadata = {
   lessonId: LESSON_02_ID,

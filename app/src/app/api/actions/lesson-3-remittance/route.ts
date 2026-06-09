@@ -10,6 +10,7 @@ import {
 } from "@solana/spl-token";
 import { PublicKey, Transaction } from "@solana/web3.js";
 
+import { getActionOrigin, getActionUrl } from "@/lib/action-origin";
 import {
   getConnection,
   getCreatorPubkey,
@@ -41,11 +42,12 @@ function getRemittanceRecipient(requestUrl: URL): PublicKey {
 }
 
 export async function GET(req: Request) {
-  const requestUrl = new URL(req.url);
+  const origin = getActionOrigin(req);
+  const actionUrl = getActionUrl(req);
 
   const payload: ActionGetResponse = {
     type: "action",
-    icon: resolveIconUrl(requestUrl, "/icon.svg"),
+    icon: resolveIconUrl(origin, "/icon.svg"),
     title: "Lesson 3 · Send USDC Abroad",
     description: [
       "Remittance is sending money across borders — same USDC token, same Solana network, arriving in seconds instead of business days.",
@@ -62,7 +64,7 @@ export async function GET(req: Request) {
         {
           type: "transaction",
           label: "Send 0.05 USDC",
-          href: requestUrl.toString(),
+          href: actionUrl.toString(),
         },
       ],
     },
@@ -77,7 +79,7 @@ export async function OPTIONS() {
 
 export async function POST(req: Request): Promise<Response> {
   try {
-    const requestUrl = new URL(req.url);
+    const requestUrl = getActionUrl(req);
     const body = (await req.json()) as ActionPostRequest;
     const account = body.account;
 

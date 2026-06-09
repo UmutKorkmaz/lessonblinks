@@ -25,6 +25,6 @@ export function getUsdcMint(): PublicKey {
   return new PublicKey(value);
 }
 
-export function resolveIconUrl(requestUrl: URL, path: string): string {
-  return new URL(path, requestUrl.origin).toString();
+export function resolveIconUrl(origin: string, path: string): string {
+  return new URL(path, origin).toString();
 }

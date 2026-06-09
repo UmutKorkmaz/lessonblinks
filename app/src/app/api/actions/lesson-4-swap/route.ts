@@ -1,5 +1,6 @@
 import { createActionHeaders } from "@solana/actions";
 
+import { getActionOrigin } from "@/lib/action-origin";
 import {
   createComingSoonGetResponse,
   createComingSoonPostResponse,
@@ -8,10 +9,8 @@ import {
 const headers = createActionHeaders();
 
 export async function GET(req: Request) {
-  const requestUrl = new URL(req.url);
-
   const payload = createComingSoonGetResponse({
-    requestUrl,
+    origin: getActionOrigin(req),
     iconPath: "/icon.svg",
     title: "Lesson 4 · Swap SOL → USDC — Coming Soon",
     description: [

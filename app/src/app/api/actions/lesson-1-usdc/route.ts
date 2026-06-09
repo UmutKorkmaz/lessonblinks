@@ -3,6 +3,7 @@ import {
   type ActionGetResponse,
   type ActionPostRequest,
 } from "@solana/actions";
+import { getActionOrigin, getActionUrl } from "@/lib/action-origin";
 import { toActionError } from "@/lib/actions/errors";
 import { actionHeaders } from "@/lib/actions/headers";
 import {
@@ -26,16 +27,17 @@ export const OPTIONS = async () => Response.json(null, { headers: actionHeaders 
 
 export const GET = async (req: Request) => {
   try {
-    const requestUrl = new URL(req.url);
+    const origin = getActionOrigin(req);
+    const requestUrl = getActionUrl(req);
     const recipient = resolveEducationWallet(requestUrl);
     const baseHref = new URL(
       `${LESSON_01_ACTION_PATH}?to=${recipient.toBase58()}`,
-      requestUrl.origin,
+      origin,
     ).toString();
 
     const payload: LessonGetResponse = {
       type: "action",
-      icon: new URL(LESSON_01_ICON_PATH, requestUrl.origin).toString(),
+      icon: new URL(LESSON_01_ICON_PATH, origin).toString(),
       title: LESSON_01_TITLE,
       description: [
         buildLessonDescription(LESSON_01_EXPLAINER),
@@ -68,8 +70,7 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request): Promise<Response> => {
   try {
-    const requestUrl = new URL(req.url);
-    const recipient = resolveEducationWallet(requestUrl);
+    const recipient = resolveEducationWallet(getActionUrl(req));
 
     const body = (await req.json()) as ActionPostRequest;
     const sender = parseAccountPubkey(body.account);

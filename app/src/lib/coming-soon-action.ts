@@ -7,7 +7,7 @@ import {
 import { resolveIconUrl } from "@/lib/solana";
 
 interface ComingSoonActionOptions {
-  requestUrl: URL;
+  origin: string;
   iconPath: string;
   title: string;
   description: string;
@@ -20,7 +20,7 @@ export function createComingSoonGetResponse(
 ): ActionGetResponse {
   return {
     type: "action",
-    icon: resolveIconUrl(options.requestUrl, options.iconPath),
+    icon: resolveIconUrl(options.origin, options.iconPath),
     title: options.title,
     description: options.description,
     label: options.label,

@@ -3,6 +3,7 @@ import {
   type ActionGetResponse,
   type ActionPostRequest,
 } from "@solana/actions";
+import { getActionOrigin, getActionUrl } from "@/lib/action-origin";
 import { toActionError } from "@/lib/actions/errors";
 import { actionHeaders } from "@/lib/actions/headers";
 import { LESSON_02_ACTION_PATH, LESSON_02_TIP_SOL } from "@/lib/lessons/constants";
@@ -26,17 +27,18 @@ export const OPTIONS = async () => Response.json(null, { headers: actionHeaders 
 
 export const GET = async (req: Request) => {
   try {
-    const requestUrl = new URL(req.url);
+    const origin = getActionOrigin(req);
+    const requestUrl = getActionUrl(req);
     const { toPubkey } = validateLesson02QueryParams(requestUrl);
 
     const baseHref = new URL(
       `${LESSON_02_ACTION_PATH}?to=${toPubkey.toBase58()}&amount=${LESSON_02_TIP_SOL}`,
-      requestUrl.origin,
+      origin,
     ).toString();
 
     const payload: LessonActionGetResponse = {
       type: "action",
-      icon: new URL(LESSON_02_ICON_PATH, requestUrl.origin).toString(),
+      icon: new URL(LESSON_02_ICON_PATH, origin).toString(),
       title: LESSON_02_TITLE,
       description: buildLessonDescription(LESSON_02_EXPLAINER),
       label: getLesson02ActionLabel(),
@@ -66,8 +68,7 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request): Promise<Response> => {
   try {
-    const requestUrl = new URL(req.url);
-    const { toPubkey } = validateLesson02QueryParams(requestUrl);
+    const { toPubkey } = validateLesson02QueryParams(getActionUrl(req));
 
     const body = (await req.json()) as ActionPostRequest;
     const sender = parseAccountPubkey(body.account);

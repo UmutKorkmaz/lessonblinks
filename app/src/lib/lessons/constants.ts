@@ -11,7 +11,7 @@ export const LESSON_01_TRANSFER_USDC = 0.01;
 /** Raw SPL amount: 0.01 * 10^6 */
 export const LESSON_01_TRANSFER_AMOUNT = 10_000;
 export const LESSON_01_ACTION_PATH = "/api/actions/lesson-1-usdc";
-export const LESSON_01_ICON_PATH = "/lessons/01/icon.png";
+export const LESSON_01_ICON_PATH = "/icon.svg";
 
 export const CREATOR_WALLET_PUBKEY =
   process.env.CREATOR_WALLET_PUBKEY ??
