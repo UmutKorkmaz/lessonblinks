@@ -121,6 +121,13 @@ a {
   margin-top: 0.1rem;
 }
 
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .site-header__registry-link {
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -480,6 +487,12 @@ a {
   color: var(--text-muted);
   font-size: 0.8rem;
   margin-top: 0.75rem;
+}
+
+.lesson-detail__code {
+  font-size: 0.75rem;
+  word-break: break-all;
+  color: var(--accent);
 }
 
 .lesson-detail__nav {

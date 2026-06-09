@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { LessonCard } from "@/components/LessonCard";
 import { ProgressBar } from "@/components/ProgressBar";
-import { getBaseUrl, getDialToUrl, LESSONS } from "@/lib/lessons";
+import { getActionUrl, getBaseUrl, getBlinkInspectorUrl, LESSONS } from "@/lib/lessons";
 
 export default function Home() {
   const baseUrl = getBaseUrl();
@@ -11,8 +11,8 @@ export default function Home() {
     title: lesson.title,
     description: lesson.description,
     status: lesson.status,
-    actionUrl: `${baseUrl.replace(/\/$/, "")}${lesson.actionPath}`,
-    dialToUrl: getDialToUrl(lesson.actionPath, baseUrl),
+    actionUrl: getActionUrl(lesson.actionPath, baseUrl),
+    inspectorUrl: getBlinkInspectorUrl(lesson.actionPath, baseUrl),
     lessonPath: `/lesson/${lesson.slug}`,
   }));
 
@@ -38,7 +38,13 @@ export default function Home() {
       </main>
 
       <footer className="page__footer">
-        <p>Built for the Dialect Actions Registry · Solana Devnet</p>
+        <p>
+          Test Blinks with{" "}
+          <a href="https://www.blinks.xyz/inspector" target="_blank" rel="noopener noreferrer">
+            blinks.xyz/inspector
+          </a>{" "}
+          · Solana Devnet
+        </p>
       </footer>
     </div>
   );

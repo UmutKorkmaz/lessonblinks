@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Header } from "@/components/Header";
 import { BlinkTestLink } from "@/components/BlinkTestLink";
-import { getBaseUrl, getDialToUrl, getLessonBySlug } from "@/lib/lessons";
+import { getBaseUrl, getBlinkInspectorUrl, getLessonBySlug } from "@/lib/lessons";
 
 interface LessonPageProps {
   params: Promise<{ slug: string }>;
@@ -50,7 +50,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
         <div className="lesson-detail__actions">
           <BlinkTestLink
-            dialToUrl={getDialToUrl(lesson.actionPath, baseUrl)}
+            inspectorUrl={getBlinkInspectorUrl(lesson.actionPath, baseUrl)}
             disabled={!isActive}
           />
           {!isActive && (

@@ -4,7 +4,8 @@ import { BlinkTestLink } from "@/components/BlinkTestLink";
 import { Header } from "@/components/Header";
 import {
   getBaseUrl,
-  getDialToUrl,
+  getActionUrl,
+  getBlinkInspectorUrl,
   getLessonById,
   LESSON_IDS,
   LESSONS,
@@ -69,7 +70,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const dialToUrl = getDialToUrl(lesson.actionPath, getBaseUrl());
+  const inspectorUrl = getBlinkInspectorUrl(lesson.actionPath, getBaseUrl());
+  const actionUrl = getActionUrl(lesson.actionPath, getBaseUrl());
   const prevLesson = getLessonById(lesson.id - 1);
   const nextLesson = getLessonById(lesson.id + 1);
 
@@ -103,12 +105,17 @@ export default async function LessonPage({ params }: LessonPageProps) {
           <p>{lesson.blinkAction}</p>
           <div className="lesson-detail__cta">
             <BlinkTestLink
-              dialToUrl={dialToUrl}
+              inspectorUrl={inspectorUrl}
               disabled={lesson.status === "coming-soon"}
             />
           </div>
           <p className="lesson-detail__hint">
-            Opens the Dialect Blink interstitial on dial.to with this lesson&apos;s Action URL.
+            Opens{" "}
+            <a href="https://www.blinks.xyz/inspector" target="_blank" rel="noopener noreferrer">
+              blinks.xyz/inspector
+            </a>{" "}
+            with Action URL{" "}
+            <code className="lesson-detail__code">{actionUrl}</code>
           </p>
         </section>
 

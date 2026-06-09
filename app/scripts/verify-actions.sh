@@ -30,4 +30,7 @@ if ! echo "${GET_BODY}" | grep -q '"type"[[:space:]]*:[[:space:]]*"action"'; the
 fi
 
 echo ""
+echo "Test in Blinks Inspector:"
+echo "  https://www.blinks.xyz/inspector?url=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${ENDPOINT}', safe=''))")"
+echo ""
 echo "OK: lesson-1-usdc OPTIONS and GET checks passed."

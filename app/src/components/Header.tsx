@@ -11,14 +11,24 @@ export function Header() {
             <p className="site-header__tagline">One-tap Actions as 30-second lessons</p>
           </div>
         </div>
-        <a
-          href="https://dial.to/register"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="site-header__registry-link"
-        >
-          Dialect Registry
-        </a>
+        <nav className="site-header__nav">
+          <a
+            href="https://www.blinks.xyz/inspector"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-header__registry-link"
+          >
+            Blinks Inspector
+          </a>
+          <a
+            href="https://dial.to/register"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-header__registry-link"
+          >
+            Dialect Registry
+          </a>
+        </nav>
       </div>
     </header>
   );

@@ -7,7 +7,7 @@ export interface LessonCardData {
   description: string;
   status: LessonStatus;
   actionUrl: string;
-  dialToUrl: string;
+  inspectorUrl: string;
   lessonPath: string;
 }
 
@@ -31,7 +31,7 @@ export function LessonCard({ lesson }: LessonCardProps) {
       <p className="lesson-card__description">{lesson.description}</p>
 
       <div className="lesson-card__footer">
-        <BlinkTestLink dialToUrl={lesson.dialToUrl} disabled={!isActive} />
+        <BlinkTestLink inspectorUrl={lesson.inspectorUrl} disabled={!isActive} />
         {isActive && (
           <a href={lesson.lessonPath} className="lesson-card__detail-link">
             View lesson page

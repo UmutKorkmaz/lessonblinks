@@ -164,7 +164,11 @@ curl -s "http://localhost:3000/api/actions/lessons/01-usdc-transfer" | jq '{type
 - [ ] Badge: "Creator Supporter"
 - [ ] `nextLessonActionHref` points to Lesson 3
 
-### 3.4 dial.to
+### 3.4 Blinks Inspector (primary — dial.to currently down)
+
+Use [blinks.xyz/inspector](https://www.blinks.xyz/inspector) with `?url=` deep-link or paste the Action URL.
+
+### 3.5 dial.to (optional — when Dialect interstitial is back online)
 
 ```
 https://dial.to/?action=solana-action:http://localhost:3000/api/actions/lessons/02-tip-creator

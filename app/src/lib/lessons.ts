@@ -25,9 +25,24 @@ export function getBaseUrl(): string {
   return process.env.NEXT_PUBLIC_BASE_URL ?? DEFAULT_BASE_URL;
 }
 
+/** Official Solana Blinks Inspector — paste or deep-link an Action API URL. */
+export const BLINKS_INSPECTOR_ORIGIN = "https://www.blinks.xyz/inspector";
+
+export function getActionUrl(actionPath: string, baseUrl = getBaseUrl()): string {
+  return `${baseUrl.replace(/\/$/, "")}${actionPath}`;
+}
+
+export function getBlinkInspectorUrl(
+  actionPath: string,
+  baseUrl = getBaseUrl(),
+): string {
+  const actionUrl = getActionUrl(actionPath, baseUrl);
+  return `${BLINKS_INSPECTOR_ORIGIN}?url=${encodeURIComponent(actionUrl)}`;
+}
+
+/** @deprecated dial.to is unreliable; use getBlinkInspectorUrl */
 export function getDialToUrl(actionPath: string, baseUrl = getBaseUrl()): string {
-  const actionUrl = `${baseUrl.replace(/\/$/, "")}${actionPath}`;
-  return `https://dial.to/?action=solana-action:${encodeURIComponent(actionUrl)}`;
+  return getBlinkInspectorUrl(actionPath, baseUrl);
 }
 
 export const LESSONS: Lesson[] = [
