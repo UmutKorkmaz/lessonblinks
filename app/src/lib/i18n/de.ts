@@ -54,6 +54,7 @@ export const de: Dictionary = {
     loadingBlink: "Blink wird geladen …",
     blinkError:
       "Blink konnte nicht geladen werden. Prüfe die Action-URL und die CORS-Header.",
+    blinkApiNote: "Hinweis: Diese Karte stammt aus der Action API. Wallet-Bedienelemente und externe Oberflächen (X, Wallets) können auf Englisch erscheinen.",
   },
 
   lessons: {

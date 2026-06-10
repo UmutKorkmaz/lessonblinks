@@ -53,6 +53,7 @@ export const tr: Dictionary = {
 
     loadingBlink: "Blink yükleniyor…",
     blinkError: "Blink yüklenemedi. Action URL'sini ve CORS başlıklarını kontrol et.",
+    blinkApiNote: "Not: Bu kart bir Action API yanıtıdır. Cüzdan kontrolleri ve harici yüzeyler (X, cüzdanlar) İngilizce görünebilir.",
   },
 
   lessons: {

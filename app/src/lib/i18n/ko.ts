@@ -54,6 +54,7 @@ export const ko: Dictionary = {
     loadingBlink: "Blink 불러오는 중…",
     blinkError:
       "Blink를 불러오지 못했어요. Action URL과 CORS 헤더를 확인해 주세요.",
+    blinkApiNote: "참고: 이 카드는 Action API 응답이에요. 지갑 컨트롤과 외부 환경(X, 지갑)에서는 영어로 표시될 수 있어요.",
   },
 
   lessons: {

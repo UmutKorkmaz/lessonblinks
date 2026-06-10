@@ -76,6 +76,8 @@ export interface UIStrings {
   // Embedded Blink
   loadingBlink: string;
   blinkError: string;
+  /** Explains that the Blink card is an Action API response (English on external surfaces) */
+  blinkApiNote: string;
 }
 
 export interface Dictionary {

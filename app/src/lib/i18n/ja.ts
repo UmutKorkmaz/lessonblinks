@@ -54,6 +54,7 @@ export const ja: Dictionary = {
     loadingBlink: "Blinkを読み込み中…",
     blinkError:
       "Blinkを読み込めませんでした。Action URLとCORSヘッダーを確認してください。",
+    blinkApiNote: "注：このカードは Action API のレスポンスです。ウォレットの操作部分や外部サービス（X、ウォレット）では英語で表示されることがあります。",
   },
 
   lessons: {

@@ -54,6 +54,7 @@ export const it: Dictionary = {
     loadingBlink: "Caricamento del Blink…",
     blinkError:
       "Impossibile caricare il Blink. Controlla l'URL della Action e gli header CORS.",
+    blinkApiNote: "Nota: questa card proviene dalla Action API. I controlli del wallet e le superfici esterne (X, wallet) possono apparire in inglese.",
   },
 
   lessons: {

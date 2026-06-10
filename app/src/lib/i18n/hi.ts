@@ -54,6 +54,7 @@ export const hi: Dictionary = {
     loadingBlink: "Blink लोड हो रहा है…",
     blinkError:
       "Blink लोड नहीं हो सका। Action URL और CORS headers जाँचें।",
+    blinkApiNote: "नोट: यह कार्ड Action API से आता है। Wallet नियंत्रण और बाहरी सतहें (X, wallets) अंग्रेज़ी में दिख सकती हैं।",
   },
 
   lessons: {

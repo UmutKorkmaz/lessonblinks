@@ -53,6 +53,7 @@ export const en: Dictionary = {
 
     loadingBlink: "Loading Blink…",
     blinkError: "Could not load Blink. Check the Action URL and CORS headers.",
+    blinkApiNote: "Note: this card is served by the Action API. Wallet controls and external surfaces (X, wallets) may appear in English.",
   },
 
   lessons: {

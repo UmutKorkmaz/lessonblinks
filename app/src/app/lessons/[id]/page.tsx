@@ -152,6 +152,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 loadingLabel={dict.ui.loadingBlink}
                 errorLabel={dict.ui.blinkError}
               />
+              <p className="lesson-detail__hint">{dict.ui.blinkApiNote}</p>
               <p className="lesson-detail__hint">
                 {dict.ui.actionApiLabel}{" "}
                 <code className="lesson-detail__code">{actionUrl}</code>
