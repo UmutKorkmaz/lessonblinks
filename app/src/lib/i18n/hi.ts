@@ -95,6 +95,9 @@ export const hi: Dictionary = {
         "एक मिनट से कम में Blink से असली ट्रांज़ैक्शन पूरा करें",
       ],
       badgeLabel: "USDC सेंडर",
+      actionLabel: "0.01 USDC भेजें",
+      successMessage:
+        "एजुकेशन treasury ({recipient}) को 0.01 USDC भेजें। Sign करने से पहले अपने wallet में जाँच लें।",
     },
     "2": {
       title: "किसी क्रिएटर को SOL में टिप दें",
@@ -134,6 +137,9 @@ export const hi: Dictionary = {
         "एक टैप में असली onchain टिप पूरी करें",
       ],
       badgeLabel: "SOL टिपर",
+      actionLabel: "0.001 SOL टिप दें",
+      successMessage:
+        "{recipient} को 0.001 SOL की टिप दें। Sign करने से पहले अपने wallet में जाँच लें।",
     },
     "3": {
       title: "सरहद पार पैसे भेजें",
@@ -180,6 +186,9 @@ export const hi: Dictionary = {
         "Solana पर settlement की रफ़्तार और कम फ़ीस को पहचानें",
       ],
       badgeLabel: "रेमिटर",
+      actionLabel: "0.05 USDC भेजें",
+      successMessage:
+        "पाठ 3 पूरा करने के लिए 0.05 USDC विदेश भेजें। Sign करने से पहले अपने wallet में पाने वाले का address और रकम जाँच लें।",
     },
     "4": {
       title: "अपना पहला swap समझें",
@@ -221,6 +230,9 @@ export const hi: Dictionary = {
         "Onchain memo के साथ एक असली devnet ट्रांज़ैक्शन sign करें",
       ],
       badgeLabel: "स्वैपर",
+      actionLabel: "0.01 SOL swap करें (devnet demo)",
+      successMessage:
+        "Devnet demo: आपने swap पाठ पूरा होने का memo sign किया। Mainnet पर यही flow Jupiter के ज़रिए 0.01 SOL को USDC में trade करता।",
     },
     "5": {
       title: "अपना ग्रेजुएशन बैज claim करें",
@@ -265,6 +277,9 @@ export const hi: Dictionary = {
         "5 पाठों वाली Blinks onboarding राह पूरी करें",
       ],
       badgeLabel: "Blinks 101 ग्रेजुएट",
+      actionLabel: "ग्रेजुएशन बैज claim करें",
+      successMessage:
+        "ग्रेजुएशन बैज mint हो गया! Supply-1 token {mint} अब आपके wallet का है — इसे किसी भी devnet explorer पर खोजकर देख लें।",
     },
   },
 };

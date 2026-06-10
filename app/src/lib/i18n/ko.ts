@@ -94,6 +94,9 @@ export const ko: Dictionary = {
         "Blink로 진짜 트랜잭션을 1분 안에 완료하기",
       ],
       badgeLabel: "USDC 전송자",
+      actionLabel: "0.01 USDC 보내기",
+      successMessage:
+        "교육 트레저리({recipient})로 0.01 USDC를 보내세요. 서명하기 전에 지갑에서 내용을 확인하세요.",
     },
     "2": {
       title: "크리에이터에게 SOL로 팁 주기",
@@ -133,6 +136,9 @@ export const ko: Dictionary = {
         "탭 한 번으로 진짜 온체인 팁 완료하기",
       ],
       badgeLabel: "SOL 팁퍼",
+      actionLabel: "0.001 SOL 팁 주기",
+      successMessage:
+        "{recipient}에게 0.001 SOL을 팁으로 보내세요. 서명하기 전에 지갑에서 내용을 확인하세요.",
     },
     "3": {
       title: "국경 너머로 돈 보내기",
@@ -173,6 +179,9 @@ export const ko: Dictionary = {
         "Solana의 정산 속도와 낮은 수수료 체감하기",
       ],
       badgeLabel: "송금자",
+      actionLabel: "0.05 USDC 보내기",
+      successMessage:
+        "해외로 0.05 USDC를 보내 레슨 3을 완료하세요. 서명하기 전에 지갑에서 받는 사람과 금액을 확인하세요.",
     },
     "4": {
       title: "첫 스왑 이해하기",
@@ -213,6 +222,9 @@ export const ko: Dictionary = {
         "온체인 memo가 담긴 진짜 devnet 트랜잭션에 서명하기",
       ],
       badgeLabel: "스왑퍼",
+      actionLabel: "0.01 SOL 스왑하기 (devnet 데모)",
+      successMessage:
+        "Devnet 데모: 스왑 레슨 완료 memo에 서명했어요. mainnet에서는 이 똑같은 흐름이 Jupiter를 통해 0.01 SOL을 USDC로 교환해요.",
     },
     "5": {
       title: "수료 배지 받기",
@@ -252,6 +264,9 @@ export const ko: Dictionary = {
         "5개 레슨으로 이루어진 Blinks 온보딩 경로 완주하기",
       ],
       badgeLabel: "Blinks 101 수료생",
+      actionLabel: "수료 배지 받기",
+      successMessage:
+        "수료 배지가 민팅됐어요! 공급량 1짜리 토큰 {mint}는 이제 여러분 지갑의 것이에요 — 어떤 devnet 익스플로러에서든 조회해 보세요.",
     },
   },
 };

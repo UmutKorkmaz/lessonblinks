@@ -93,6 +93,9 @@ export const zh: Dictionary = {
         "在一分钟内通过 Blink 完成一笔真实交易",
       ],
       badgeLabel: "USDC 转账达人",
+      actionLabel: "发送 0.01 USDC",
+      successMessage:
+        "向课程金库（{recipient}）发送 0.01 USDC。签名前请在钱包中仔细核对。",
     },
     "2": {
       title: "用 SOL 打赏创作者",
@@ -131,6 +134,9 @@ export const zh: Dictionary = {
         "一键完成一笔真实的链上打赏",
       ],
       badgeLabel: "SOL 打赏达人",
+      actionLabel: "打赏 0.001 SOL",
+      successMessage:
+        "向 {recipient} 打赏 0.001 SOL。签名前请在钱包中仔细核对。",
     },
     "3": {
       title: "跨境汇一笔钱",
@@ -169,6 +175,9 @@ export const zh: Dictionary = {
         "体会 Solana 的结算速度和超低手续费",
       ],
       badgeLabel: "汇款达人",
+      actionLabel: "发送 0.05 USDC",
+      successMessage:
+        "向海外发送 0.05 USDC，完成第 3 课。签名前请在钱包中核对收款方和金额。",
     },
     "4": {
       title: "理解你的第一笔兑换",
@@ -208,6 +217,9 @@ export const zh: Dictionary = {
         "签署一笔带链上 Memo 的真实 devnet 交易",
       ],
       badgeLabel: "兑换达人",
+      actionLabel: "兑换 0.01 SOL（devnet 演示）",
+      successMessage:
+        "Devnet 演示：你签署了一条兑换课程的完课 Memo。在主网上，同样的流程会通过 Jupiter 把 0.01 SOL 兑换成 USDC。",
     },
     "5": {
       title: "领取你的毕业徽章",
@@ -246,6 +258,9 @@ export const zh: Dictionary = {
         "走完 5 节课的 Blinks 入门路径",
       ],
       badgeLabel: "Blinks 101 毕业生",
+      actionLabel: "领取毕业徽章",
+      successMessage:
+        "毕业徽章铸造成功！总量为 1 的代币 {mint} 现在归你的钱包所有 —— 在任何 devnet 区块浏览器上都能查到它。",
     },
   },
 };

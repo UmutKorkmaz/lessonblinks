@@ -101,6 +101,9 @@ export const id: Dictionary = {
         "Menyelesaikan transaksi sungguhan dari sebuah Blink dalam waktu kurang dari satu menit",
       ],
       badgeLabel: "Pengirim USDC",
+      actionLabel: "Kirim 0.01 USDC",
+      successMessage:
+        "Kirim 0.01 USDC ke kas pendidikan ({recipient}). Periksa di dompetmu sebelum menandatangani.",
     },
     "2": {
       title: "Beri tip kreator dalam SOL",
@@ -141,6 +144,9 @@ export const id: Dictionary = {
         "Menyelesaikan tip onchain sungguhan dalam satu ketukan",
       ],
       badgeLabel: "Pemberi Tip SOL",
+      actionLabel: "Beri Tip 0.001 SOL",
+      successMessage:
+        "Beri tip 0.001 SOL ke {recipient}. Periksa di dompetmu sebelum menandatangani.",
     },
     "3": {
       title: "Kirim uang lintas negara",
@@ -187,6 +193,9 @@ export const id: Dictionary = {
         "Mengenali kecepatan penyelesaian dan biaya rendah di Solana",
       ],
       badgeLabel: "Pengirim Remitansi",
+      actionLabel: "Kirim 0.05 USDC",
+      successMessage:
+        "Kirim 0.05 USDC ke luar negeri untuk menyelesaikan Pelajaran 3. Periksa penerima dan jumlahnya di dompetmu sebelum menandatangani.",
     },
     "4": {
       title: "Pahami swap pertamamu",
@@ -228,6 +237,9 @@ export const id: Dictionary = {
         "Menandatangani transaksi devnet sungguhan dengan memo onchain",
       ],
       badgeLabel: "Penukar Token",
+      actionLabel: "Swap 0.01 SOL (demo devnet)",
+      successMessage:
+        "Demo devnet: kamu menandatangani memo penyelesaian pelajaran swap. Di mainnet, alur yang sama ini akan menukar 0.01 SOL menjadi USDC lewat Jupiter.",
     },
     "5": {
       title: "Klaim lencana kelulusanmu",
@@ -272,6 +284,9 @@ export const id: Dictionary = {
         "Menyelesaikan jalur onboarding Blinks 5 pelajaran",
       ],
       badgeLabel: "Lulusan Blinks 101",
+      actionLabel: "Klaim Lencana Kelulusan",
+      successMessage:
+        "Lencana kelulusan berhasil di-mint! Token bersuplai 1 {mint} kini milik dompetmu — telusuri di explorer devnet mana pun.",
     },
   },
 };

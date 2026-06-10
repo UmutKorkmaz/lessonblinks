@@ -101,6 +101,9 @@ export const ja: Dictionary = {
         "Blinkから本物のトランザクションを1分以内に完了する",
       ],
       badgeLabel: "USDC Sender",
+      actionLabel: "0.01 USDCを送る",
+      successMessage:
+        "教育トレジャリー（{recipient}）に0.01 USDCを送ります。署名する前にウォレットで内容を確認してください。",
     },
     "2": {
       title: "クリエイターにSOLでチップを贈る",
@@ -141,6 +144,9 @@ export const ja: Dictionary = {
         "ワンタップで本物のオンチェーンチップを完了する",
       ],
       badgeLabel: "SOL Tipper",
+      actionLabel: "0.001 SOLのチップを贈る",
+      successMessage:
+        "{recipient}に0.001 SOLのチップを贈ります。署名する前にウォレットで内容を確認してください。",
     },
     "3": {
       title: "国境を越えてお金を送る",
@@ -181,6 +187,9 @@ export const ja: Dictionary = {
         "Solanaの決済スピードと低い手数料を実感する",
       ],
       badgeLabel: "Remitter",
+      actionLabel: "0.05 USDCを送る",
+      successMessage:
+        "海外に0.05 USDCを送ってレッスン3を完了します。署名する前にウォレットで受取人と金額を確認してください。",
     },
     "4": {
       title: "はじめてのスワップを理解する",
@@ -222,6 +231,9 @@ export const ja: Dictionary = {
         "オンチェーンメモ付きの本物のdevnetトランザクションに署名する",
       ],
       badgeLabel: "Swapper",
+      actionLabel: "0.01 SOLをスワップする（devnetデモ）",
+      successMessage:
+        "devnetデモ：スワップレッスン完了のメモに署名しました。mainnetでは、これと同じフローでJupiterを通じて0.01 SOLがUSDCに交換されます。",
     },
     "5": {
       title: "修了バッジを受け取る",
@@ -261,6 +273,9 @@ export const ja: Dictionary = {
         "全5レッスンのBlinksオンボーディングパスを完走する",
       ],
       badgeLabel: "Blinks 101 Graduate",
+      actionLabel: "修了バッジを受け取る",
+      successMessage:
+        "修了バッジをミントしました！供給量1のトークン{mint}は、いまやあなたのウォレットのものです — どのdevnetエクスプローラーでも検索できます。",
     },
   },
 };

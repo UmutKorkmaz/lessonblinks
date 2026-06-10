@@ -101,6 +101,9 @@ export const de: Dictionary = {
         "Eine echte Transaktion aus einem Blink in unter einer Minute abschließen",
       ],
       badgeLabel: "USDC-Sender",
+      actionLabel: "Sende 0,01 USDC",
+      successMessage:
+        "Sende 0,01 USDC an die Bildungs-Treasury ({recipient}). Prüfe alles in deiner Wallet, bevor du signierst.",
     },
     "2": {
       title: "Gib einem Creator Trinkgeld in SOL",
@@ -141,6 +144,9 @@ export const de: Dictionary = {
         "Ein echtes Onchain-Trinkgeld mit einem Tap abschließen",
       ],
       badgeLabel: "SOL-Tipper",
+      actionLabel: "Gib 0,001 SOL Trinkgeld",
+      successMessage:
+        "Gib 0,001 SOL Trinkgeld an {recipient}. Prüfe alles in deiner Wallet, bevor du signierst.",
     },
     "3": {
       title: "Sende Geld über eine Grenze",
@@ -187,6 +193,9 @@ export const de: Dictionary = {
         "Settlement-Geschwindigkeit und niedrige Gebühren auf Solana erkennen",
       ],
       badgeLabel: "Remitter",
+      actionLabel: "Sende 0,05 USDC",
+      successMessage:
+        "Sende 0,05 USDC ins Ausland, um Lektion 3 abzuschließen. Prüfe Empfänger und Betrag in deiner Wallet, bevor du signierst.",
     },
     "4": {
       title: "Verstehe deinen ersten Swap",
@@ -228,6 +237,9 @@ export const de: Dictionary = {
         "Eine echte Devnet-Transaktion mit einem Onchain-Memo signieren",
       ],
       badgeLabel: "Swapper",
+      actionLabel: "Swappe 0,01 SOL (Devnet-Demo)",
+      successMessage:
+        "Devnet-Demo: Du hast ein Abschluss-Memo der Swap-Lektion signiert. Auf dem Mainnet würde derselbe Ablauf 0,01 SOL über Jupiter in USDC tauschen.",
     },
     "5": {
       title: "Hol dir dein Abschluss-Badge",
@@ -272,6 +284,9 @@ export const de: Dictionary = {
         "Den 5-Lektionen-Blinks-Onboarding-Pfad abschließen",
       ],
       badgeLabel: "Blinks-101-Absolvent",
+      actionLabel: "Abschluss-Badge claimen",
+      successMessage:
+        "Abschluss-Badge gemintet! Der Supply-1-Token {mint} gehört jetzt deiner Wallet — schlag ihn in einem beliebigen Devnet-Explorer nach.",
     },
   },
 };

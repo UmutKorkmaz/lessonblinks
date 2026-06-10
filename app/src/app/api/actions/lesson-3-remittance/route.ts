@@ -12,6 +12,11 @@ import { PublicKey, Transaction } from "@solana/web3.js";
 
 import { getActionOrigin, getActionUrl } from "@/lib/action-origin";
 import {
+  buildActionStrings,
+  formatSuccessMessage,
+  getActionDict,
+} from "@/lib/lessons/action-text";
+import {
   getConnection,
   getCreatorPubkey,
   getUsdcMint,
@@ -44,26 +49,20 @@ function getRemittanceRecipient(requestUrl: URL): PublicKey {
 export async function GET(req: Request) {
   const origin = getActionOrigin(req);
   const actionUrl = getActionUrl(req);
+  const strings = buildActionStrings(getActionDict(actionUrl), 3);
 
   const payload: ActionGetResponse = {
     type: "action",
     icon: resolveIconUrl(origin, "/icon.svg"),
-    title: "Lesson 3 · Send USDC Abroad",
-    description: [
-      "Remittance is sending money across borders — same USDC token, same Solana network, arriving in seconds instead of business days.",
-      "",
-      "USDC is a dollar-pegged stablecoin. You'll send exactly 0.05 USDC to a demo family wallet abroad — a real SPL token transfer in one signature.",
-      "",
-      "Keep a little SOL in your wallet for network fees.",
-      "",
-      "🧪 Beta — recipient routing and corridor copy may change as we refine this lesson.",
-    ].join("\n"),
-    label: "Send 0.05 USDC",
+    title: strings.title,
+    description: strings.description,
+    label: strings.label,
     links: {
       actions: [
         {
           type: "transaction",
-          label: "Send 0.05 USDC",
+          label: strings.label,
+          // actionUrl keeps the incoming query (`to`, `lang`) for the POST
           href: actionUrl.toString(),
         },
       ],
@@ -80,6 +79,7 @@ export async function OPTIONS() {
 export async function POST(req: Request): Promise<Response> {
   try {
     const requestUrl = getActionUrl(req);
+    const strings = buildActionStrings(getActionDict(requestUrl), 3);
     const body = (await req.json()) as ActionPostRequest;
     const account = body.account;
 
@@ -120,8 +120,9 @@ export async function POST(req: Request): Promise<Response> {
       fields: {
         type: "transaction",
         transaction,
-        message:
-          "Send 0.05 USDC abroad to complete Lesson 3. Review the recipient and amount in your wallet before signing.",
+        message: formatSuccessMessage(strings, {
+          recipient: recipient.toBase58(),
+        }),
       },
     });
 

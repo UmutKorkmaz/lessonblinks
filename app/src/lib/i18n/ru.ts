@@ -101,6 +101,9 @@ export const ru: Dictionary = {
         "Провести настоящую транзакцию из Blink меньше чем за минуту",
       ],
       badgeLabel: "Отправитель USDC",
+      actionLabel: "Отправить 0.01 USDC",
+      successMessage:
+        "Отправь 0.01 USDC в образовательную казну ({recipient}). Проверь детали в кошельке перед подписанием.",
     },
     "2": {
       title: "Оставь автору чаевые в SOL",
@@ -146,6 +149,9 @@ export const ru: Dictionary = {
         "Отправить настоящие ончейн-чаевые в один тап",
       ],
       badgeLabel: "SOL-меценат",
+      actionLabel: "Чаевые 0.001 SOL",
+      successMessage:
+        "Отправь чаевые 0.001 SOL на {recipient}. Проверь детали в кошельке перед подписанием.",
     },
     "3": {
       title: "Отправь деньги за границу",
@@ -192,6 +198,9 @@ export const ru: Dictionary = {
         "Оценить скорость расчёта и низкие комиссии Solana",
       ],
       badgeLabel: "Переводчик денег",
+      actionLabel: "Отправить 0.05 USDC",
+      successMessage:
+        "Отправь 0.05 USDC за границу, чтобы завершить Урок 3. Проверь получателя и сумму в кошельке перед подписанием.",
     },
     "4": {
       title: "Разберись в своём первом свопе",
@@ -238,6 +247,9 @@ export const ru: Dictionary = {
         "Подписать настоящую devnet-транзакцию с ончейн-Memo",
       ],
       badgeLabel: "Своппер",
+      actionLabel: "Своп 0.01 SOL (devnet-демо)",
+      successMessage:
+        "Devnet-демо: ты подписал Memo о прохождении урока свопов. В mainnet тот же процесс обменял бы 0.01 SOL на USDC через Jupiter.",
     },
     "5": {
       title: "Получи свой выпускной бейдж",
@@ -283,6 +295,9 @@ export const ru: Dictionary = {
         "Пройти путь онбординга Blinks из 5 уроков",
       ],
       badgeLabel: "Выпускник Blinks 101",
+      actionLabel: "Получить выпускной бейдж",
+      successMessage:
+        "Выпускной бейдж заминчен! Токен с supply 1 {mint} теперь принадлежит твоему кошельку — найди его в любом devnet-эксплорере.",
     },
   },
 };

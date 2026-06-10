@@ -100,6 +100,9 @@ export const pt: Dictionary = {
         "Completar uma transação real a partir de um Blink em menos de um minuto",
       ],
       badgeLabel: "Remetente de USDC",
+      actionLabel: "Enviar 0.01 USDC",
+      successMessage:
+        "Envie 0.01 USDC para a tesouraria de educação ({recipient}). Revise na sua carteira antes de assinar.",
     },
     "2": {
       title: "Dê gorjeta a um criador em SOL",
@@ -139,6 +142,9 @@ export const pt: Dictionary = {
         "Completar uma gorjeta onchain de verdade em um toque",
       ],
       badgeLabel: "Gorjeteiro de SOL",
+      actionLabel: "Dar gorjeta de 0.001 SOL",
+      successMessage:
+        "Dê uma gorjeta de 0.001 SOL para {recipient}. Revise na sua carteira antes de assinar.",
     },
     "3": {
       title: "Envie dinheiro para outro país",
@@ -185,6 +191,9 @@ export const pt: Dictionary = {
         "Reconhecer a velocidade de liquidação e as taxas baixas da Solana",
       ],
       badgeLabel: "Remetente Internacional",
+      actionLabel: "Enviar 0.05 USDC",
+      successMessage:
+        "Envie 0.05 USDC para o exterior para completar a Lição 3. Revise o destinatário e o valor na sua carteira antes de assinar.",
     },
     "4": {
       title: "Entenda seu primeiro swap",
@@ -226,6 +235,9 @@ export const pt: Dictionary = {
         "Assinar uma transação real de devnet com um memo onchain",
       ],
       badgeLabel: "Swapper",
+      actionLabel: "Fazer swap de 0.01 SOL (demo de devnet)",
+      successMessage:
+        "Demo de devnet: você assinou um memo de conclusão da lição de swap. Na mainnet, esse mesmo fluxo trocaria 0.01 SOL por USDC via Jupiter.",
     },
     "5": {
       title: "Resgate seu selo de formatura",
@@ -270,6 +282,9 @@ export const pt: Dictionary = {
         "Completar a trilha de onboarding de Blinks com 5 lições",
       ],
       badgeLabel: "Formado em Blinks 101",
+      actionLabel: "Resgatar Selo de Formatura",
+      successMessage:
+        "Selo de formatura cunhado! O token de fornecimento 1 {mint} agora pertence à sua carteira — consulte-o em qualquer explorador de devnet.",
     },
   },
 };

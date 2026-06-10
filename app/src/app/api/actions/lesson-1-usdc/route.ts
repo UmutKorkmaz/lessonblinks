@@ -7,16 +7,16 @@ import { getActionOrigin, getActionUrl } from "@/lib/action-origin";
 import { toActionError } from "@/lib/actions/errors";
 import { actionHeaders } from "@/lib/actions/headers";
 import {
+  buildActionStrings,
+  formatSuccessMessage,
+  getActionDict,
+  getActionLocale,
+} from "@/lib/lessons/action-text";
+import {
   LESSON_01_ACTION_PATH,
   LESSON_01_ICON_PATH,
 } from "@/lib/lessons/constants";
-import { buildLessonDescription } from "@/lib/lessons/description";
-import {
-  getLesson01ActionLabel,
-  getLesson01TransferMessage,
-  LESSON_01_EXPLAINER,
-  LESSON_01_TITLE,
-} from "@/lib/lessons/lesson-01";
+import { LESSON_01_EXPLAINER } from "@/lib/lessons/lesson-01";
 import { resolveEducationWallet } from "@/lib/lessons/recipient";
 import { parseAccountPubkey } from "@/lib/lessons/validation";
 import { getConnection } from "@/lib/solana/connection";
@@ -30,29 +30,25 @@ export const GET = async (req: Request) => {
     const origin = getActionOrigin(req);
     const requestUrl = getActionUrl(req);
     const recipient = resolveEducationWallet(requestUrl);
+    const lang = getActionLocale(requestUrl);
+    const strings = buildActionStrings(getActionDict(requestUrl), 1);
+
     const baseHref = new URL(
-      `${LESSON_01_ACTION_PATH}?to=${recipient.toBase58()}`,
+      `${LESSON_01_ACTION_PATH}?to=${recipient.toBase58()}&lang=${lang}`,
       origin,
     ).toString();
 
     const payload: LessonGetResponse = {
       type: "action",
       icon: new URL(LESSON_01_ICON_PATH, origin).toString(),
-      title: LESSON_01_TITLE,
-      description: [
-        buildLessonDescription(LESSON_01_EXPLAINER),
-        "",
-        "What you'll learn:",
-        "• USDC is a stablecoin, not native SOL",
-        "• SPL tokens live in token accounts",
-        "• Real transfers happen in one wallet signature",
-      ].join("\n"),
-      label: getLesson01ActionLabel(),
+      title: strings.title,
+      description: strings.description,
+      label: strings.label,
       links: {
         actions: [
           {
             type: "transaction",
-            label: getLesson01ActionLabel(),
+            label: strings.label,
             href: baseHref,
           },
         ],
@@ -70,7 +66,9 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request): Promise<Response> => {
   try {
-    const recipient = resolveEducationWallet(getActionUrl(req));
+    const requestUrl = getActionUrl(req);
+    const recipient = resolveEducationWallet(requestUrl);
+    const strings = buildActionStrings(getActionDict(requestUrl), 1);
 
     const body = (await req.json()) as ActionPostRequest;
     const sender = parseAccountPubkey(body.account);
@@ -86,7 +84,7 @@ export const POST = async (req: Request): Promise<Response> => {
       fields: {
         type: "transaction",
         transaction,
-        message: getLesson01TransferMessage(recipient.toBase58()),
+        message: formatSuccessMessage(strings, { recipient: recipient.toBase58() }),
       },
     });
 

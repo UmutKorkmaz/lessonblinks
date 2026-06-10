@@ -3,17 +3,19 @@ import {
   type ActionGetResponse,
   type ActionPostRequest,
 } from "@solana/actions";
-import { getActionOrigin } from "@/lib/action-origin";
+import { getActionOrigin, getActionUrl } from "@/lib/action-origin";
 import { toActionError } from "@/lib/actions/errors";
 import { actionHeaders } from "@/lib/actions/headers";
-import { buildLessonDescription } from "@/lib/lessons/description";
 import {
-  getLesson05ActionLabel,
-  getLesson05SuccessMessage,
+  buildActionStrings,
+  formatSuccessMessage,
+  getActionDict,
+  getActionLocale,
+} from "@/lib/lessons/action-text";
+import {
   LESSON_05_ACTION_PATH,
   LESSON_05_EXPLAINER,
   LESSON_05_ICON_PATH,
-  LESSON_05_TITLE,
 } from "@/lib/lessons/lesson-05";
 import { parseAccountPubkey } from "@/lib/lessons/validation";
 import { getConnection } from "@/lib/solana/connection";
@@ -25,26 +27,22 @@ export const OPTIONS = async () => Response.json(null, { headers: actionHeaders 
 export const GET = async (req: Request) => {
   try {
     const origin = getActionOrigin(req);
+    const requestUrl = getActionUrl(req);
+    const lang = getActionLocale(requestUrl);
+    const strings = buildActionStrings(getActionDict(requestUrl), 5);
 
     const payload: LessonGetResponse = {
       type: "action",
       icon: new URL(LESSON_05_ICON_PATH, origin).toString(),
-      title: LESSON_05_TITLE,
-      description: [
-        buildLessonDescription(LESSON_05_EXPLAINER),
-        "",
-        "What you'll learn:",
-        "• NFTs are wallet-owned credentials, not just art",
-        "• Burning mint authority fixes supply at exactly 1",
-        "• Your badge is verifiable on any devnet explorer",
-      ].join("\n"),
-      label: getLesson05ActionLabel(),
+      title: strings.title,
+      description: strings.description,
+      label: strings.label,
       links: {
         actions: [
           {
             type: "transaction",
-            label: getLesson05ActionLabel(),
-            href: new URL(LESSON_05_ACTION_PATH, origin).toString(),
+            label: strings.label,
+            href: new URL(`${LESSON_05_ACTION_PATH}?lang=${lang}`, origin).toString(),
           },
         ],
       },
@@ -61,6 +59,7 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request): Promise<Response> => {
   try {
+    const strings = buildActionStrings(getActionDict(getActionUrl(req)), 5);
     const body = (await req.json()) as ActionPostRequest;
     const recipient = parseAccountPubkey(body.account);
 
@@ -74,7 +73,9 @@ export const POST = async (req: Request): Promise<Response> => {
       fields: {
         type: "transaction",
         transaction,
-        message: getLesson05SuccessMessage(mintKeypair.publicKey.toBase58()),
+        message: formatSuccessMessage(strings, {
+          mint: mintKeypair.publicKey.toBase58(),
+        }),
       },
       signers: [mintKeypair],
     });

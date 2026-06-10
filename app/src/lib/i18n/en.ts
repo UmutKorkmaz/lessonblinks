@@ -93,6 +93,9 @@ export const en: Dictionary = {
         "Complete a real transaction from a Blink in under a minute",
       ],
       badgeLabel: "USDC Sender",
+      actionLabel: "Send 0.01 USDC",
+      successMessage:
+        "Send 0.01 USDC to the education treasury ({recipient}). Review in your wallet before signing.",
     },
     "2": {
       title: "Tip a creator in SOL",
@@ -131,6 +134,8 @@ export const en: Dictionary = {
         "Complete a real onchain tip in one tap",
       ],
       badgeLabel: "SOL Tipper",
+      actionLabel: "Tip 0.001 SOL",
+      successMessage: "Tip 0.001 SOL to {recipient}. Review in your wallet before signing.",
     },
     "3": {
       title: "Send money across a border",
@@ -169,6 +174,9 @@ export const en: Dictionary = {
         "Recognize settlement speed and low fees on Solana",
       ],
       badgeLabel: "Remitter",
+      actionLabel: "Send 0.05 USDC",
+      successMessage:
+        "Send 0.05 USDC abroad to complete Lesson 3. Review the recipient and amount in your wallet before signing.",
     },
     "4": {
       title: "Understand your first swap",
@@ -208,6 +216,9 @@ export const en: Dictionary = {
         "Sign a real devnet transaction with an onchain memo",
       ],
       badgeLabel: "Swapper",
+      actionLabel: "Swap 0.01 SOL (devnet demo)",
+      successMessage:
+        "Devnet demo: you signed a swap-lesson completion memo. On mainnet this same flow would trade 0.01 SOL into USDC via Jupiter.",
     },
     "5": {
       title: "Claim your graduation badge",
@@ -246,6 +257,9 @@ export const en: Dictionary = {
         "Complete the 5-lesson Blinks onboarding path",
       ],
       badgeLabel: "Blinks 101 Graduate",
+      actionLabel: "Claim Graduation Badge",
+      successMessage:
+        "Graduation badge minted! Supply-1 token {mint} now belongs to your wallet — look it up on any devnet explorer.",
     },
   },
 };

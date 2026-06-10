@@ -93,6 +93,9 @@ export const ar: Dictionary = {
         "إتمام معاملة حقيقية من Blink في أقل من دقيقة",
       ],
       badgeLabel: "مُرسل USDC",
+      actionLabel: "أرسل 0.01 USDC",
+      successMessage:
+        "أرسل 0.01 USDC إلى خزينة التعليم ({recipient}). راجع التفاصيل في محفظتك قبل التوقيع.",
     },
     "2": {
       title: "قدّم إكرامية لصانع محتوى بعملة SOL",
@@ -131,6 +134,9 @@ export const ar: Dictionary = {
         "إتمام إكرامية حقيقية على السلسلة بنقرة واحدة",
       ],
       badgeLabel: "مانح إكراميات SOL",
+      actionLabel: "قدّم إكرامية 0.001 SOL",
+      successMessage:
+        "قدّم إكرامية قدرها 0.001 SOL إلى {recipient}. راجع التفاصيل في محفظتك قبل التوقيع.",
     },
     "3": {
       title: "أرسل المال عبر الحدود",
@@ -169,6 +175,9 @@ export const ar: Dictionary = {
         "إدراك سرعة التسوية وانخفاض الرسوم على Solana",
       ],
       badgeLabel: "مُحوِّل أموال",
+      actionLabel: "أرسل 0.05 USDC",
+      successMessage:
+        "أرسل 0.05 USDC إلى الخارج لإكمال الدرس 3. راجع المستلم والمبلغ في محفظتك قبل التوقيع.",
     },
     "4": {
       title: "افهم أول عملية تبادل لك",
@@ -208,6 +217,9 @@ export const ar: Dictionary = {
         "توقيع معاملة devnet حقيقية مع مذكرة Memo على السلسلة",
       ],
       badgeLabel: "مُتبادِل",
+      actionLabel: "بادل 0.01 SOL (عرض تجريبي على devnet)",
+      successMessage:
+        "عرض devnet تجريبي: لقد وقّعت مذكرة إكمال درس التبادل. على mainnet، سيتداول هذا المسار نفسه 0.01 SOL مقابل USDC عبر Jupiter.",
     },
     "5": {
       title: "احصل على شارة التخرج",
@@ -246,6 +258,9 @@ export const ar: Dictionary = {
         "إكمال مسار التهيئة المكوّن من 5 دروس على Blinks",
       ],
       badgeLabel: "خريج Blinks 101",
+      actionLabel: "احصل على شارة التخرج",
+      successMessage:
+        "تم سكّ شارة التخرج! الرمز ذو المعروض 1 ({mint}) أصبح الآن ملكًا لمحفظتك — ابحث عنه في أي مستكشف devnet.",
     },
   },
 };

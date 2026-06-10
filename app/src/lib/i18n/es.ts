@@ -101,6 +101,9 @@ export const es: Dictionary = {
         "Completar una transacción real desde un Blink en menos de un minuto",
       ],
       badgeLabel: "Remitente de USDC",
+      actionLabel: "Envía 0.01 USDC",
+      successMessage:
+        "Envía 0.01 USDC a la tesorería educativa ({recipient}). Revísalo en tu wallet antes de firmar.",
     },
     "2": {
       title: "Dale una propina en SOL a un creador",
@@ -142,6 +145,9 @@ export const es: Dictionary = {
         "Completar una propina onchain real con un solo toque",
       ],
       badgeLabel: "Propinador de SOL",
+      actionLabel: "Da una propina de 0.001 SOL",
+      successMessage:
+        "Da una propina de 0.001 SOL a {recipient}. Revísalo en tu wallet antes de firmar.",
     },
     "3": {
       title: "Envía dinero al otro lado de la frontera",
@@ -188,6 +194,9 @@ export const es: Dictionary = {
         "Reconocer la velocidad de liquidación y las bajas comisiones de Solana",
       ],
       badgeLabel: "Experto en remesas",
+      actionLabel: "Envía 0.05 USDC",
+      successMessage:
+        "Envía 0.05 USDC al extranjero para completar la Lección 3. Revisa el destinatario y la cantidad en tu wallet antes de firmar.",
     },
     "4": {
       title: "Entiende tu primer swap",
@@ -229,6 +238,9 @@ export const es: Dictionary = {
         "Firmar una transacción real de devnet con un memo onchain",
       ],
       badgeLabel: "Swapper",
+      actionLabel: "Haz swap de 0.01 SOL (demo de devnet)",
+      successMessage:
+        "Demo de devnet: firmaste un memo de finalización de la lección de swap. En mainnet, este mismo flujo cambiaría 0.01 SOL por USDC a través de Jupiter.",
     },
     "5": {
       title: "Reclama tu insignia de graduación",
@@ -274,6 +286,9 @@ export const es: Dictionary = {
         "Completar la ruta de onboarding de Blinks de 5 lecciones",
       ],
       badgeLabel: "Graduado de Blinks 101",
+      actionLabel: "Reclama tu insignia de graduación",
+      successMessage:
+        "¡Insignia de graduación minteada! El token de suministro 1 {mint} ahora pertenece a tu wallet — búscalo en cualquier explorador de devnet.",
     },
   },
 };

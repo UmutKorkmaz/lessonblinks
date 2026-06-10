@@ -101,6 +101,9 @@ export const fr: Dictionary = {
         "Réaliser une vraie transaction depuis un Blink en moins d'une minute",
       ],
       badgeLabel: "Expéditeur USDC",
+      actionLabel: "Envoie 0,01 USDC",
+      successMessage:
+        "Envoie 0,01 USDC à la trésorerie du cours ({recipient}). Vérifie dans ton wallet avant de signer.",
     },
     "2": {
       title: "Donne un pourboire en SOL à un créateur",
@@ -142,6 +145,9 @@ export const fr: Dictionary = {
         "Réaliser un vrai pourboire onchain en un seul tap",
       ],
       badgeLabel: "Donateur SOL",
+      actionLabel: "Donne un pourboire de 0,001 SOL",
+      successMessage:
+        "Donne un pourboire de 0,001 SOL à {recipient}. Vérifie dans ton wallet avant de signer.",
     },
     "3": {
       title: "Envoie de l'argent par-delà une frontière",
@@ -189,6 +195,9 @@ export const fr: Dictionary = {
         "Reconnaître la vitesse de règlement et les frais réduits de Solana",
       ],
       badgeLabel: "Expéditeur international",
+      actionLabel: "Envoie 0,05 USDC",
+      successMessage:
+        "Envoie 0,05 USDC à l'étranger pour terminer la Leçon 3. Vérifie le destinataire et le montant dans ton wallet avant de signer.",
     },
     "4": {
       title: "Comprends ton premier swap",
@@ -235,6 +244,9 @@ export const fr: Dictionary = {
         "Signer une vraie transaction devnet avec un memo onchain",
       ],
       badgeLabel: "Swappeur",
+      actionLabel: "Swappe 0,01 SOL (démo devnet)",
+      successMessage:
+        "Démo devnet : tu as signé un memo de complétion de la leçon de swap. Sur le mainnet, ce même flux échangerait 0,01 SOL contre des USDC via Jupiter.",
     },
     "5": {
       title: "Réclame ton badge de fin de parcours",
@@ -279,6 +291,9 @@ export const fr: Dictionary = {
         "Terminer le parcours d'onboarding Blinks en 5 leçons",
       ],
       badgeLabel: "Diplômé Blinks 101",
+      actionLabel: "Réclame ton badge de fin de parcours",
+      successMessage:
+        "Badge de fin de parcours frappé ! Le token à offre de 1 {mint} appartient désormais à ton wallet — retrouve-le sur n'importe quel explorateur devnet.",
     },
   },
 };

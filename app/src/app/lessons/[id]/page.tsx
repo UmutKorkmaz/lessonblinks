@@ -148,6 +148,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
             <>
               <LessonBlink
                 actionUrl={actionUrl}
+                locale={locale}
                 loadingLabel={dict.ui.loadingBlink}
                 errorLabel={dict.ui.blinkError}
               />

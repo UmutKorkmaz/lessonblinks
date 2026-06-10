@@ -9,15 +9,18 @@ import { getSolanaActionUrl } from "@/lib/lessons";
 
 interface LessonBlinkProps {
   actionUrl: string;
+  /** Locale forwarded to the Action API as ?lang= so the Blink renders localized */
+  locale: string;
   loadingLabel: string;
   errorLabel: string;
 }
 
-export function LessonBlink({ actionUrl, loadingLabel, errorLabel }: LessonBlinkProps) {
+export function LessonBlink({ actionUrl, locale, loadingLabel, errorLabel }: LessonBlinkProps) {
   const rpcUrl =
     process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? "https://api.devnet.solana.com";
   const { adapter } = useBlinkSolanaWalletAdapter(rpcUrl);
-  const solanaActionUrl = getSolanaActionUrl(actionUrl);
+  const localizedActionUrl = `${actionUrl}${actionUrl.includes("?") ? "&" : "?"}lang=${locale}`;
+  const solanaActionUrl = getSolanaActionUrl(localizedActionUrl);
   const { blink, isLoading } = useBlink({ url: solanaActionUrl });
 
   return (

@@ -93,6 +93,9 @@ export const tr: Dictionary = {
         "Bir Blink'ten gerçek bir işlemi bir dakikadan kısa sürede tamamla",
       ],
       badgeLabel: "USDC Göndericisi",
+      actionLabel: "0,01 USDC Gönder",
+      successMessage:
+        "Eğitim kasasına ({recipient}) 0,01 USDC gönder. İmzalamadan önce cüzdanında kontrol et.",
     },
     "2": {
       title: "Bir üreticiye SOL ile bahşiş ver",
@@ -131,6 +134,9 @@ export const tr: Dictionary = {
         "Tek dokunuşla gerçek bir zincir üstü bahşişi tamamla",
       ],
       badgeLabel: "SOL Bahşişçisi",
+      actionLabel: "0,001 SOL Bahşiş Ver",
+      successMessage:
+        "{recipient} adresine 0,001 SOL bahşiş ver. İmzalamadan önce cüzdanında kontrol et.",
     },
     "3": {
       title: "Sınırın ötesine para gönder",
@@ -169,6 +175,9 @@ export const tr: Dictionary = {
         "Solana'daki mutabakat hızını ve düşük ücretleri fark et",
       ],
       badgeLabel: "Havaleci",
+      actionLabel: "0,05 USDC Gönder",
+      successMessage:
+        "Ders 3'ü tamamlamak için yurt dışına 0,05 USDC gönder. İmzalamadan önce alıcıyı ve tutarı cüzdanında kontrol et.",
     },
     "4": {
       title: "İlk takasını kavra",
@@ -208,6 +217,9 @@ export const tr: Dictionary = {
         "Zincir üstü notuyla gerçek bir devnet işlemi imzala",
       ],
       badgeLabel: "Takasçı",
+      actionLabel: "0,01 SOL Takas Et (devnet demo)",
+      successMessage:
+        "Devnet demo: takas dersi tamamlama notunu imzaladın. Mainnet'te aynı akış 0,01 SOL'u Jupiter üzerinden USDC'ye çevirirdi.",
     },
     "5": {
       title: "Mezuniyet rozetini al",
@@ -246,6 +258,9 @@ export const tr: Dictionary = {
         "5 derslik Blinks öğrenme yolunu tamamla",
       ],
       badgeLabel: "Blinks 101 Mezunu",
+      actionLabel: "Mezuniyet Rozetini Al",
+      successMessage:
+        "Mezuniyet rozeti mintlendi! Arzı 1 olan {mint} token'ı artık cüzdanında — herhangi bir devnet explorer'da arayabilirsin.",
     },
   },
 };

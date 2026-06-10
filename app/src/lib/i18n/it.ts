@@ -100,6 +100,9 @@ export const it: Dictionary = {
         "Completare una transazione reale da un Blink in meno di un minuto",
       ],
       badgeLabel: "Mittente USDC",
+      actionLabel: "Invia 0.01 USDC",
+      successMessage:
+        "Invia 0.01 USDC alla tesoreria educativa ({recipient}). Controlla nel tuo wallet prima di firmare.",
     },
     "2": {
       title: "Lascia una mancia in SOL a un creator",
@@ -139,6 +142,9 @@ export const it: Dictionary = {
         "Completare una vera mancia onchain in un tap",
       ],
       badgeLabel: "Tipper di SOL",
+      actionLabel: "Lascia una mancia di 0.001 SOL",
+      successMessage:
+        "Lascia una mancia di 0.001 SOL a {recipient}. Controlla nel tuo wallet prima di firmare.",
     },
     "3": {
       title: "Manda soldi oltre confine",
@@ -185,6 +191,9 @@ export const it: Dictionary = {
         "Riconoscere la velocità di regolamento e le commissioni basse di Solana",
       ],
       badgeLabel: "Rimettente",
+      actionLabel: "Invia 0.05 USDC",
+      successMessage:
+        "Invia 0.05 USDC all'estero per completare la Lezione 3. Controlla destinatario e importo nel tuo wallet prima di firmare.",
     },
     "4": {
       title: "Capisci il tuo primo swap",
@@ -226,6 +235,9 @@ export const it: Dictionary = {
         "Firmare una vera transazione devnet con un memo onchain",
       ],
       badgeLabel: "Swapper",
+      actionLabel: "Scambia 0.01 SOL (demo devnet)",
+      successMessage:
+        "Demo devnet: hai firmato un memo di completamento della lezione sugli swap. Su mainnet lo stesso flusso scambierebbe 0.01 SOL in USDC tramite Jupiter.",
     },
     "5": {
       title: "Riscatta il tuo badge di diploma",
@@ -270,6 +282,9 @@ export const it: Dictionary = {
         "Completare il percorso di onboarding Blinks in 5 lezioni",
       ],
       badgeLabel: "Blinks 101 Graduate",
+      actionLabel: "Riscatta il badge di diploma",
+      successMessage:
+        "Badge di diploma coniato! Il token con supply 1 {mint} ora appartiene al tuo wallet — cercalo su qualsiasi explorer devnet.",
     },
   },
 };

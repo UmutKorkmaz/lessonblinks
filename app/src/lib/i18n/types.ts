@@ -11,6 +11,10 @@ export interface LessonContent {
   funFact?: string;
   learningObjectives: string[];
   badgeLabel: string;
+  /** Button label inside the Blink, e.g. "Send 0.01 USDC" */
+  actionLabel: string;
+  /** Post-build message shown by the Blink client. Templates: {recipient}, {mint} */
+  successMessage: string;
 }
 
 export interface UIStrings {
