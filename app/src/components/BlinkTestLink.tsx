@@ -2,21 +2,28 @@ import Link from "next/link";
 
 interface BlinkTestLinkProps {
   lessonPath: string;
+  startLabel: string;
+  disabledLabel: string;
   disabled?: boolean;
 }
 
-export function BlinkTestLink({ lessonPath, disabled = false }: BlinkTestLinkProps) {
+export function BlinkTestLink({
+  lessonPath,
+  startLabel,
+  disabledLabel,
+  disabled = false,
+}: BlinkTestLinkProps) {
   if (disabled) {
     return (
       <span className="blink-link--disabled" aria-disabled="true">
-        Coming soon
+        {disabledLabel}
       </span>
     );
   }
 
   return (
     <Link href={lessonPath} className="blink-link">
-      Start lesson
+      {startLabel}
       <span className="blink-link__arrow" aria-hidden="true">
         →
       </span>

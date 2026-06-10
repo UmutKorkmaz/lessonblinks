@@ -3,7 +3,8 @@
 Solana Actions as 30-second micro-lessons. Learn payments on devnet through five Blinks: USDC transfer, SOL tip, remittance, swap, and graduation NFT.
 
 **Live:** https://blinks.umutkorkmaz.net  
-**Turkish brand:** BlinkDers
+**Turkish brand:** BlinkDers  
+**Languages:** 14 (en, tr, es, de, fr, it, pt, ru, ar, hi, id, zh, ja, ko) — defaults to the browser language, switchable in the header
 
 ## Quick start
 
@@ -22,10 +23,11 @@ Open http://localhost:3000
 |------|--------|
 | **Embedded Blink on lesson page** | ✅ Recommended — connect devnet wallet, sign inline |
 | **`npm run verify:actions`** | ✅ API smoke test (OPTIONS + GET) |
-| **Dialect developer mode** (`dial.to/developer?cluster=devnet`) | ⚠️ Documented tester — unreachable from some networks; fallback link under each embedded Blink |
 | **Local Inspector** ([blinks-xyz repo](https://github.com/solana-developers/blinks-xyz)) | ✅ Full protocol debug — run `npm run dev` locally |
-| **dial.to interstitial** | ❌ Down (`DEPLOYMENT_PAUSED`) |
+| **dial.to website** (`/developer`, `/register`, interstitial) | ❌ Dead — 403 on every path; registry submission is via email/dashboard now |
 | **blinks.xyz/inspector** | ❌ Parked domain (redirects to `/lander`) |
+
+`api.dial.to` (which powers the embedded Blinks) is healthy — only the dial.to website is gone.
 
 **Try Lesson 1:** open https://blinks.umutkorkmaz.net/lessons/1, connect Phantom (devnet), complete the Blink.
 

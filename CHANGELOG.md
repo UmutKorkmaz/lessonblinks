@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-06-10 (b)
+
+### Added — 14-language i18n
+
+- Full dictionary-based i18n: en, tr, es, de, fr, it, pt, ru, ar (RTL), hi, id, zh, ja, ko. All UI strings and all 5 lessons' content translated.
+- Browser `Accept-Language` is the default locale; a header switcher sets an `lb-locale` cookie that overrides it. `<html lang>`/`dir` follow the locale (Arabic renders RTL).
+- Lesson text moved from `lessons.ts` into per-locale dictionaries (`src/lib/i18n/*.ts`); `lessons.ts` keeps structural data only.
+
+### Changed — Logo
+
+- `icon.svg` redesigned: gradient disc (purple → periwinkle → green) with geometric ◎ rings (no font-dependent `<text>`), specular sheen, halo, corner glows, hairline borders. Used as favicon, header logo, and every Blink icon.
+
+### Removed — Dead dial.to links
+
+- `dial.to/developer` and `dial.to/register` return 403 for everyone (site dead; registration is via email/dashboard now). Header links and the per-lesson developer-mode fallback removed; embedded Blinks (api.dial.to is healthy) remain the test path. Header now links to faucet.solana.com instead.
+
 ## 2026-06-10
 
 ### Added — Lessons 4 and 5 go live (full 5-lesson path)

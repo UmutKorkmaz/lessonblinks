@@ -1,13 +1,21 @@
 interface ProgressBarProps {
   totalSteps?: number;
   currentStep?: number;
+  /** Localized "Lesson {x} of {y}" label rendered under the track */
+  label?: string;
 }
 
-export function ProgressBar({ totalSteps = 5, currentStep = 1 }: ProgressBarProps) {
+export function ProgressBar({ totalSteps = 5, currentStep = 1, label }: ProgressBarProps) {
   const steps = Array.from({ length: totalSteps }, (_, i) => i + 1);
 
   return (
-    <div className="progress-bar" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={totalSteps}>
+    <div
+      className="progress-bar"
+      role="progressbar"
+      aria-valuenow={currentStep}
+      aria-valuemin={1}
+      aria-valuemax={totalSteps}
+    >
       <div className="progress-bar__track">
         {steps.map((step) => {
           const isCompleted = step < currentStep;
@@ -38,9 +46,7 @@ export function ProgressBar({ totalSteps = 5, currentStep = 1 }: ProgressBarProp
           );
         })}
       </div>
-      <p className="progress-bar__label">
-        Lesson <strong>{currentStep}</strong> of {totalSteps}
-      </p>
+      {label ? <p className="progress-bar__label">{label}</p> : null}
     </div>
   );
 }

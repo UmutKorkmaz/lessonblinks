@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { getBaseUrl, LESSONS } from "@/lib/lessons";
+import { en } from "@/lib/i18n/en";
+import { getBaseUrl, LESSON_BASES } from "@/lib/lessons";
 
 export async function GET() {
   const baseUrl = getBaseUrl().replace(/\/$/, "");
@@ -8,10 +9,10 @@ export async function GET() {
   return NextResponse.json({
     status: "ok",
     network: "devnet",
-    lessons: LESSONS.map((lesson) => ({
+    lessons: LESSON_BASES.map((lesson) => ({
       id: lesson.id,
       slug: lesson.slug,
-      title: lesson.title,
+      title: en.lessons[String(lesson.id)]?.title,
       actionPath: lesson.actionPath,
       actionUrl: `${baseUrl}${lesson.actionPath}`,
     })),

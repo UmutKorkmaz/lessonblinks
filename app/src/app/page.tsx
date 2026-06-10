@@ -1,54 +1,55 @@
 import { Header } from "@/components/Header";
 import { LessonCard } from "@/components/LessonCard";
-import { COURSE_DURATION_MINUTES, LESSONS } from "@/lib/lessons";
+import { format, getDictionary } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n/server";
+import { COURSE_DURATION_MINUTES, getLessons } from "@/lib/lessons";
 
-export default function Home() {
-  const activeCount = LESSONS.filter((lesson) => lesson.status === "active").length;
+export default async function Home() {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  const lessons = getLessons(dict);
+  const activeCount = lessons.filter((lesson) => lesson.status === "active").length;
 
   return (
     <div className="page">
-      <Header />
+      <Header dict={dict} locale={locale} />
 
       <main className="page__main">
         <section className="hero" aria-labelledby="hero-heading">
-          <p className="hero__eyebrow">Solana Devnet · Free to try</p>
+          <p className="hero__eyebrow">{dict.ui.heroEyebrow}</p>
           <h1 id="hero-heading" className="hero__title">
-            Learn Solana in <em>five taps</em>, not five tutorials.
+            {dict.ui.heroTitlePre}
+            <em>{dict.ui.heroTitleHighlight}</em>
+            {dict.ui.heroTitlePost}
           </h1>
-          <p className="hero__subtitle">
-            Every lesson is a real Blink — a one-tap Solana Action you sign with your own
-            wallet. Send digital dollars, tip a creator, remit across a border, understand
-            swaps, and graduate with an onchain badge.
-          </p>
+          <p className="hero__subtitle">{dict.ui.heroSubtitle}</p>
           <div className="hero__stats" role="list">
             <span className="hero__stat" role="listitem">
-              <strong>{LESSONS.length}</strong> lessons
+              <strong>{lessons.length}</strong> {dict.ui.statLessons}
             </span>
             <span className="hero__stat" role="listitem">
-              <strong>~{COURSE_DURATION_MINUTES} min</strong> total
+              <strong>{format(dict.ui.statMinutes, { m: COURSE_DURATION_MINUTES })}</strong>{" "}
+              {dict.ui.statTotal}
             </span>
             <span className="hero__stat" role="listitem">
-              <strong>{activeCount}</strong> live now
+              <strong>{activeCount}</strong> {dict.ui.statLiveNow}
             </span>
             <span className="hero__stat" role="listitem">
-              <strong>1</strong> badge to mint
+              <strong>1</strong> {dict.ui.statBadge}
             </span>
           </div>
         </section>
 
         <section className="path" aria-label="Lesson catalog">
-          <h2 className="path__heading">The learning path</h2>
-          {LESSONS.map((lesson) => (
-            <LessonCard key={lesson.id} lesson={lesson} />
+          <h2 className="path__heading">{dict.ui.pathHeading}</h2>
+          {lessons.map((lesson) => (
+            <LessonCard key={lesson.id} lesson={lesson} dict={dict} />
           ))}
         </section>
       </main>
 
       <footer className="page__footer">
-        <p>
-          Runs on <strong>Solana Devnet</strong> — every transaction is real, every dollar is
-          fake. Connect a devnet wallet on a lesson page to begin.
-        </p>
+        <p>{dict.ui.footerHome}</p>
       </footer>
     </div>
   );

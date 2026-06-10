@@ -9,11 +9,11 @@ import { getSolanaActionUrl } from "@/lib/lessons";
 
 interface LessonBlinkProps {
   actionUrl: string;
-  /** Optional dial.to developer-mode URL shown as a fallback tester. */
-  fallbackUrl?: string;
+  loadingLabel: string;
+  errorLabel: string;
 }
 
-export function LessonBlink({ actionUrl, fallbackUrl }: LessonBlinkProps) {
+export function LessonBlink({ actionUrl, loadingLabel, errorLabel }: LessonBlinkProps) {
   const rpcUrl =
     process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? "https://api.devnet.solana.com";
   const { adapter } = useBlinkSolanaWalletAdapter(rpcUrl);
@@ -27,24 +27,12 @@ export function LessonBlink({ actionUrl, fallbackUrl }: LessonBlinkProps) {
       </div>
 
       {isLoading ? (
-        <p className="lesson-blink__status">Loading Blink…</p>
+        <p className="lesson-blink__status">{loadingLabel}</p>
       ) : blink ? (
         <BlinkComponent blink={blink} adapter={adapter} stylePreset="x-dark" />
       ) : (
-        <p className="lesson-blink__status lesson-blink__status--error">
-          Could not load Blink. Check the Action URL and CORS headers.
-        </p>
+        <p className="lesson-blink__status lesson-blink__status--error">{errorLabel}</p>
       )}
-
-      {fallbackUrl ? (
-        <p className="lesson-blink__fallback">
-          Blink not rendering?{" "}
-          <a href={fallbackUrl} target="_blank" rel="noopener noreferrer">
-            Open it in Dialect developer mode
-          </a>{" "}
-          instead.
-        </p>
-      ) : null}
     </div>
   );
 }

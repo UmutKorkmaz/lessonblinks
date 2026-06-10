@@ -1,70 +1,91 @@
-/** Supported UI locales */
-export type Locale = "en" | "tr";
-
-/** Curriculum card copy for a single lesson */
-export interface LessonStrings {
-  /** Display number, e.g. 1 */
-  number: number;
-  /** Full lesson title shown on landing cards */
+/** Translated content for one lesson. Structural data lives in lessons.ts. */
+export interface LessonContent {
   title: string;
-  /** Short title for compact UI */
-  shortTitle: string;
-  /** One-paragraph lesson summary */
+  tagline: string;
   description: string;
-  /** Core concept taught (badge / meta) */
-  concept: string;
-  /** Human-readable duration, e.g. "~30 sec" */
-  durationLabel: string;
+  whyItMatters: string;
+  blinkAction: string;
+  steps: { title: string; body: string }[];
+  concepts: string[];
+  glossary: Record<string, string>;
+  funFact?: string;
+  learningObjectives: string[];
+  badgeLabel: string;
 }
 
-/**
- * Solana Action / Blink GET metadata for lessons 1–3.
- * Maps to `title`, `description`, and `label` in ActionGetResponse.
- */
-export interface BlinkCardStrings {
-  title: string;
-  description: string;
-  actionLabel: string;
-  /** POST response `message` (may include placeholders) */
-  postMessage: string;
-  /** Shown when wallet balance is too low */
-  insufficientBalance: string;
+export interface UIStrings {
+  // Metadata
+  siteTitle: string;
+  siteDescription: string;
+  /** Template: {x} = lesson number, {title} = lesson title */
+  lessonMetaTitle: string;
+
+  // Header
+  brandTagline: string;
+  faucetLink: string;
+  languageLabel: string;
+
+  // Home hero
+  heroEyebrow: string;
+  heroTitlePre: string;
+  heroTitleHighlight: string;
+  heroTitlePost: string;
+  heroSubtitle: string;
+  statLessons: string;
+  /** Template: {m} = minutes */
+  statMinutes: string;
+  statTotal: string;
+  statLiveNow: string;
+  statBadge: string;
+  pathHeading: string;
+  footerHome: string;
+
+  // Lesson cards
+  liveBadge: string;
+  comingSoonBadge: string;
+  /** Template: {s} = seconds */
+  durationFormat: string;
+  earnPrefix: string;
+  startLesson: string;
+  comingSoonCta: string;
+
+  // Lesson detail
+  backToLessons: string;
+  /** Template: {x} = current, {y} = total */
+  lessonXofY: string;
+  lessonWord: string;
+  whatYoullLearn: string;
+  whyItMatters: string;
+  howItWorks: string;
+  doItHere: string;
+  wordsYouLearned: string;
+  learningObjectives: string;
+  prerequisites: string;
+  noPrereqs: string;
+  comingSoonLesson: string;
+  actionApiLabel: string;
+  didYouKnow: string;
+  previous: string;
+  next: string;
+  footerLesson: string;
+
+  // Embedded Blink
+  loadingBlink: string;
+  blinkError: string;
 }
 
-export interface LocaleStrings {
-  locale: Locale;
+export interface Dictionary {
+  ui: UIStrings;
+  /** Keyed by lesson id: "1".."5" */
+  lessons: Record<string, LessonContent>;
+}
 
-  landing: {
-    pageTitle: string;
-    metaDescription: string;
-    heroTitle: string;
-    heroTagline: string;
-    heroSubtitle: string;
-    startLessonCta: string;
-    viewCurriculumCta: string;
-    howItWorksTitle: string;
-    stepConnect: string;
-    stepRead: string;
-    stepSign: string;
-    stepGraduate: string;
-    curriculumTitle: string;
-    curriculumSubtitle: string;
-    graduateTitle: string;
-    graduateDescription: string;
-    footerTagline: string;
-  };
-
-  lessons: {
-    lesson01: LessonStrings;
-    lesson02: LessonStrings;
-    lesson03: LessonStrings;
-    lesson04: LessonStrings;
-    lesson05: LessonStrings;
-  };
-
-  blink: {
-    lesson01: BlinkCardStrings;
-    lesson02: BlinkCardStrings;
-    lesson03: BlinkCardStrings;
-  };
+/** Replace {placeholders} in a translated template string. */
+export function format(
+  template: string,
+  values: Record<string, string | number>,
+): string {
+  return template.replace(/\{(\w+)\}/g, (match, key) =>
+    key in values ? String(values[key]) : match,
+  );
 }

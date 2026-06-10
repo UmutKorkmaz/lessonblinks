@@ -1,37 +1,48 @@
+import Image from "next/image";
 import Link from "next/link";
 
-export function Header() {
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { LOCALES, type Dictionary, type Locale } from "@/lib/i18n";
+
+interface HeaderProps {
+  dict: Dictionary;
+  locale: Locale;
+}
+
+export function Header({ dict, locale }: HeaderProps) {
   return (
     <header className="site-header">
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
-          <span className="site-header__logo" aria-hidden="true">
-            ◎
-          </span>
+          <Image
+            src="/icon.svg"
+            alt=""
+            width={38}
+            height={38}
+            className="site-header__logo"
+            priority
+          />
           <div>
             <p className="site-header__title">
               Lesson<em>Blinks</em>
             </p>
-            <p className="site-header__tagline">Solana Actions as 30-second lessons</p>
+            <p className="site-header__tagline">{dict.ui.brandTagline}</p>
           </div>
         </Link>
-        <nav className="site-header__nav" aria-label="External resources">
+        <nav className="site-header__nav" aria-label="Site tools">
           <a
-            href="https://dial.to/developer?cluster=devnet"
+            href="https://faucet.solana.com"
             target="_blank"
             rel="noopener noreferrer"
             className="site-header__nav-link"
           >
-            Blink Tester
+            {dict.ui.faucetLink}
           </a>
-          <a
-            href="https://dial.to/register"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="site-header__nav-link"
-          >
-            Dialect Registry
-          </a>
+          <LanguageSwitcher
+            current={locale}
+            locales={LOCALES}
+            label={dict.ui.languageLabel}
+          />
         </nav>
       </div>
     </header>

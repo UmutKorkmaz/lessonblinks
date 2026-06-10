@@ -1,11 +1,13 @@
 import { BlinkTestLink } from "./BlinkTestLink";
+import { format, type Dictionary } from "@/lib/i18n";
 import type { Lesson } from "@/lib/lessons";
 
 interface LessonCardProps {
   lesson: Lesson;
+  dict: Dictionary;
 }
 
-export function LessonCard({ lesson }: LessonCardProps) {
+export function LessonCard({ lesson, dict }: LessonCardProps) {
   const isActive = lesson.status === "active";
   const lessonPath = `/lessons/${lesson.id}`;
 
@@ -20,11 +22,16 @@ export function LessonCard({ lesson }: LessonCardProps) {
       <div className="lesson-card__body">
         <div className="lesson-card__meta">
           <span className={`lesson-card__badge lesson-card__badge--${lesson.status}`}>
-            {isActive ? "Live" : "Coming Soon"}
+            {isActive ? dict.ui.liveBadge : dict.ui.comingSoonBadge}
           </span>
-          <span className="lesson-card__duration">~{lesson.durationSeconds}s</span>
+          <span className="lesson-card__duration">
+            {format(dict.ui.durationFormat, { s: lesson.durationSeconds })}
+          </span>
           {lesson.badgeLabel ? (
-            <span className="lesson-card__earn">Earn: {lesson.badgeLabel}</span>
+            <span className="lesson-card__earn">
+              {dict.ui.earnPrefix}
+              {lesson.badgeLabel}
+            </span>
           ) : null}
         </div>
 
@@ -40,7 +47,12 @@ export function LessonCard({ lesson }: LessonCardProps) {
         </div>
 
         <div className="lesson-card__footer">
-          <BlinkTestLink lessonPath={lessonPath} disabled={!isActive} />
+          <BlinkTestLink
+            lessonPath={lessonPath}
+            disabled={!isActive}
+            startLabel={dict.ui.startLesson}
+            disabledLabel={dict.ui.comingSoonCta}
+          />
         </div>
       </div>
     </article>

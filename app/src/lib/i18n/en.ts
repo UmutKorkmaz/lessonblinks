@@ -1,130 +1,251 @@
-import type { LocaleStrings } from "./types";
+import type { Dictionary } from "./types";
 
-export const en: LocaleStrings = {
-  locale: "en",
+export const en: Dictionary = {
+  ui: {
+    siteTitle: "LessonBlinks — Learn Solana in 5 taps",
+    siteDescription:
+      "Five 30-second lessons, each a real Solana Action: send USDC, tip in SOL, remit abroad, understand swaps, and mint a graduation badge.",
+    lessonMetaTitle: "Lesson {x}: {title} — LessonBlinks",
 
-  landing: {
-    pageTitle: "Blinks 101 — Learn Solana in 30 Seconds",
-    metaDescription:
-      "Five one-tap Solana Actions that teach tipping, staking, swapping, and NFTs — right inside your social feed.",
-    heroTitle: "Blinks as Micro-Lessons",
-    heroTagline: "One-tap Actions as 30-second lessons",
+    brandTagline: "Solana Actions as 30-second lessons",
+    faucetLink: "Devnet Faucet",
+    languageLabel: "Language",
+
+    heroEyebrow: "Solana Devnet · Free to try",
+    heroTitlePre: "Learn Solana in ",
+    heroTitleHighlight: "five taps",
+    heroTitlePost: ", not five tutorials.",
     heroSubtitle:
-      "Skip static tutorials. Each Blink is a real onchain action with inline explainers — tip USDC, send SOL, swap tokens, stake, and claim your graduation NFT.",
-    startLessonCta: "Start Lesson 1",
-    viewCurriculumCta: "View all 5 lessons",
-    howItWorksTitle: "How it works",
-    stepConnect: "Connect your wallet in Phantom, Backpack, or any Blink client.",
-    stepRead: "Read the inline explainer — no docs tab required.",
-    stepSign: "Sign one transaction and learn by doing on Solana.",
-    stepGraduate: "Finish all five lessons and claim your Graduate Badge NFT.",
-    curriculumTitle: "The 5-lesson path",
-    curriculumSubtitle:
-      "Each lesson builds on the last. Real funds, tiny amounts, maximum learning.",
-    graduateTitle: "Graduate with an onchain badge",
-    graduateDescription:
-      "Complete Lessons 1–4 to unlock a compressed NFT — portable proof you finished Blinks 101. Show it on X, LinkedIn, or in your wallet.",
-    footerTagline: "Education is distribution. Built for Solana onboarding.",
+      "Every lesson is a real Blink — a one-tap Solana Action you sign with your own wallet. Send digital dollars, tip a creator, remit across a border, understand swaps, and graduate with an onchain badge.",
+    statLessons: "lessons",
+    statMinutes: "~{m} min",
+    statTotal: "total",
+    statLiveNow: "live now",
+    statBadge: "badge to mint",
+    pathHeading: "The learning path",
+    footerHome:
+      "Runs on Solana Devnet — every transaction is real, every dollar is fake. Connect a devnet wallet on a lesson page to begin.",
+
+    liveBadge: "Live",
+    comingSoonBadge: "Coming Soon",
+    durationFormat: "~{s}s",
+    earnPrefix: "Earn: ",
+    startLesson: "Start lesson",
+    comingSoonCta: "Coming soon",
+
+    backToLessons: "All lessons",
+    lessonXofY: "Lesson {x} of {y}",
+    lessonWord: "Lesson",
+    whatYoullLearn: "What you'll learn",
+    whyItMatters: "Why it matters",
+    howItWorks: "How it works",
+    doItHere: "Do it — right here",
+    wordsYouLearned: "Words you just learned",
+    learningObjectives: "Learning objectives",
+    prerequisites: "Prerequisites",
+    noPrereqs: "None — this is where the path starts.",
+    comingSoonLesson: "This lesson is coming soon.",
+    actionApiLabel: "Action API:",
+    didYouKnow: "Did you know?",
+    previous: "Previous",
+    next: "Next",
+    footerLesson: "Built for the Dialect Actions Registry · Solana Devnet",
+
+    loadingBlink: "Loading Blink…",
+    blinkError: "Could not load Blink. Check the Action URL and CORS headers.",
   },
 
   lessons: {
-    lesson01: {
-      number: 1,
-      title: "Tip $1 USDC",
-      shortTitle: "USDC Tip",
+    "1": {
+      title: "Send your first USDC",
+      tagline: "Digital dollars that move in one tap",
       description:
-        "Send a dollar-pegged stablecoin to a creator. Learn SPL token transfers, associated token accounts, and why USDC is the on-ramp for everyday payments on Solana.",
-      concept: "SPL transfers & stablecoins",
-      durationLabel: "~30 sec",
+        "USDC is a stablecoin — a token that stays pegged to $1, issued by Circle. On Solana it lives in an SPL token account, a separate balance tied to a specific mint. In this lesson you send a small USDC amount to the course treasury and watch a real transfer settle on devnet in seconds.",
+      whyItMatters:
+        "Stablecoins are the single biggest real-world use of crypto: dollar savings without a US bank account, payments without card rails, and value that doesn't swing 10% overnight. If you only learn one onchain skill, make it moving USDC.",
+      blinkAction:
+        "Connect a devnet wallet and tap the send button. Your wallet previews an SPL token transfer; after you sign, the USDC lands in the treasury's token account — usually in under two seconds.",
+      steps: [
+        {
+          title: "Connect your wallet",
+          body: "Your wallet holds SOL for fees and USDC in an SPL token account. Grab devnet USDC from Circle's faucet if you don't have any.",
+        },
+        {
+          title: "Review the transfer",
+          body: "The Blink builds the transaction for you. Check the amount and recipient in your wallet — never sign blind.",
+        },
+        {
+          title: "Sign once",
+          body: "One signature moves the USDC onchain. You pay a tiny SOL network fee (fractions of a cent).",
+        },
+      ],
+      concepts: ["Stablecoins", "SPL tokens", "Token accounts", "Network fees"],
+      glossary: {
+        USDC: "A stablecoin pegged to $1, issued by Circle.",
+        "SPL token": "Solana's token standard — like ERC-20 on Ethereum.",
+        "Token account": "An onchain account that holds a balance of one specific token.",
+      },
+      funFact:
+        "Devnet USDC uses the same SPL mechanics as mainnet — you're learning the real thing with zero dollars at risk.",
+      learningObjectives: [
+        "Understand USDC as a dollar-pegged stablecoin on Solana",
+        "Send an SPL token transfer (not native SOL)",
+        "Complete a real transaction from a Blink in under a minute",
+      ],
+      badgeLabel: "USDC Sender",
     },
-    lesson02: {
-      number: 2,
-      title: "Tip a creator 0.001 SOL",
-      shortTitle: "SOL Tip",
+    "2": {
+      title: "Tip a creator in SOL",
+      tagline: "Native transfers, lamports, and what fees really cost",
       description:
-        "Send native SOL — not an SPL token — directly to a creator's wallet. Understand lamports, network fees, and how Solana's base currency differs from USDC.",
-      concept: "Native SOL transfers",
-      durationLabel: "~30 sec",
+        "SOL is Solana's native currency — the asset that pays for every transaction on the network. Unlike USDC, it needs no token account: tipping moves lamports straight from your wallet to the creator's address. You'll send 0.001 SOL (one million lamports) and see exactly what a network fee costs.",
+      whyItMatters:
+        "Creator tipping is how payments become social. A Blink like this one can sit inside a post on X, letting fans tip in seconds with no platform cut, no 3-day payout hold, and no bank in the middle.",
+      blinkAction:
+        "Tap the tip button to preview a SystemProgram transfer. Confirm in your wallet to send exactly 1,000,000 lamports (0.001 SOL) plus a fee of about 5,000 lamports to the creator.",
+      steps: [
+        {
+          title: "Connect your wallet",
+          body: "You need a little devnet SOL — the faucet gives you plenty.",
+        },
+        {
+          title: "Review the tip",
+          body: "The wallet shows 0.001 SOL leaving your account. Note the separate network fee line — that's what Solana actually charges.",
+        },
+        {
+          title: "Confirm onchain",
+          body: "The tip lands in the creator's wallet in seconds, final and irreversible.",
+        },
+      ],
+      concepts: ["Native SOL", "Lamports", "SystemProgram", "Finality"],
+      glossary: {
+        SOL: "Solana's native token, used for fees and transfers.",
+        Lamport: "The smallest unit of SOL — 1 SOL = 1,000,000,000 lamports.",
+        "Network fee": "A tiny SOL cost paid to validators for processing your transaction.",
+      },
+      funFact:
+        "A typical Solana transaction fee is 5,000 lamports — about $0.001. A bank wire costs roughly 25,000× more.",
+      learningObjectives: [
+        "Send native SOL (not an SPL token) to another wallet",
+        "Read lamports and network fees in a wallet preview",
+        "Complete a real onchain tip in one tap",
+      ],
+      badgeLabel: "SOL Tipper",
     },
-    lesson03: {
-      number: 3,
-      title: "Swap SOL to USDC",
-      shortTitle: "Token Swap",
+    "3": {
+      title: "Send money across a border",
+      tagline: "Remittance in seconds — not three business days",
       description:
-        "Trade a tiny 0.01 SOL into USDC via Jupiter. Learn what a swap is, how aggregators find the best route, and why you keep extra SOL for fees.",
-      concept: "DeFi routing & slippage",
-      durationLabel: "~45 sec",
+        "Remittance — sending money home across borders — is one of the highest-intent uses of crypto, especially on Turkey ↔ EU/US corridors. In this lesson you send a small USDC payment to a family wallet abroad and experience settlement in seconds, with no SWIFT delays and no bank FX spread.",
+      whyItMatters:
+        "Traditional remittance costs 5–7% in fees and takes days. The same transfer on Solana costs a fraction of a cent and settles before you can refresh the page. For diaspora families this isn't a demo — it's a monthly pain point solved.",
+      blinkAction:
+        'Tap the send button to preview an SPL transfer to the demo remittance wallet — think "Ayşe in Germany". Sign once and the payment settles on Solana in seconds.',
+      steps: [
+        {
+          title: "Picture the recipient",
+          body: "The demo wallet stands in for family abroad — the same flow works for any address on Earth.",
+        },
+        {
+          title: "Review the payment",
+          body: "Same USDC transfer mechanics you learned in Lesson 1 — the network doesn't care about borders.",
+        },
+        {
+          title: "Sign and settle",
+          body: "Settlement is final in seconds. Compare that with a 2–3 day SWIFT wire and a 5% fee.",
+        },
+      ],
+      concepts: ["Remittance", "Settlement speed", "FX spread", "Borderless transfers"],
+      glossary: {
+        Remittance: "Money sent across borders, usually by workers to family back home.",
+        SWIFT: "The legacy interbank messaging network — wires take 1–5 business days.",
+        Settlement: "The moment value actually changes hands, final and irreversible.",
+      },
+      funFact:
+        "Turkey's diaspora sends billions home each year. At Solana fees, the savings versus wire transfers would be enormous.",
+      learningObjectives: [
+        "Understand why USDC remittance beats traditional wire transfers",
+        "Send USDC to a second wallet (family / diaspora use case)",
+        "Recognize settlement speed and low fees on Solana",
+      ],
+      badgeLabel: "Remitter",
     },
-    lesson04: {
-      number: 4,
-      title: "Stake 0.01 SOL",
-      shortTitle: "Stake SOL",
+    "4": {
+      title: "Understand your first swap",
+      tagline: "How DEXs trade one token for another",
       description:
-        "Delegate SOL to secure the network and earn rewards. Choose Marinade liquid staking (mSOL) or native delegation — both in one real devnet transaction.",
-      concept: "Staking & validators",
-      durationLabel: "~45 sec",
+        "A swap trades one token for another directly onchain — no exchange account, no order form. On mainnet, an aggregator like Jupiter finds the best route across Solana DEXs. Jupiter has no devnet liquidity, so this lesson is an honest simulation: you sign a real devnet transaction that records a swap-lesson memo onchain while the Blink walks you through quotes, routes, and slippage.",
+      whyItMatters:
+        "Swaps are the gateway to all of DeFi — converting volatile SOL into stable USDC is how people protect value, and it's the mechanic behind every DEX, aggregator, and yield product you'll meet later.",
+      blinkAction:
+        "Tap the swap button. The Action checks you hold at least 0.01 SOL (the amount a real swap would use), then your wallet signs a devnet transaction carrying a swap-demo memo — proof onchain that you completed the lesson.",
+      steps: [
+        {
+          title: "Hold the swap amount",
+          body: "A real swap would trade 0.01 SOL, so the lesson requires you to hold it — plus a little extra for fees.",
+        },
+        {
+          title: "Learn the route",
+          body: "On mainnet, Jupiter quotes SOL → USDC across many DEXs and picks the best price. Slippage tolerance protects you from price movement.",
+        },
+        {
+          title: "Sign the demo transaction",
+          body: "You sign a real devnet transaction with a memo recording the lesson — the same signing flow a mainnet swap uses.",
+        },
+      ],
+      concepts: ["Swaps", "DEX aggregators", "Slippage", "Memo program"],
+      glossary: {
+        Swap: "Trading one token for another directly onchain.",
+        Jupiter: "Solana's leading aggregator — finds the best swap route across DEXs.",
+        Slippage: "The price movement you tolerate between quote and execution.",
+        Memo: "A tiny onchain note attached to a transaction — here, your proof of completion.",
+      },
+      funFact:
+        "Jupiter routes through dozens of liquidity sources per quote. Your devnet memo uses the same Memo program that mainnet apps use for receipts.",
+      learningObjectives: [
+        "Define a swap and explain what a DEX aggregator does",
+        "Understand slippage and why quotes change",
+        "Sign a real devnet transaction with an onchain memo",
+      ],
+      badgeLabel: "Swapper",
     },
-    lesson05: {
-      number: 5,
-      title: "Claim your graduation NFT",
-      shortTitle: "Graduation NFT",
+    "5": {
+      title: "Claim your graduation badge",
+      tagline: "Mint an onchain credential you actually own",
       description:
-        "Mint a compressed NFT that proves you completed Blinks 101. Wallet-owned credentials you can share anywhere — sponsored mint, almost zero cost.",
-      concept: "NFTs as credentials",
-      durationLabel: "~30 sec",
-    },
-  },
-
-  blink: {
-    lesson01: {
-      title: "Lesson 1 · Tip $1 USDC",
-      description: [
-        "USDC is a dollar-pegged stablecoin on Solana — useful for tips, payments, and saving value without SOL's price swings.",
-        "",
-        "You'll send exactly $1 USDC to a creator. Your wallet signs an SPL token transfer; the recipient receives USDC in their token account.",
-        "",
-        "Tip: you need a little SOL in your wallet for the network fee.",
-      ].join("\n"),
-      actionLabel: "Tip $1 USDC",
-      postMessage:
-        "Send $1 USDC to the creator. Review the recipient and amount in your wallet before signing.",
-      insufficientBalance:
-        "You need USDC for the tip and a little SOL for fees. Add funds to your wallet and try again.",
-    },
-    lesson02: {
-      title: "Lesson 2 · Tip a creator 0.001 SOL",
-      description: [
-        "SOL is Solana's native currency. Tipping sends lamports directly from your wallet to a creator — no token account required.",
-        "",
-        "Steps:",
-        "1. Connect your wallet — Your wallet holds SOL and signs the transfer.",
-        "2. Review the tip — You'll send exactly 0.001 SOL plus a small network fee.",
-        "3. Confirm onchain — The tip lands in the creator's wallet in seconds.",
-        "",
-        "1 SOL = 1,000,000,000 lamports. This lesson sends 1,000,000 lamports.",
-      ].join("\n"),
-      actionLabel: "Tip 0.001 SOL",
-      postMessage:
-        "Send 0.001 SOL to the creator plus a small network fee. Confirm in your wallet preview.",
-      insufficientBalance:
-        "You need at least 0.002 SOL (tip + fees). Add a little SOL and try again.",
-    },
-    lesson03: {
-      title: "Lesson 3 · Swap SOL to USDC",
-      description: [
-        "A swap trades one token for another. Here you'll swap a tiny 0.01 SOL into USDC — a stablecoin pegged to $1.",
-        "",
-        "Jupiter finds the best price across Solana DEXs. You'll sign one transaction; your wallet sends it.",
-        "",
-        "Tip: keep a little SOL in your wallet for network fees.",
-        "",
-        "Next up after this: Lesson 4 — Stake SOL.",
-      ].join("\n"),
-      actionLabel: "Swap 0.01 SOL",
-      postMessage:
-        "Swap 0.01 SOL → ~{outUsdc} USDC via Jupiter. Review amounts in your wallet before signing.",
-      insufficientBalance:
-        "You need a bit more SOL for this swap and fees. Try adding ~0.02 SOL total.",
+        "The capstone. You mint a Blinks 101 Graduate badge — a real devnet token with a fixed supply of exactly 1, created in a single transaction your wallet pays for and signs. The mint authority is burned in the same transaction, so no one can ever mint a second copy: that's the core idea behind NFTs as credentials.",
+      whyItMatters:
+        "Onchain credentials can't be faked, revoked by a platform, or lost when a company shuts down. From event tickets to diplomas, supply-1 tokens in your own wallet are how ownership and proof work in web3.",
+      blinkAction:
+        "Tap the claim button after finishing Lessons 1–4. Your wallet signs one transaction that creates the badge mint, mints exactly 1 token to you, and permanently locks the supply. Costs about 0.003 devnet SOL in rent.",
+      steps: [
+        {
+          title: "Finish the course",
+          body: "Lessons 1–4 first — the badge is your proof of the full path, on your honor for this devnet MVP.",
+        },
+        {
+          title: "Sign the mint",
+          body: "One transaction creates a brand-new token mint, opens your token account, and mints exactly 1 badge to your wallet.",
+        },
+        {
+          title: "Supply locked forever",
+          body: "The same transaction removes the mint authority. Supply: 1. Owner: you. That's a credential.",
+        },
+      ],
+      concepts: ["NFTs as credentials", "Mint authority", "Fixed supply", "Rent"],
+      glossary: {
+        NFT: "A token with supply 1 — unique, ownable, and transferable.",
+        "Mint authority": "The key allowed to create new tokens. Removing it locks supply forever.",
+        Rent: "A small SOL deposit that keeps an account alive onchain.",
+      },
+      funFact:
+        "Your badge is a real SPL mint you can look up on any explorer — search the mint address and you'll see supply: 1, mint authority: none.",
+      learningObjectives: [
+        "Understand NFTs as wallet-owned credentials",
+        "See how burning mint authority fixes supply at 1",
+        "Complete the 5-lesson Blinks onboarding path",
+      ],
+      badgeLabel: "Blinks 101 Graduate",
     },
   },
 };

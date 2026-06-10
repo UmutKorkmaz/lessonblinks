@@ -1,13 +1,13 @@
 import { notFound, redirect } from "next/navigation";
 
-import { getLessonBySlug, LESSONS } from "@/lib/lessons";
+import { getLessonBaseBySlug, LESSON_BASES } from "@/lib/lessons";
 
 interface LessonSlugPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return LESSONS.map((lesson) => ({ slug: lesson.slug }));
+  return LESSON_BASES.map((lesson) => ({ slug: lesson.slug }));
 }
 
 /**
@@ -17,7 +17,7 @@ export function generateStaticParams() {
  */
 export default async function LessonSlugPage({ params }: LessonSlugPageProps) {
   const { slug } = await params;
-  const lesson = getLessonBySlug(slug);
+  const lesson = getLessonBaseBySlug(slug);
 
   if (!lesson) {
     notFound();
