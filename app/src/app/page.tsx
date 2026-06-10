@@ -1,35 +1,44 @@
 import { Header } from "@/components/Header";
 import { LessonCard } from "@/components/LessonCard";
-import { ProgressBar } from "@/components/ProgressBar";
-import { getBaseUrl, LESSONS } from "@/lib/lessons";
+import { COURSE_DURATION_MINUTES, LESSONS } from "@/lib/lessons";
 
 export default function Home() {
-  const baseUrl = getBaseUrl();
-
-  const lessonCards = LESSONS.map((lesson) => ({
-    id: lesson.id,
-    title: lesson.title,
-    description: lesson.description,
-    status: lesson.status,
-    lessonPath: `/lessons/${lesson.id}`,
-  }));
+  const activeCount = LESSONS.filter((lesson) => lesson.status === "active").length;
 
   return (
     <div className="page">
       <Header />
 
       <main className="page__main">
-        <section className="hero">
-          <h2 className="hero__title">Learn Solana in 5 taps</h2>
+        <section className="hero" aria-labelledby="hero-heading">
+          <p className="hero__eyebrow">Solana Devnet · Free to try</p>
+          <h1 id="hero-heading" className="hero__title">
+            Learn Solana in <em>five taps</em>, not five tutorials.
+          </h1>
           <p className="hero__subtitle">
-            Each Blink is a 30-second lesson — send USDC, tip creators, remit abroad, swap, and
-            claim a graduation NFT. No external docs required.
+            Every lesson is a real Blink — a one-tap Solana Action you sign with your own
+            wallet. Send digital dollars, tip a creator, remit across a border, understand
+            swaps, and graduate with an onchain badge.
           </p>
-          <ProgressBar currentStep={1} totalSteps={LESSONS.length} />
+          <div className="hero__stats" role="list">
+            <span className="hero__stat" role="listitem">
+              <strong>{LESSONS.length}</strong> lessons
+            </span>
+            <span className="hero__stat" role="listitem">
+              <strong>~{COURSE_DURATION_MINUTES} min</strong> total
+            </span>
+            <span className="hero__stat" role="listitem">
+              <strong>{activeCount}</strong> live now
+            </span>
+            <span className="hero__stat" role="listitem">
+              <strong>1</strong> badge to mint
+            </span>
+          </div>
         </section>
 
-        <section className="lessons-grid" aria-label="Lesson catalog">
-          {lessonCards.map((lesson) => (
+        <section className="path" aria-label="Lesson catalog">
+          <h2 className="path__heading">The learning path</h2>
+          {LESSONS.map((lesson) => (
             <LessonCard key={lesson.id} lesson={lesson} />
           ))}
         </section>
@@ -37,8 +46,8 @@ export default function Home() {
 
       <footer className="page__footer">
         <p>
-          Connect a devnet wallet on each lesson page to complete the Blink inline · Solana
-          Devnet
+          Runs on <strong>Solana Devnet</strong> — every transaction is real, every dollar is
+          fake. Connect a devnet wallet on a lesson page to begin.
         </p>
       </footer>
     </div>

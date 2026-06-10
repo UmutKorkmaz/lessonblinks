@@ -8,7 +8,7 @@ interface BlinkTestLinkProps {
 export function BlinkTestLink({ lessonPath, disabled = false }: BlinkTestLinkProps) {
   if (disabled) {
     return (
-      <span className="blink-link blink-link--disabled" aria-disabled="true">
+      <span className="blink-link--disabled" aria-disabled="true">
         Coming soon
       </span>
     );
@@ -16,7 +16,7 @@ export function BlinkTestLink({ lessonPath, disabled = false }: BlinkTestLinkPro
 
   return (
     <Link href={lessonPath} className="blink-link">
-      Try this lesson
+      Start lesson
       <span className="blink-link__arrow" aria-hidden="true">
         →
       </span>

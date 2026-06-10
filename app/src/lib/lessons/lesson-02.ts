@@ -49,7 +49,7 @@ export const LESSON_02_EXPLAINER: LessonExplainerMetadata = {
     badgeLabel: "SOL Tipper",
     successTitle: "Lesson 2 complete — you tipped 0.001 SOL!",
     successDescription:
-      "You just made a native SOL transfer on Solana. Next up: explore staking or NFT claims in later lessons.",
+      "You just made a native SOL transfer on Solana. Next up: send a cross-border remittance in Lesson 3.",
     nextLessonActionHref: "/api/actions/lesson-3-remittance",
   },
 };
