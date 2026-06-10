@@ -2,6 +2,8 @@ import type { Dictionary } from "./types";
 
 export const tr: Dictionary = {
   ui: {
+    devnetNotice:
+      "Devnet demosu — yalnızca test parası. Gerçek değil, ücretsiz devnet token'ları taşınır. Hiçbir değer risk altında değil.",
     siteTitle: "LessonBlinks — Solana'yı 5 dokunuşta öğren",
     siteDescription:
       "Her biri gerçek bir Solana Action olan beş 30 saniyelik ders: USDC gönder, SOL ile bahşiş ver, yurt dışına para yolla, takası öğren ve mezuniyet rozetini mintle.",

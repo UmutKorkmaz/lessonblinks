@@ -2,6 +2,8 @@ import type { Dictionary } from "./types";
 
 export const en: Dictionary = {
   ui: {
+    devnetNotice:
+      "Devnet demo — test money only. This moves free devnet tokens, not real funds. Nothing of value is at risk.",
     siteTitle: "LessonBlinks — Learn Solana in 5 taps",
     siteDescription:
       "Five 30-second lessons, each a real Solana Action: send USDC, tip in SOL, remit abroad, understand swaps, and mint a graduation badge.",

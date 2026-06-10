@@ -18,6 +18,8 @@ export interface LessonContent {
 }
 
 export interface UIStrings {
+  /** Short notice shown in the Blink card making clear this is devnet test money. Optional; falls back to English in code. */
+  devnetNotice?: string;
   // Metadata
   siteTitle: string;
   siteDescription: string;

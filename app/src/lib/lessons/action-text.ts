@@ -29,9 +29,14 @@ export interface ActionStrings {
   successMessage: string;
 }
 
+/** English fallback for locales that have not localized the devnet notice yet. */
+const DEVNET_NOTICE_FALLBACK =
+  "Devnet demo — test money only. This moves free devnet tokens, not real funds. Nothing of value is at risk.";
+
 /** Build the localized GET-response text for a lesson Blink. */
 export function buildActionStrings(dict: Dictionary, lessonId: number): ActionStrings {
   const lesson = dict.lessons[String(lessonId)];
+  const devnetNotice = dict.ui.devnetNotice ?? DEVNET_NOTICE_FALLBACK;
 
   const steps = lesson.steps.map(
     (step, index) => `${index + 1}. ${step.title} — ${step.body}`,
@@ -41,6 +46,8 @@ export function buildActionStrings(dict: Dictionary, lessonId: number): ActionSt
   return {
     title: `${dict.ui.lessonWord} ${lessonId} · ${lesson.title}`,
     description: [
+      `⚠️ ${devnetNotice}`,
+      "",
       lesson.description,
       "",
       ...steps,
