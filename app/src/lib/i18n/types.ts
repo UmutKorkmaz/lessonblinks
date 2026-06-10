@@ -78,6 +78,8 @@ export interface UIStrings {
   blinkError: string;
   /** Explains that the Blink card is an Action API response (English on external surfaces) */
   blinkApiNote: string;
+  /** Lead-in for the devnet faucet links shown under the Blink */
+  faucetHint: string;
 }
 
 export interface Dictionary {

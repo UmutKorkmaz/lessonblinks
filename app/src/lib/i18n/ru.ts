@@ -55,6 +55,7 @@ export const ru: Dictionary = {
     blinkError:
       "Не удалось загрузить Blink. Проверь URL Action и заголовки CORS.",
     blinkApiNote: "Примечание: эта карточка — ответ Action API. Элементы кошелька и внешние поверхности (X, кошельки) могут отображаться на английском.",
+    faucetHint: "Нужны средства в devnet? Получи бесплатные тестовые SOL и USDC:",
   },
 
   lessons: {

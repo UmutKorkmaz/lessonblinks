@@ -152,6 +152,24 @@ export default async function LessonPage({ params }: LessonPageProps) {
                 loadingLabel={dict.ui.loadingBlink}
                 errorLabel={dict.ui.blinkError}
               />
+              <p className="lesson-detail__hint lesson-detail__faucets">
+                {dict.ui.faucetHint}{" "}
+                <a
+                  href="https://faucet.solana.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SOL · faucet.solana.com
+                </a>
+                <span aria-hidden="true"> · </span>
+                <a
+                  href="https://faucet.circle.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  USDC · faucet.circle.com
+                </a>
+              </p>
               <p className="lesson-detail__hint">{dict.ui.blinkApiNote}</p>
               <p className="lesson-detail__hint">
                 {dict.ui.actionApiLabel}{" "}

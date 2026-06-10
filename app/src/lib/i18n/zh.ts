@@ -54,6 +54,7 @@ export const zh: Dictionary = {
     loadingBlink: "正在加载 Blink…",
     blinkError: "无法加载 Blink，请检查 Action URL 和 CORS 响应头。",
     blinkApiNote: "注意：此卡片由 Action API 返回。钱包控件及外部平台（X、钱包）可能显示为英文。",
+    faucetHint: "需要 devnet 资金？免费领取测试用 SOL 和 USDC：",
   },
 
   lessons: {

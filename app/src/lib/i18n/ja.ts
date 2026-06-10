@@ -55,6 +55,7 @@ export const ja: Dictionary = {
     blinkError:
       "Blinkを読み込めませんでした。Action URLとCORSヘッダーを確認してください。",
     blinkApiNote: "注：このカードは Action API のレスポンスです。ウォレットの操作部分や外部サービス（X、ウォレット）では英語で表示されることがあります。",
+    faucetHint: "devnet の資金が必要ですか？無料のテスト用 SOL と USDC を入手:",
   },
 
   lessons: {

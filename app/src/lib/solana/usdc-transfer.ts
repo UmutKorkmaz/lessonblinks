@@ -40,7 +40,7 @@ export async function buildUsdcTransferTransaction({
     await getAccount(connection, senderAta);
   } catch {
     throw new Error(
-      "You need a devnet USDC token account with at least 0.01 USDC. Get devnet USDC from a faucet first.",
+      "You need a devnet USDC token account with at least 0.01 USDC. Get free devnet USDC at https://faucet.circle.com (select Solana Devnet) and SOL for fees at https://faucet.solana.com.",
     );
   }
 

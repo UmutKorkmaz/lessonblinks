@@ -54,6 +54,7 @@ export const ar: Dictionary = {
     loadingBlink: "جارٍ تحميل Blink…",
     blinkError: "تعذّر تحميل Blink. تحقق من عنوان Action ومن ترويسات CORS.",
     blinkApiNote: "ملاحظة: هذه البطاقة هي استجابة من Action API. قد تظهر عناصر تحكم المحفظة والواجهات الخارجية (X، المحافظ) باللغة الإنجليزية.",
+    faucetHint: "تحتاج إلى رصيد devnet؟ احصل على SOL وUSDC تجريبيين مجانًا:",
   },
 
   lessons: {

@@ -31,6 +31,16 @@ Open http://localhost:3000
 
 **Try Lesson 1:** open https://blinks.umutkorkmaz.net/lessons/1, connect Phantom (devnet), complete the Blink.
 
+**Devnet faucets** (free test funds):
+
+| Token | Faucet | Notes |
+|-------|--------|-------|
+| SOL | https://faucet.solana.com | Official; needed for fees in every lesson |
+| USDC | https://faucet.circle.com | Select **Solana Devnet** — 20 USDC / address / 2h; mints the exact `4zMMC9…` mint lessons 1 & 3 use |
+| SOL (backup) | https://faucet.quicknode.com/solana/devnet | Alternative when the official faucet rate-limits |
+
+⚠️ Avoid third-party "USDC-Dev" faucets (e.g. spl-token-faucet.com) — they mint a different token that won't satisfy the lessons.
+
 **Action API URL:**
 
 ```

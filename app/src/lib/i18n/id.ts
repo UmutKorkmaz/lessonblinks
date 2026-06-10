@@ -55,6 +55,7 @@ export const id: Dictionary = {
     blinkError:
       "Tidak dapat memuat Blink. Periksa URL Action dan header CORS-nya.",
     blinkApiNote: "Catatan: kartu ini berasal dari Action API. Kontrol wallet dan permukaan eksternal (X, wallet) mungkin tampil dalam bahasa Inggris.",
+    faucetHint: "Butuh dana devnet? Dapatkan SOL dan USDC uji coba gratis:",
   },
 
   lessons: {

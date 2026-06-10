@@ -48,7 +48,7 @@ export async function buildBadgeMintTransaction({
   if (balance < MIN_BALANCE_LAMPORTS) {
     const requiredSol = (MIN_BALANCE_LAMPORTS / LAMPORTS_PER_SOL).toFixed(3);
     throw new Error(
-      `You need about ${requiredSol} SOL for badge rent and fees. Top up from the devnet faucet.`,
+      `You need about ${requiredSol} SOL for badge rent and fees. Get free devnet SOL at https://faucet.solana.com.`,
     );
   }
 

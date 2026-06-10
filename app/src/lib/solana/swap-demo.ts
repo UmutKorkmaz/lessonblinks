@@ -49,7 +49,7 @@ export async function buildSwapDemoTransaction({
   if (balance < required) {
     const requiredSol = (required / LAMPORTS_PER_SOL).toFixed(3);
     throw new Error(
-      `You need at least ${requiredSol} SOL (swap amount + fees) to take this lesson. Top up from the devnet faucet.`,
+      `You need at least ${requiredSol} SOL (swap amount + fees) to take this lesson. Get free devnet SOL at https://faucet.solana.com.`,
     );
   }
 
