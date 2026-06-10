@@ -44,7 +44,7 @@ LessonBlinks turns Solana Actions (Blinks) into **30-second micro-lessons**. Eac
 ### Devnet constants
 
 ```typescript
-export const DEVNET_USDC_MINT = "4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6";
+export const DEVNET_USDC_MINT = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU";
 export const DEVNET_CLUSTER = "devnet" as const;
 export const COURSE_ID = "lessonblinks-101";
 ```
@@ -318,7 +318,7 @@ NEXT_PUBLIC_PRODUCT_NAME=LessonBlinks
 # Solana
 SOLANA_RPC_URL=https://devnet.helius-rpc.com/?api-key=...
 SOLANA_CLUSTER=devnet
-DEVNET_USDC_MINT=4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6
+DEVNET_USDC_MINT=4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU
 
 # Wallets
 FEE_PAYER_SECRET_KEY=...          # Gas sponsor

@@ -35,7 +35,7 @@ After completing this blink, the learner should understand:
 | Action API | `https://{domain}/api/actions/lessons/02-tip-creator` |
 | Callback API | `https://{domain}/api/actions/lessons/02-tip-creator/complete` |
 | Chain | Solana devnet |
-| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6` |
+| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
 | Tip amount | **$0.10 USDC** = `100_000` base units |
 | Creator recipient | `CREATOR_WALLET_PUBKEY` env (override `?to=`) |
 
@@ -167,7 +167,7 @@ const payload: LessonActionGetResponse = {
 Assert parsed transaction contains:
 
 - SPL Token `transfer` or `transferChecked`
-- `mint === 4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
+- `mint === 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
 - `amount === 100_000`
 - `destination` owner === creator pubkey
 - `authority` === learner `account`

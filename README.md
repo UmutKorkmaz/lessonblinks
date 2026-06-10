@@ -67,7 +67,7 @@ http://localhost:3000/inspector?url=https%3A%2F%2Fblinks.umutkorkmaz.net%2Fapi%2
 
 - Next.js 15 (App Router)
 - `@solana/actions`, `@dialectlabs/blinks`, `@solana/web3.js`, `@solana/spl-token`
-- Devnet USDC mint: `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
+- Devnet USDC mint: `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
 
 ## Deploy
 

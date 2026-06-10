@@ -2,7 +2,7 @@
 
 **Product:** LessonBlinks / BlinkDers  
 **Network:** Solana devnet  
-**USDC mint:** `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`  
+**USDC mint:** `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`  
 **Last updated:** 2026-06-09
 
 Complete this checklist before Dialect registry submission. All tests assume `SOLANA_CLUSTER=devnet`.
@@ -23,7 +23,7 @@ Complete this checklist before Dialect registry submission. All tests assume `SO
 ```bash
 SOLANA_RPC_URL=https://devnet.helius-rpc.com/?api-key=...
 SOLANA_CLUSTER=devnet
-DEVNET_USDC_MINT=4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6
+DEVNET_USDC_MINT=4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU
 FEE_PAYER_SECRET_KEY=<base58>
 FAUCET_AUTHORITY_SECRET_KEY=<base58>
 CREATOR_WALLET_PUBKEY=<base58>
@@ -196,7 +196,7 @@ https://dial.to/?action=solana-action:http://localhost:3000/api/actions/lessons/
 
 ### 4.3 Complete
 
-- [ ] Verifies amount + recipient + mint `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
+- [ ] Verifies amount + recipient + mint `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
 - [ ] Badge: "Remittance Ready"
 
 ### 4.4 Turkey copy

@@ -3,7 +3,7 @@
 **Product:** LessonBlinks (EN) · BlinkDers (TR)  
 **Format:** 5 Solana Action Blinks · ~30 seconds each  
 **Network:** Solana devnet (MVP)  
-**USDC mint (devnet):** `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
+**USDC mint (devnet):** `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
 
 ---
 

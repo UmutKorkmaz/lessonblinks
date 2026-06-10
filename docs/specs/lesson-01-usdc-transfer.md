@@ -33,7 +33,7 @@ After completing this blink, the learner should understand:
 | Action API | `https://{domain}/api/actions/lessons/01-usdc-transfer` |
 | Callback API | `https://{domain}/api/actions/lessons/01-usdc-transfer/complete` |
 | Chain | Solana devnet |
-| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6` |
+| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
 | Transfer amount | **$1 USDC** = `1_000_000` base units (6 decimals) |
 | Recipient | User's own `savings` ATA or `?to=` self-transfer demo wallet |
 
@@ -43,7 +43,7 @@ After completing this blink, the learner should understand:
 
 ```typescript
 export const DEVNET_USDC_MINT = new PublicKey(
-  "4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6",
+  "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
 );
 export const LESSON_01_AMOUNT_USDC = 1;
 export const LESSON_01_AMOUNT_BASE = 1_000_000; // 6 decimals
@@ -175,7 +175,7 @@ const ix = [
 
 1. `getParsedTransaction(signature)`
 2. Assert `spl-token` transfer or transferChecked:
-   - `mint === 4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
+   - `mint === 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
    - `amount === 1_000_000`
    - `authority === account`
 3. `recordCompletion({ lessonId: "lesson-01", wallet, signature })`

@@ -19,9 +19,11 @@ export function getCreatorPubkey(): PublicKey {
   return new PublicKey(value);
 }
 
+// Circle USDC mint on Solana devnet (this app runs on devnet).
+const DEVNET_USDC_MINT = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU";
+
 export function getUsdcMint(): PublicKey {
-  const value =
-    process.env.USDC_MINT ?? "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
+  const value = process.env.USDC_MINT ?? DEVNET_USDC_MINT;
   return new PublicKey(value);
 }
 

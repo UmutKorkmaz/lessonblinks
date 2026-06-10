@@ -1,7 +1,7 @@
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 /** Circle USDC mint on Solana devnet */
-export const DEVNET_USDC_MINT = "4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6";
+export const DEVNET_USDC_MINT = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU";
 
 export const USDC_DECIMALS = 6;
 

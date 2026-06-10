@@ -35,7 +35,7 @@ After completing this blink, the learner should understand:
 | Action API | `https://{domain}/api/actions/lessons/03-remittance` |
 | Callback API | `https://{domain}/api/actions/lessons/03-remittance/complete` |
 | Chain | Solana devnet |
-| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6` |
+| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
 | Send amount | **$0.50 USDC** = `500_000` base units |
 | Demo recipient | `REMITTANCE_DEMO_WALLET` env |
 
@@ -197,7 +197,7 @@ const instructions = [
 1. Signature confirmed/finalized
 2. Parsed tx includes USDC transfer:
    - `amount === 500_000`
-   - `mint === 4zMMC9srt5Ri5X14GAgXhaHiiQ2PysUac9mKNkHjWwy6`
+   - `mint === 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
    - Recipient === `REMITTANCE_DEMO_WALLET` (or validated `?to=`)
 3. Optional: memo contains `"type":"remittance"`
 
