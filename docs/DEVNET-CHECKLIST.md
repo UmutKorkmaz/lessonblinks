@@ -75,16 +75,16 @@ curl -s http://localhost:3000/actions.json | jq '.rules | length'
 For each endpoint below, run:
 
 ```bash
-curl -sI -X OPTIONS "http://localhost:3000/api/actions/lessons/01-usdc-transfer" \
+curl -sI -X OPTIONS "http://localhost:3000/api/actions/lesson-1-usdc" \
   | grep -i access-control-allow-origin
 # Expected: *
 ```
 
-- [ ] `01-usdc-transfer` + `/complete`
-- [ ] `02-tip-creator` + `/complete`
-- [ ] `03-remittance` + `/complete`
-- [ ] `04-swap`
-- [ ] `05-graduation-nft` + `/complete`
+- [ ] `lesson-1-usdc` + `/complete` (when implemented)
+- [ ] `lesson-2-tip` + `/complete` (when implemented)
+- [ ] `lesson-3-remittance` + `/complete` (when implemented)
+- [ ] `lesson-4-swap`
+- [ ] `lesson-5/claim` + `/complete` (when implemented)
 
 ### 1.3 Blinks Inspector
 
@@ -97,19 +97,19 @@ Open [blinks.xyz/inspector](https://www.blinks.xyz/inspector).
 
 ```bash
 npx ngrok http 3000
-# Use https://xxxx.ngrok.io/api/actions/lessons/...
+# Use https://xxxx.ngrok.io/api/actions/lesson-1-usdc
 ```
 
 ---
 
 ## 2. Lesson 1 — USDC Transfer ($1)
 
-**Endpoint:** `/api/actions/lessons/01-usdc-transfer`
+**Endpoint:** `/api/actions/lesson-1-usdc`
 
 ### 2.1 GET
 
 ```bash
-curl -s "http://localhost:3000/api/actions/lessons/01-usdc-transfer" | jq '{type, title, label}'
+curl -s "http://localhost:3000/api/actions/lesson-1-usdc" | jq '{type, title, label}'
 ```
 
 - [ ] `type` = `"action"`
@@ -144,7 +144,7 @@ curl -s "http://localhost:3000/api/actions/lessons/01-usdc-transfer" | jq '{type
 
 ## 3. Lesson 2 — Tip Creator ($0.10 USDC)
 
-**Endpoint:** `/api/actions/lessons/02-tip-creator`
+**Endpoint:** `/api/actions/lesson-2-tip`
 
 ### 3.1 GET
 
@@ -171,7 +171,7 @@ Use [blinks.xyz/inspector](https://www.blinks.xyz/inspector) with `?url=` deep-l
 ### 3.5 dial.to (optional — when Dialect interstitial is back online)
 
 ```
-https://dial.to/?action=solana-action:http://localhost:3000/api/actions/lessons/02-tip-creator
+https://dial.to/?action=solana-action:http://localhost:3000/api/actions/lesson-2-tip
 ```
 
 - [ ] Interstitial renders (use tunnel URL in production)
@@ -180,7 +180,7 @@ https://dial.to/?action=solana-action:http://localhost:3000/api/actions/lessons/
 
 ## 4. Lesson 3 — Remittance ($0.50 USDC)
 
-**Endpoint:** `/api/actions/lessons/03-remittance`
+**Endpoint:** `/api/actions/lesson-3-remittance`
 
 ### 4.1 GET
 
@@ -208,7 +208,7 @@ https://dial.to/?action=solana-action:http://localhost:3000/api/actions/lessons/
 
 ## 5. Lesson 4 — Swap (0.01 SOL → USDC)
 
-**Endpoint:** `/api/actions/lessons/04-swap`
+**Endpoint:** `/api/actions/lesson-4-swap`
 
 ### 5.1 Devnet mode (mock)
 
@@ -236,7 +236,7 @@ When `ENABLE_MAINNET=true` and `LESSON_04_MODE=mainnet`:
 
 ## 6. Lesson 5 — Graduation NFT
 
-**Endpoint:** `/api/actions/lessons/05-graduation-nft`
+**Endpoint:** `/api/actions/lesson-5/claim`
 
 ### 6.1 Prerequisites
 
@@ -344,9 +344,14 @@ Replace `localhost:3000` with `lessonblinks.com`:
 ```bash
 DOMAIN=https://lessonblinks.com
 
-for lesson in 01-usdc-transfer 02-tip-creator 03-remittance 04-swap 05-graduation-nft; do
-  echo "=== $lesson ==="
-  curl -s "$DOMAIN/api/actions/lessons/$lesson" | jq '.type, .title'
+for endpoint in \
+  lesson-1-usdc \
+  lesson-2-tip \
+  lesson-3-remittance \
+  lesson-4-swap \
+  lesson-5/claim; do
+  echo "=== $endpoint ==="
+  curl -s "$DOMAIN/api/actions/$endpoint" | jq '.type, .title'
 done
 ```
 

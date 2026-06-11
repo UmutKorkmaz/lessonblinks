@@ -299,11 +299,11 @@ DOMAIN="${1:-https://lessonblinks.com}"
 
 echo "=== OPTIONS CORS ==="
 for path in \
-  "/api/actions/lessons/01-usdc-transfer" \
-  "/api/actions/lessons/02-tip-creator" \
-  "/api/actions/lessons/03-remittance" \
-  "/api/actions/lessons/04-swap" \
-  "/api/actions/lessons/05-graduation-nft"; do
+  "/api/actions/lesson-1-usdc" \
+  "/api/actions/lesson-2-tip" \
+  "/api/actions/lesson-3-remittance" \
+  "/api/actions/lesson-4-swap" \
+  "/api/actions/lesson-5/claim"; do
   curl -sI -X OPTIONS "$DOMAIN$path" | grep -i access-control
 done
 

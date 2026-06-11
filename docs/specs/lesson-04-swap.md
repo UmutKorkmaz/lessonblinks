@@ -32,8 +32,8 @@ After completing this blink, the learner should understand:
 
 | Field | Value |
 |-------|-------|
-| Blink URL | `https://{domain}/lesson/04-swap` |
-| Action API | `https://{domain}/api/actions/lessons/04-swap` |
+| Blink URL | `https://{domain}/lesson/swap-sol-usdc` |
+| Action API | `https://{domain}/api/actions/lesson-4-swap` |
 | Chain | devnet-mock (MVP) or mainnet-beta (flagged) |
 | Swap amount | **0.01 SOL** = `10_000_000` lamports |
 | Pair | SOL → USDC |
@@ -95,7 +95,7 @@ export const LESSON_04_EXPLAINER = {
   },
   completion: {
     badgeLabel: "Swapped",
-    nextLessonActionHref: "/api/actions/lessons/05-graduation-nft",
+    nextLessonActionHref: "/api/actions/lesson-5/claim",
   },
 };
 ```
@@ -202,7 +202,7 @@ Return message:
 
 MVP Lesson 4 may omit `/complete` callback. V2 adds:
 
-- `POST /api/actions/lessons/04-swap/complete`
+- `POST /api/actions/lesson-4-swap/complete`
 - Verify Jupiter swap instruction in parsed tx (mainnet)
 - Or verify memo / faucet credit (devnet)
 
@@ -213,7 +213,7 @@ For graduation prerequisites, record completion in DB on successful POST follow-
 ## File layout
 
 ```
-src/app/api/actions/lessons/04-swap/route.ts
+src/app/api/actions/lesson-4-swap/route.ts
 src/lib/jupiter/swap.ts
 src/lib/lessons/lesson-04.ts
 src/constants/tokens.ts
@@ -263,8 +263,8 @@ src/constants/tokens.ts
 
 ```json
 {
-  "pathPattern": "/lesson/04-swap",
-  "apiPath": "/api/actions/lessons/04-swap"
+  "pathPattern": "/lesson/swap-sol-usdc",
+  "apiPath": "/api/actions/lesson-4-swap"
 }
 ```
 

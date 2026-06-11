@@ -63,7 +63,7 @@ export const COURSE_ID = "lessonblinks-101";
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                    Next.js 15 App Router (Vercel)                         │
 │  ┌─────────────┐  ┌──────────────────────┐  ┌────────────────────────┐ │
-│  │ actions.json│  │ /api/actions/lessons │  │ /lesson/[slug] pages   │ │
+│  │ actions.json│  │ /api/actions/lesson-*│  │ /lesson/[slug] pages   │ │
 │  │ (public)    │  │ 01..05 route handlers│  │ (marketing fallback)   │ │
 │  └─────────────┘  └──────────┬───────────┘  └────────────────────────┘ │
 │                              │                                            │
@@ -106,27 +106,14 @@ blinks-micro-lessons/
 │   │   ├── page.tsx                    # Landing: curriculum overview
 │   │   ├── actions.json/route.ts       # CORS-wrapped actions.json
 │   │   ├── lesson/
-│   │   │   ├── 01-usdc-transfer/page.tsx
-│   │   │   ├── 02-tip-creator/page.tsx
-│   │   │   ├── 03-remittance/page.tsx
-│   │   │   ├── 04-swap/page.tsx
-│   │   │   └── 05-graduation/page.tsx
+│   │   │   └── [slug]/page.tsx        # tip-usdc, tip-creator-sol, remittance, ...
 │   │   └── api/
 │   │       └── actions/
-│   │           └── lessons/
-│   │               ├── 01-usdc-transfer/
-│   │               │   ├── route.ts          # GET, POST, OPTIONS
-│   │               │   └── complete/route.ts # Chained completion callback
-│   │               ├── 02-tip-creator/
-│   │               │   ├── route.ts
-│   │               │   └── complete/route.ts
-│   │               ├── 03-remittance/
-│   │               │   ├── route.ts
-│   │               │   └── complete/route.ts
-│   │               ├── 04-swap/route.ts
-│   │               └── 05-graduation-nft/
-│   │                   ├── route.ts
-│   │                   └── complete/route.ts
+│   │           ├── lesson-1-usdc/route.ts
+│   │           ├── lesson-2-tip/route.ts
+│   │           ├── lesson-3-remittance/route.ts
+│   │           ├── lesson-4-swap/route.ts
+│   │           └── lesson-5/claim/route.ts
 │   └── lib/
 │       ├── actions/
 │       │   ├── headers.ts              # createActionHeaders() singleton
@@ -170,8 +157,8 @@ Lessons 1–3 and 5 use the **GET → POST → on-chain confirm → POST complet
 sequenceDiagram
   participant User
   participant Client as Blink Client
-  participant GET as GET /api/actions/lessons/NN
-  participant POST as POST /api/actions/lessons/NN
+  participant GET as GET /api/actions/lesson-*
+  participant POST as POST /api/actions/lesson-*
   participant Sponsor as Fee Payer (Kora)
   participant Chain as Solana Devnet
   participant Done as POST /complete

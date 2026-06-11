@@ -39,7 +39,7 @@ Prepare **5 submissions** (one per lesson) or one collection — confirm current
 | **Title** | LessonBlinks 1: Send $1 USDC |
 | **Description** | 30-second Solana lesson — send USDC on devnet and learn stablecoin payments. Gas sponsored. |
 | **Category** | Education / Onboarding |
-| **Action URL** | `https://lessonblinks.com/api/actions/lessons/01-usdc-transfer` |
+| **Action URL** | `https://lessonblinks.com/api/actions/lesson-1-usdc` |
 | **Icon** | 512×512 PNG (`/lessons/01/icon.png`) |
 | **Website** | `https://lessonblinks.com` |
 | **Twitter** | `@lessonblinks` (placeholder) |
@@ -61,24 +61,24 @@ Serve at `https://{domain}/actions.json`:
 {
   "rules": [
     {
-      "pathPattern": "/lesson/01-usdc-transfer",
-      "apiPath": "/api/actions/lessons/01-usdc-transfer"
+      "pathPattern": "/lesson/tip-usdc",
+      "apiPath": "/api/actions/lesson-1-usdc"
     },
     {
-      "pathPattern": "/lesson/02-tip-creator",
-      "apiPath": "/api/actions/lessons/02-tip-creator"
+      "pathPattern": "/lesson/tip-creator-sol",
+      "apiPath": "/api/actions/lesson-2-tip"
     },
     {
-      "pathPattern": "/lesson/03-remittance",
-      "apiPath": "/api/actions/lessons/03-remittance"
+      "pathPattern": "/lesson/remittance",
+      "apiPath": "/api/actions/lesson-3-remittance"
     },
     {
-      "pathPattern": "/lesson/04-swap",
-      "apiPath": "/api/actions/lessons/04-swap"
+      "pathPattern": "/lesson/swap-sol-usdc",
+      "apiPath": "/api/actions/lesson-4-swap"
     },
     {
-      "pathPattern": "/lesson/05-graduation",
-      "apiPath": "/api/actions/lessons/05-graduation-nft"
+      "pathPattern": "/lesson/claim-graduation-nft",
+      "apiPath": "/api/actions/lesson-5/claim"
     }
   ]
 }
@@ -93,13 +93,13 @@ Next.js route (`src/app/actions.json/route.ts`) must return this with CORS heade
 ### Interstitial URL format
 
 ```
-https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/{lesson-slug}
+https://dial.to/?action=solana-action:https://{domain}/api/actions/{lesson-action-path}
 ```
 
 URL-encoded example (Lesson 3):
 
 ```
-https://dial.to/?action=solana-action%3Ahttps%3A%2F%2Flessonblinks.com%2Fapi%2Flessons%2F03-remittance
+https://dial.to/?action=solana-action%3Ahttps%3A%2F%2Flessonblinks.com%2Fapi%2Factions%2Flesson-3-remittance
 ```
 
 ### dial.to test matrix
@@ -137,11 +137,11 @@ For each Action URL:
 
 | Lesson | dial.to link | X post template |
 |--------|--------------|-----------------|
-| 1 | `dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lessons/01-usdc-transfer` | "Learn Solana in 30s — send $1 USDC 👇" |
-| 2 | `.../02-tip-creator` | "Tip a creator with USDC in one tap" |
-| 3 | `.../03-remittance` | "Send money home in seconds — Lesson 3" |
-| 4 | `.../04-swap` | "Your first swap — 0.01 SOL → USDC" |
-| 5 | `.../05-graduation-nft` | "I graduated BlinkDers 🎓 Claim your badge" |
+| 1 | `dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-1-usdc` | "Learn Solana in 30s — send $1 USDC 👇" |
+| 2 | `dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-2-tip` | "Tip a creator with SOL in one tap" |
+| 3 | `dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-3-remittance` | "Send money home in seconds — Lesson 3" |
+| 4 | `dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-4-swap` | "Your first swap — 0.01 SOL → USDC" |
+| 5 | `dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-5/claim` | "I graduated BlinkDers 🎓 Claim your badge" |
 
 ### QR codes
 

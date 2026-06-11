@@ -46,11 +46,11 @@ Solana Blinks clients resolve Actions in three ways:
 
 | Method | Example | When to use |
 |--------|---------|-------------|
-| **Direct Action URL** | `https://lessonblinks.com/api/actions/lessons/01-tip-usdc` | Registry submission, Inspector, dial.to |
-| **`solana-action:` protocol** | `solana-action:https://lessonblinks.com/api/actions/lessons/01-tip-usdc` | Embedded clients, some wallets |
-| **Website path + `actions.json`** | `https://lessonblinks.com/lesson/01-tip-usdc` | Social sharing with marketing fallback page |
+| **Direct Action URL** | `https://lessonblinks.com/api/actions/lesson-1-usdc` | Registry submission, Inspector, dial.to |
+| **`solana-action:` protocol** | `solana-action:https://lessonblinks.com/api/actions/lesson-1-usdc` | Embedded clients, some wallets |
+| **Website path + `actions.json`** | `https://lessonblinks.com/lesson/tip-usdc` | Social sharing with marketing fallback page |
 
-`actions.json` is the **sitemap for Blinks**: it maps human-readable paths on your domain to Action API endpoints. Blink clients that see `https://lessonblinks.com/lesson/01-tip-usdc` fetch `https://lessonblinks.com/actions.json`, match the `pathPattern`, and call the mapped `apiPath`.
+`actions.json` is the **sitemap for Blinks**: it maps human-readable paths on your domain to Action API endpoints. Blink clients that see `https://lessonblinks.com/lesson/tip-usdc` fetch `https://lessonblinks.com/actions.json`, match the `pathPattern`, and call the mapped `apiPath`.
 
 **Dialect registry status** (from [Dialect docs](https://docs.dialect.to/blinks/blinks-provider/blink-registry)):
 
@@ -96,23 +96,23 @@ import { createActionHeaders } from "@solana/actions";
 const ACTIONS_JSON = {
   rules: [
     {
-      pathPattern: "/lesson/01-tip-usdc",
-      apiPath: "/api/actions/lessons/01-tip-usdc",
+      pathPattern: "/lesson/tip-usdc",
+      apiPath: "/api/actions/lesson-1-usdc",
     },
     {
-      pathPattern: "/lesson/02-tip-creator",
-      apiPath: "/api/actions/lessons/02-tip-creator",
+      pathPattern: "/lesson/tip-creator-sol",
+      apiPath: "/api/actions/lesson-2-tip",
     },
     {
-      pathPattern: "/lesson/3",
-      apiPath: "/api/actions/lesson-3-swap",
+      pathPattern: "/lesson/remittance",
+      apiPath: "/api/actions/lesson-3-remittance",
     },
     {
-      pathPattern: "/learn/stake",
-      apiPath: "/api/actions/lesson-04/stake",
+      pathPattern: "/lesson/swap-sol-usdc",
+      apiPath: "/api/actions/lesson-4-swap",
     },
     {
-      pathPattern: "/graduate",
+      pathPattern: "/lesson/claim-graduation-nft",
       apiPath: "/api/actions/lesson-5/claim",
     },
   ],
@@ -143,7 +143,7 @@ export async function OPTIONS() {
 
 ### 3.4 Rule semantics
 
-- **`pathPattern`** — Public URL path users can share (e.g. `/lesson/01-tip-usdc`). Clients match this against links posted on social feeds.
+- **`pathPattern`** — Public URL path users can share (e.g. `/lesson/tip-usdc`). Clients match this against links posted on social feeds.
 - **`apiPath`** — Backend Solana Action endpoint. Can be relative (resolved against your domain) or a fully qualified URL on another subdomain.
 
 **Adding a new lesson:** append a rule, deploy, verify with `curl`, then add a Dialect registry entry.
@@ -177,11 +177,11 @@ Access-Control-Allow-Headers: Content-Type, Authorization, Content-Encoding, Acc
 
 | Shareable path | Action API | Lesson |
 |----------------|------------|--------|
-| `/lesson/01-tip-usdc` | `/api/actions/lessons/01-tip-usdc` | 1 — Tip $1 USDC |
-| `/lesson/02-tip-creator` | `/api/actions/lessons/02-tip-creator` | 2 — Tip 0.001 SOL |
-| `/lesson/3` | `/api/actions/lesson-3-swap` | 3 — Swap SOL → USDC |
-| `/learn/stake` | `/api/actions/lesson-04/stake` | 4 — Stake 0.01 SOL |
-| `/graduate` | `/api/actions/lesson-5/claim` | 5 — Graduation NFT |
+| `/lesson/tip-usdc` | `/api/actions/lesson-1-usdc` | 1 — Send USDC |
+| `/lesson/tip-creator-sol` | `/api/actions/lesson-2-tip` | 2 — Tip 0.001 SOL |
+| `/lesson/remittance` | `/api/actions/lesson-3-remittance` | 3 — Remittance demo |
+| `/lesson/swap-sol-usdc` | `/api/actions/lesson-4-swap` | 4 — Swap SOL → USDC demo |
+| `/lesson/claim-graduation-nft` | `/api/actions/lesson-5/claim` | 5 — Graduation NFT |
 
 Each path should also have a marketing fallback page under `app/src/app/lesson/[slug]/` for browsers that do not render Blinks.
 
@@ -253,10 +253,10 @@ DOMAIN=https://lessonblinks.com
 
 ENDPOINTS=(
   "/actions.json"
-  "/api/actions/lessons/01-tip-usdc"
-  "/api/actions/lessons/02-tip-creator"
-  "/api/actions/lesson-3-swap"
-  "/api/actions/lesson-04/stake"
+  "/api/actions/lesson-1-usdc"
+  "/api/actions/lesson-2-tip"
+  "/api/actions/lesson-3-remittance"
+  "/api/actions/lesson-4-swap"
   "/api/actions/lesson-5/claim"
 )
 
@@ -338,7 +338,7 @@ Dialect’s submission form asks for a **512×512 PNG** for the registry listing
 The **Action URL** is the HTTPS endpoint Blink clients call for `GET`/`POST`. This is what you register with Dialect.
 
 ```
-https://{domain}/api/actions/lessons/01-tip-usdc
+https://{domain}/api/actions/lesson-1-usdc
 ```
 
 Replace `{domain}` with `NEXT_PUBLIC_BASE_URL` (no trailing slash).
@@ -346,7 +346,7 @@ Replace `{domain}` with `NEXT_PUBLIC_BASE_URL` (no trailing slash).
 ### 6.2 `solana-action:` protocol URL
 
 ```
-solana-action:https://lessonblinks.com/api/actions/lessons/01-tip-usdc
+solana-action:https://lessonblinks.com/api/actions/lesson-1-usdc
 ```
 
 - Use when the URL has **no query parameters** → do not URL-encode the link.
@@ -359,13 +359,13 @@ Dialect’s Blink interstitial wraps any Action URL:
 **Unencoded (no query params):**
 
 ```
-https://dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lessons/01-tip-usdc
+https://dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-1-usdc
 ```
 
 **URL-encoded (required when Action URL contains `?` or `&`):**
 
 ```
-https://dial.to/?action=solana-action%3Ahttps%3A%2F%2Flessonblinks.com%2Fapi%2Factions%2Flesson-04%2Fstake%3Fmethod%3Dmarinade
+https://dial.to/?action=solana-action%3Ahttps%3A%2F%2Flessonblinks.com%2Fapi%2Factions%2Flesson-4-swap%3Flang%3Dtr
 ```
 
 **Helper in this repo** (`app/src/lib/lessons.ts`):
@@ -384,7 +384,7 @@ export function getDialToUrl(actionPath: string, baseUrl = getBaseUrl()): string
 Share the mapped path for users who need a fallback website:
 
 ```
-https://lessonblinks.com/lesson/01-tip-usdc
+https://lessonblinks.com/lesson/tip-usdc
 ```
 
 Blink-aware clients resolve this through `actions.json`; others land on the lesson marketing page.
@@ -400,7 +400,7 @@ https://www.blinks.xyz/inspector
 The Inspector is a **paste-and-test** tool. There is no required query-parameter format — you enter the **raw HTTPS Action URL**:
 
 ```
-https://lessonblinks.com/api/actions/lessons/01-tip-usdc
+https://lessonblinks.com/api/actions/lesson-1-usdc
 ```
 
 **Do not** paste dial.to URLs into Inspector — paste the Action API URL directly.
@@ -409,17 +409,17 @@ https://lessonblinks.com/api/actions/lessons/01-tip-usdc
 
 ```bash
 npx ngrok http 3000
-# Paste: https://xxxx.ngrok-free.app/api/actions/lessons/01-tip-usdc
+# Paste: https://xxxx.ngrok-free.app/api/actions/lesson-1-usdc
 ```
 
 ### 6.6 Quick reference — Lesson 1 (production)
 
 | Format | URL |
 |--------|-----|
-| Action URL | `https://lessonblinks.com/api/actions/lessons/01-tip-usdc` |
-| dial.to | `https://dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lessons/01-tip-usdc` |
-| Website path | `https://lessonblinks.com/lesson/01-tip-usdc` |
-| Inspector input | `https://lessonblinks.com/api/actions/lessons/01-tip-usdc` |
+| Action URL | `https://lessonblinks.com/api/actions/lesson-1-usdc` |
+| dial.to | `https://dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-1-usdc` |
+| Website path | `https://lessonblinks.com/lesson/tip-usdc` |
+| Inspector input | `https://lessonblinks.com/api/actions/lesson-1-usdc` |
 
 ---
 
@@ -460,8 +460,8 @@ curl -sI -X OPTIONS "$DOMAIN/actions.json" | grep -i access-control
 ### 7.4 Step 4 — `curl` smoke
 
 ```bash
-curl -s "$DOMAIN/api/actions/lessons/01-tip-usdc" | jq '{type, title, label, icon}'
-curl -s -X POST "$DOMAIN/api/actions/lessons/01-tip-usdc" \
+curl -s "$DOMAIN/api/actions/lesson-1-usdc" | jq '{type, title, label, icon}'
+curl -s -X POST "$DOMAIN/api/actions/lesson-1-usdc" \
   -H "Content-Type: application/json" \
   -d '{"account":"11111111111111111111111111111111"}' \
   | jq 'keys'
@@ -498,13 +498,13 @@ Learn Solana in 30 seconds ⚡
 
 Lesson 1: Tip $1 USDC — a real stablecoin transfer in one tap.
 
-https://dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lessons/01-tip-usdc
+https://dial.to/?action=solana-action:https://lessonblinks.com/api/actions/lesson-1-usdc
 ```
 
 Or use the shorter website path (requires `actions.json` on the same domain):
 
 ```
-https://lessonblinks.com/lesson/01-tip-usdc
+https://lessonblinks.com/lesson/tip-usdc
 ```
 
 ### 8.3 X testing checklist
@@ -551,12 +551,12 @@ Prepare one row per lesson:
 
 | Field | Example (Lesson 1) |
 |-------|-------------------|
-| **Action URL** | `https://lessonblinks.com/api/actions/lessons/01-tip-usdc` |
+| **Action URL** | `https://lessonblinks.com/api/actions/lesson-1-usdc` |
 | **Title** | Lesson 1: Tip $1 USDC |
 | **Description** | 30-second Solana lesson — send $1 USDC and learn SPL token transfers. |
 | **Category** | Education / Onboarding |
 | **Icon** | 512×512 PNG URL |
-| **Website** | `https://lessonblinks.com/lesson/01-tip-usdc` |
+| **Website** | `https://lessonblinks.com/lesson/tip-usdc` |
 | **Cluster** | devnet (MVP) → mainnet-beta when promoted |
 | **Security note** | Fixed $1 USDC amount; no user-supplied transfer targets in MVP |
 
@@ -585,52 +585,52 @@ After approval, your Action URLs should report `trusted`. Re-test unfurl on X wi
 
 Copy-paste ready after replacing `{domain}` with production host.
 
-### Lesson 1 — Tip $1 USDC
+### Lesson 1 — Send USDC
 
 | Field | Value |
 |-------|-------|
-| Action URL | `https://{domain}/api/actions/lessons/01-tip-usdc` |
-| Website path | `https://{domain}/lesson/01-tip-usdc` |
-| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/01-tip-usdc` |
-| Title | Lesson 1: Tip $1 USDC |
+| Action URL | `https://{domain}/api/actions/lesson-1-usdc` |
+| Website path | `https://{domain}/lesson/tip-usdc` |
+| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-1-usdc` |
+| Title | Lesson 1: Send your first USDC |
 | Category | Education / Payments |
 
 ### Lesson 2 — Tip 0.001 SOL
 
 | Field | Value |
 |-------|-------|
-| Action URL | `https://{domain}/api/actions/lessons/02-tip-creator` |
-| Website path | `https://{domain}/lesson/02-tip-creator` |
-| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/02-tip-creator` |
+| Action URL | `https://{domain}/api/actions/lesson-2-tip` |
+| Website path | `https://{domain}/lesson/tip-creator-sol` |
+| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-2-tip` |
 | Title | Lesson 2: Tip a creator 0.001 SOL |
 | Category | Education / Payments |
 
-### Lesson 3 — Swap SOL → USDC
+### Lesson 3 — Remittance demo
 
 | Field | Value |
 |-------|-------|
-| Action URL | `https://{domain}/api/actions/lesson-3-swap` |
-| Website path | `https://{domain}/lesson/3` |
-| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-3-swap` |
-| Title | Lesson 3: Swap 0.01 SOL to USDC |
+| Action URL | `https://{domain}/api/actions/lesson-3-remittance` |
+| Website path | `https://{domain}/lesson/remittance` |
+| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-3-remittance` |
+| Title | Lesson 3: Send a remittance demo |
+| Category | Education / Payments |
+
+### Lesson 4 — Swap SOL → USDC demo
+
+| Field | Value |
+|-------|-------|
+| Action URL | `https://{domain}/api/actions/lesson-4-swap` |
+| Website path | `https://{domain}/lesson/swap-sol-usdc` |
+| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-4-swap` |
+| Title | Lesson 4: Swap SOL to USDC demo |
 | Category | Education / DeFi |
-
-### Lesson 4 — Stake 0.01 SOL
-
-| Field | Value |
-|-------|-------|
-| Action URL | `https://{domain}/api/actions/lesson-04/stake` |
-| Website path | `https://{domain}/learn/stake` |
-| dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-04/stake` |
-| Title | Lesson 4: Stake 0.01 SOL |
-| Category | Education / Staking |
 
 ### Lesson 5 — Graduation NFT
 
 | Field | Value |
 |-------|-------|
 | Action URL | `https://{domain}/api/actions/lesson-5/claim` |
-| Website path | `https://{domain}/graduate` |
+| Website path | `https://{domain}/lesson/claim-graduation-nft` |
 | dial.to | `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-5/claim` |
 | Title | Lesson 5: Claim your Blinks 101 Graduate Badge |
 | Category | Education / NFT |
@@ -642,10 +642,10 @@ Copy-paste ready after replacing `{domain}` with production host.
 DOMAIN=https://lessonblinks.com
 
 declare -A LESSONS=(
-  ["01"]="/api/actions/lessons/01-tip-usdc"
-  ["02"]="/api/actions/lessons/02-tip-creator"
-  ["03"]="/api/actions/lesson-3-swap"
-  ["04"]="/api/actions/lesson-04/stake"
+  ["01"]="/api/actions/lesson-1-usdc"
+  ["02"]="/api/actions/lesson-2-tip"
+  ["03"]="/api/actions/lesson-3-remittance"
+  ["04"]="/api/actions/lesson-4-swap"
   ["05"]="/api/actions/lesson-5/claim"
 )
 
@@ -701,10 +701,10 @@ done
 
 | Lesson | Inspector ✅ | dial.to ✅ | Registry submitted | X unfurl ✅ |
 |--------|-------------|-----------|-------------------|------------|
-| 1 — USDC tip | ☐ | ☐ | ☐ | ☐ |
+| 1 — USDC transfer | ☐ | ☐ | ☐ | ☐ |
 | 2 — SOL tip | ☐ | ☐ | ☐ | ☐ |
-| 3 — Swap | ☐ | ☐ | ☐ | ☐ |
-| 4 — Stake | ☐ | ☐ | ☐ | ☐ |
+| 3 — Remittance demo | ☐ | ☐ | ☐ | ☐ |
+| 4 — Swap demo | ☐ | ☐ | ☐ | ☐ |
 | 5 — Graduation | ☐ | ☐ | ☐ | ☐ |
 
 **Submitted by:** _______________  
