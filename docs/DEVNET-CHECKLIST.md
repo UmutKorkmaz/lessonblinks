@@ -240,15 +240,22 @@ When `ENABLE_MAINNET=true` and `LESSON_04_MODE=mainnet`:
 
 ### 6.1 Prerequisites
 
-Seed test wallet completions:
+For local development, configure the file store:
+
+```bash
+COMPLETION_STORE_PROVIDER=file
+COMPLETION_STORE_FILE=data/completion-store.json
+```
+
+Equivalent Supabase/Postgres seed shape:
 
 ```sql
-INSERT INTO lesson_completions (wallet, lesson_id, signature, verified)
+INSERT INTO lesson_completions (wallet, lesson_id, signature, verified_at, metadata)
 VALUES
-  ('<TEST_WALLET>', 'lesson-01', 'sig1', true),
-  ('<TEST_WALLET>', 'lesson-02', 'sig2', true),
-  ('<TEST_WALLET>', 'lesson-03', 'sig3', true),
-  ('<TEST_WALLET>', 'lesson-04', 'sig4', true);
+  ('<TEST_WALLET>', 'lesson-01', 'sig1', NOW(), '{}'::jsonb),
+  ('<TEST_WALLET>', 'lesson-02', 'sig2', NOW(), '{}'::jsonb),
+  ('<TEST_WALLET>', 'lesson-03', 'sig3', NOW(), '{}'::jsonb),
+  ('<TEST_WALLET>', 'lesson-04', 'sig4', NOW(), '{}'::jsonb);
 ```
 
 ### 6.2 GET — eligible wallet

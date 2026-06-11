@@ -350,7 +350,7 @@ For sponsor Slack/email reports:
 | Data | Retention |
 |------|-----------|
 | PostHog events | 12 months |
-| `lesson_completions` DB | Indefinite (wallet pubkey only) |
+| `lesson_completions` store | Indefinite server-side; sponsor exports use salted wallet hashes |
 | Server logs | 30 days |
 | Full signatures | DB only, not analytics |
 

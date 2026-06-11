@@ -36,7 +36,7 @@ LessonBlinks turns Solana Actions (Blinks) into **30-second micro-lessons**. Eac
 | Wallet | **Privy** embedded + Phantom MWA | Email OTP for Turkey cohort |
 | Gas sponsorship | **Kora** or custom fee-payer | `FEE_PAYER_SECRET_KEY` env |
 | RPC | **Helius** devnet + mainnet | `SOLANA_RPC_URL` |
-| Database | **Supabase Postgres** | Lesson completions, graduates |
+| Database | **File store first; Supabase Postgres next** | `CompletionStore` interface for lesson completions and graduates |
 | Analytics | **PostHog** or Vercel Analytics | Event schema in `ANALYTICS.md` |
 | Hosting | **Vercel** | Edge-friendly Action routes |
 | Registry | **Dialect** (`dial.to`) | `actions.json` at domain root |
@@ -258,28 +258,31 @@ Privy is **not** in the critical path for Blink clients that bring their own wal
 
 ## 9. Completion registry
 
+Issue #3 starts with a provider interface plus a local file implementation at `app/data/completion-store.json`. Production should swap the provider to Supabase/Postgres before paid sponsor reporting, but route code should call only `getCompletionStore()`.
+
 ```sql
 CREATE TABLE lesson_completions (
-  wallet        TEXT NOT NULL,
-  lesson_id     TEXT NOT NULL,       -- lesson-01 .. lesson-05
-  signature     TEXT NOT NULL UNIQUE,
-  amount_usdc   NUMERIC,
-  network       TEXT DEFAULT 'devnet',
-  locale        TEXT DEFAULT 'en',
-  completed_at  TIMESTAMPTZ DEFAULT NOW(),
-  verified      BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (wallet, lesson_id)
+  wallet      TEXT NOT NULL,
+  lesson_id   TEXT NOT NULL,       -- lesson-01 .. lesson-05
+  signature   TEXT NOT NULL,
+  verified_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  network     TEXT NOT NULL DEFAULT 'devnet',
+  metadata    JSONB NOT NULL DEFAULT '{}'::jsonb,
+  PRIMARY KEY (wallet, lesson_id, signature)
 );
 
 CREATE TABLE graduates (
-  wallet          TEXT PRIMARY KEY,
-  asset_id        TEXT,
-  mint_signature  TEXT NOT NULL,
-  minted_at       TIMESTAMPTZ DEFAULT NOW()
+  wallet     TEXT PRIMARY KEY,
+  mint       TEXT NOT NULL,
+  claimed_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  network    TEXT NOT NULL DEFAULT 'devnet',
+  metadata   JSONB NOT NULL DEFAULT '{}'::jsonb
 );
 ```
 
 Completion is recorded in the `/complete` callback after **on-chain instruction verification** — never from client assertions alone.
+
+Sponsor-facing reports use hashed wallet ids and short signature ids by default; full wallet pubkeys and signatures stay in the server store.
 
 ---
 
