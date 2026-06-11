@@ -50,7 +50,7 @@ The current `actions.json` route matches these five share paths and endpoints.
 These must be fixed before public grant or sponsor claims.
 
 - Several docs still need to be kept aligned with the canonical route matrix.
-- Some lesson specs describe Lesson 2 as `$0.10 USDC`, while code currently uses `0.001 SOL`.
+- Lesson 2 is intentionally `0.001 SOL`; keep future docs positioned as USDC-first, SOL-aware.
 - Completion callbacks are documented, but the current action routes do not expose durable `/complete` endpoints.
 - Lesson 5 says completion is "on your honor" in code copy; it is not yet gated by verified Lessons 1-4.
 - `verify:actions` only checks Lesson 1 OPTIONS and GET.
@@ -79,7 +79,7 @@ Goal: the current app is reliable, measurable, and ready for a public devnet pil
 Tasks:
 
 1. Reconcile docs/code route matrix.
-2. Decide Lesson 2 direction and update docs/code.
+2. Keep Lesson 2 direction explicit in docs/code.
 3. Add durable completion storage.
 4. Add verified completion callbacks for Lessons 1-4.
 5. Gate Lesson 5 with verified prerequisites and one-claim-per-wallet.
