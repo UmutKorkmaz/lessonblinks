@@ -142,26 +142,26 @@ curl -s "http://localhost:3000/api/actions/lesson-1-usdc" | jq '{type, title, la
 
 ---
 
-## 3. Lesson 2 — Tip Creator ($0.10 USDC)
+## 3. Lesson 2 — Tip Creator (0.001 SOL)
 
 **Endpoint:** `/api/actions/lesson-2-tip`
 
 ### 3.1 GET
 
-- [ ] Title: tip creator $0.10 USDC (not SOL)
+- [ ] Title: tip creator 0.001 SOL
 - [ ] Single linked action with fixed amount
-- [ ] `lesson.learningObjectives` mentions USDC tip
+- [ ] `lesson.learningObjectives` mentions native SOL and lamports
 
 ### 3.2 POST
 
-- [ ] Transfer 100_000 USDC base units to `CREATOR_WALLET_PUBKEY`
-- [ ] Gas sponsored
+- [ ] Transfer 1_000_000 lamports to `CREATOR_WALLET_PUBKEY`
+- [ ] Sender is fee payer so wallet preview shows the network fee
 - [ ] `links.next.href` points to `/complete`
 
 ### 3.3 Complete
 
-- [ ] Verifies USDC transfer to creator
-- [ ] Badge: "Creator Supporter"
+- [ ] Verifies SOL transfer to creator
+- [ ] Badge: "SOL Tipper"
 - [ ] `nextLessonActionHref` points to Lesson 3
 
 ### 3.4 Blinks Inspector (primary — dial.to currently down)

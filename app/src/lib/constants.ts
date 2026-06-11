@@ -31,10 +31,7 @@ export const COURSE_ID = "lessonblinks-101";
 /** Lesson 1 — tip $1 USDC (1_000_000 base units, 6 decimals) */
 export const LESSON_01_USDC_AMOUNT = 1_000_000;
 
-/** Lesson 2 — tip $0.10 USDC */
-export const LESSON_02_USDC_TIP_AMOUNT = 100_000;
-
-/** Lesson 2 — tip 0.001 SOL (native SOL variant) */
+/** Lesson 2 — tip 0.001 SOL */
 export const LESSON_02_SOL_TIP_LAMPORTS = 0.001 * LAMPORTS_PER_SOL;
 
 /** Lesson 3 — remittance $0.50 USDC */

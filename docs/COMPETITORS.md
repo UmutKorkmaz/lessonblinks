@@ -11,14 +11,14 @@
 
 Crypto onboarding is fragmented: **docs and courses teach theory**, **wallets teach setup**, **terminals teach trading**, and **Dialect examples teach integration patterns** — but none combine **curriculum + one-tap onchain action + social distribution** in a single, completion-oriented flow.
 
-**LessonBlinks** fills that gap: a **5-lesson, ~5-minute** path where each step is a **Solana Action Blink** embedded in X, Farcaster, or wallet surfaces. Learners **do** the concept (tip USDC, stake SOL, swap via Jupiter) with inline explainers, then **graduate** with an onchain NFT badge.
+**LessonBlinks** fills that gap: a **5-lesson, ~5-minute** path where each step is a **Solana Action Blink** embedded in X, Farcaster, or wallet surfaces. Learners **do** the concept (send USDC, tip SOL, swap via Jupiter) with inline explainers, then **graduate** with an onchain NFT badge.
 
 | Dimension | Typical competitor | LessonBlinks |
 |---|---|---|
 | **Where learning happens** | Website, app, YouTube | Social feed + wallet Action UI |
 | **Learning mode** | Read / watch | Read + sign transaction |
 | **Time to first onchain win** | 30–90+ minutes | ~30 seconds per lesson |
-| **Curriculum** | Generic or protocol-specific | USDC-first → SOL → DeFi → credentials |
+| **Curriculum** | Generic or protocol-specific | USDC-first → SOL-aware → DeFi → credentials |
 | **Locale** | English-first, global | **Turkey-first** (TR copy, SF Turkey grant alignment) |
 | **Completion proof** | Quiz / certificate PDF | Wallet-owned graduation cNFT |
 
@@ -108,7 +108,7 @@ LessonBlinks sits in the **upper-right quadrant**: structured curriculum with **
 | Audience | Developers + curious power users | **New crypto users**, social audiences |
 | Format | Docs, guides, videos | **Blinks** (GET metadata + POST transaction) |
 | Proof of learning | None onchain | Memo + completion DB + **graduation cNFT** |
-| Concept order | Topic graph | **USDC tip → SOL tip → swap → stake → NFT** |
+| Concept order | Topic graph | **USDC transfer → SOL tip → remittance → swap → NFT** |
 | Regional focus | Global | **Turkey-first** launch narrative |
 
 **Strategic relationship:** LessonBlinks is a **top-of-funnel companion** — it does not replace Foundation docs; it **imports** users who would bounce on a 20-page guide and routes graduates to deeper SF / Superteam content.
@@ -141,7 +141,7 @@ LessonBlinks sits in the **upper-right quadrant**: structured curriculum with **
 | Goal | Activate wallet + balance | **Teach 5 core concepts** via actions |
 | Surface | In-app | **Social Blink** → opens Phantom to sign |
 | Sequencing | Linear setup wizard | **Pedagogical arc** with prerequisites |
-| Stablecoin framing | One asset among many | **Lesson 1 = USDC tip** (payments-first) |
+| Stablecoin framing | One asset among many | **Lesson 1 = USDC transfer** (payments-first) |
 | Shareability | Low | **High** — one URL per lesson in a thread |
 
 **Strategic relationship:** **Distribution partner.** LessonBlinks meets users on X; Phantom executes the lesson. No need to compete on wallet UX — compete on **what the user learns before they explore DeFi alone**.
@@ -251,7 +251,7 @@ Distribution loop:
 
 ```
 Instructor / KOL / Superteam TR posts Lesson 1 Blink
-        → user taps → Phantom signs $1 USDC tip
+        → user taps → Phantom signs first USDC transfer
         → user posts “I did it” + Lesson 2 link
         → repeat → graduation NFT → social proof
 ```
@@ -279,7 +279,7 @@ Instructor / KOL / Superteam TR posts Lesson 1 Blink
 
 ---
 
-### 3. USDC-first curriculum
+### 3. USDC-first, SOL-aware curriculum
 
 **Problem:** SOL-first onboarding triggers **volatility anxiety** and “what is gas?” confusion before users feel value.
 
@@ -309,7 +309,7 @@ Instructor / KOL / Superteam TR posts Lesson 1 Blink
 
 | Lesson | User time (target) | Interaction |
 |---|---|---|
-| 1 | ~45 sec | Read card → sign USDC tip |
+| 1 | ~45 sec | Read card → sign USDC transfer |
 | 2 | ~45 sec | Read → sign SOL tip |
 | 3 | ~60 sec | Read → review Jupiter preview → sign |
 | 4 | ~60 sec | Read → sign stake |
@@ -332,7 +332,7 @@ Instructor / KOL / Superteam TR posts Lesson 1 Blink
 **For** new crypto users and social feed audiences **who** bounce off long tutorials and empty wallets,  
 **LessonBlinks** is a **5-step Blink curriculum** **that** turns each lesson into a real onchain transaction with inline explainers.  
 **Unlike** Dialect demos, documentation sites, wallet wizards, Jupiter, or video courses,  
-**LessonBlinks** delivers **USDC-first, Turkey-first, ~5-minute** onboarding **inside the social feed**, with a **wallet-owned graduation NFT** as proof.
+**LessonBlinks** delivers **USDC-first, SOL-aware, Turkey-first, ~5-minute** onboarding **inside the social feed**, with a **wallet-owned graduation NFT** as proof.
 
 **Tagline options**
 
@@ -396,10 +396,10 @@ LessonBlinks wins the **first five minutes** — then **hands off** to wallets, 
 | **Dialect examples** | Action plumbing & demos | **Sequenced curriculum + graduation** |
 | **SF learn paths** | Canonical depth | **Feed-native, 5-min, onchain proof** |
 | **Phantom onboarding** | Wallet activation | **Concept teaching before exploration** |
-| **Jupiter Terminal** | Swap execution | **Pedagogy wrapper + USDC-first path** |
+| **Jupiter Terminal** | Swap execution | **Pedagogy wrapper + USDC-first, SOL-aware path** |
 | **Generic crypto courses** | Theory at scale | **Do > watch; Solana-specific; Turkey-first** |
 
-**LessonBlinks** does not build a better wallet, terminal, or doc site. It builds the **missing course layer for Blinks** — actionable, social, USDC-first, Turkey-first, completable in five minutes.
+**LessonBlinks** does not build a better wallet, terminal, or doc site. It builds the **missing course layer for Blinks** — actionable, social, USDC-first, SOL-aware, Turkey-first, completable in five minutes.
 
 ---
 

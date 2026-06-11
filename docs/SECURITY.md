@@ -88,7 +88,7 @@ if (requested !== ALLOWED_AMOUNT / 1_000_000) {
 ```
 
 - [ ] Lesson 01: $1 USDC (1_000_000)
-- [ ] Lesson 02: $0.10 USDC (100_000)
+- [ ] Lesson 02: 0.001 SOL (1_000_000 lamports)
 - [ ] Lesson 03: $0.50 USDC (500_000)
 - [ ] Lesson 04: 0.01 SOL (10_000_000 lamports) — ignore user override
 - [ ] Lesson 05: no user-supplied amount

@@ -12,12 +12,12 @@
 Traditional crypto onboarding fails because it front-loads abstract concepts (keys, gas, DeFi) before the user experiences value. LessonBlinks inverts that order:
 
 1. **Payments first** — USDC feels like money users already understand (lira, dollars).
-2. **Social context second** — tipping creators mirrors Instagram/YouTube behavior.
+2. **Social context second** — tipping creators mirrors Instagram/YouTube behavior while introducing native SOL.
 3. **Remittance third** — resonates immediately in Turkey (diaspora, cross-border family sends).
 4. **DeFi last** — swap only after the user trusts transfers.
 5. **Credential capstone** — graduation NFT makes progress tangible and shareable.
 
-**Turkey-first ordering** is not arbitrary: Lessons 1–3 map to the highest-intent use cases for Turkish mainstream users (payments, creators, remittance) before introducing token volatility and DEX routing.
+**Turkey-first ordering** is not arbitrary: Lessons 1–3 map to the highest-intent use cases for Turkish mainstream users (payments, creators, remittance). Lesson 2 is intentionally SOL-aware so learners see lamports and network fees before DEX routing.
 
 ---
 
@@ -69,7 +69,7 @@ After completing Lesson 1, the learner can:
 
 ---
 
-## 4. Lesson 2 — Tip a creator $0.10 USDC
+## 4. Lesson 2 — Tip a creator 0.001 SOL
 
 **Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-2-tip`
 **Spec:** [`specs/lesson-02-tip-creator.md`](specs/lesson-02-tip-creator.md)
@@ -78,17 +78,17 @@ After completing Lesson 1, the learner can:
 
 After completing Lesson 2, the learner can:
 
-1. Send USDC to **another person's wallet** (not self-transfer).
-2. Understand tipping as a micropayment with no bank intermediary.
+1. Send native SOL to **another person's wallet**.
+2. Recognize lamports as the smallest unit of SOL.
 3. See how Blinks embed payments in social feeds.
 
 ### Key copy (EN)
 
-> **Lesson 2:** Tip a creator $0.10 USDC. Your tip lands in seconds — no 3-day bank hold, no 5% platform cut on this demo.
+> **Lesson 2:** Tip a creator 0.001 SOL. You learn the native token that pays Solana fees while supporting a creator in one tap.
 
 ### Key copy (TR)
 
-> **Ders 2:** Bir içerik üreticisine 0,10 USDC bahşiş verin. Bahşiş saniyeler içinde ulaşır — banka günleri yok.
+> **Ders 2:** Bir içerik üreticisine 0,001 SOL bahşiş verin. Solana ücretlerini ödeyen native tokeni tek dokunuşla öğrenirsiniz.
 
 ### Prerequisites
 
@@ -96,8 +96,8 @@ After completing Lesson 2, the learner can:
 
 ### Completion criteria
 
-- Verified USDC transfer of 100_000 base units to `CREATOR_WALLET_PUBKEY`
-- Badge: **Creator Supporter**
+- Verified native SOL transfer of 1_000_000 lamports to `CREATOR_WALLET_PUBKEY`
+- Badge: **SOL Tipper**
 
 ---
 

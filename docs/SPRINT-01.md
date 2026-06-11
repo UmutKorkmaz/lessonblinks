@@ -42,7 +42,7 @@ Current findings:
 
 - `app/src/app/api/actions.json/route.ts` currently maps the five share paths to the five actual endpoints.
 - No route files currently exist for `/complete` callbacks.
-- Lesson 2 code currently uses native SOL, not USDC.
+- Lesson 2 is intentionally native SOL, making the course USDC-first and SOL-aware.
 - Docs/specs still contain older route names in some places.
 - `app/scripts/verify-actions.sh` only verifies Lesson 1 OPTIONS and GET.
 
@@ -65,12 +65,12 @@ Acceptance:
 
 Outcome:
 
-- Decide whether Lesson 2 is `0.001 SOL` or `$0.10 USDC`.
+- Confirm Lesson 2 as `0.001 SOL`.
 - Update all copy, specs, constants, validation, and success messages to match.
 
 Recommendation:
 
-- Keep current `0.001 SOL` implementation for now because it teaches native SOL fees and is already live.
+- Keep current `0.001 SOL` implementation because it teaches native SOL fees and is already live.
 - Update docs to say the course is "USDC-first, SOL-aware" instead of pretending every early action is USDC.
 
 Acceptance:

@@ -9,14 +9,14 @@
 
 ## 1. Overview
 
-LessonBlinks turns Solana Actions (Blinks) into **30-second micro-lessons**. Each lesson is a single Action endpoint: the user reads inline explainer copy, taps one button, signs one transaction, and receives a completion state. Five lessons form a Turkey-first, USDC-first curriculum ending in a graduation cNFT.
+LessonBlinks turns Solana Actions (Blinks) into **30-second micro-lessons**. Each lesson is a single Action endpoint: the user reads inline explainer copy, taps one button, signs one transaction, and receives a completion state. Five lessons form a Turkey-first, USDC-first, SOL-aware curriculum ending in a graduation cNFT.
 
 ### Design principles
 
 | Principle | Implementation |
 |-----------|----------------|
-| **USDC-first** | Lessons 1–3 use devnet USDC; SOL is introduced only in Lesson 4 (swap) |
-| **Gas sponsorship** | Backend fee payer (Kora / treasury wallet) for Lessons 1–3 and 5 |
+| **USDC-first, SOL-aware** | Lessons 1 and 3 use devnet USDC; Lesson 2 introduces native SOL and lamports before Lesson 4's DeFi flow |
+| **Gas sponsorship** | Backend fee payer (Kora / treasury wallet) where enabled; Lesson 2 keeps the learner as fee payer to teach network costs |
 | **Embedded wallet** | Privy email/social signup; Phantom MWA as fallback |
 | **Devnet-first MVP** | All lessons runnable on devnet before mainnet promotion |
 | **Education = distribution** | Blinks unfurl in X, dial.to, Dialect registry |
@@ -221,7 +221,7 @@ Blink clients ignore unknown keys; lesson-aware landing pages read `lesson`.
 | Lesson | User pays | Sponsor pays |
 |--------|-----------|--------------|
 | 1 USDC transfer | $1 USDC (from faucet/airdrop) | Network fee + ATA rent (if needed) |
-| 2 Tip creator | $0.10 USDC tip | Network fee |
+| 2 Tip creator | 0.001 SOL tip + network fee | None |
 | 3 Remittance | $0.50 USDC send | Network fee |
 | 4 Swap | 0.01 SOL swap + fees | Optional priority fee cap |
 | 5 Graduation NFT | $0 (sponsored mint) | Mint + network fee |

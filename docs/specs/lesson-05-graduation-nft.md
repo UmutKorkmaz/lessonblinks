@@ -43,7 +43,7 @@ After completing this blink, the learner should understand:
 | Lesson | Action | Badge |
 |--------|--------|-------|
 | 1 | Send $1 USDC | USDC Sender |
-| 2 | Tip creator $0.10 | Creator Supporter |
+| 2 | Tip creator 0.001 SOL | SOL Tipper |
 | 3 | Remittance $0.50 | Remittance Ready |
 | 4 | Swap 0.01 SOL | Swapped |
 | **5** | **Claim cNFT** | **Graduate** |

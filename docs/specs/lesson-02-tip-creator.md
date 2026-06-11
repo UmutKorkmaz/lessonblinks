@@ -1,16 +1,16 @@
-# Lesson 2 — Tip a Creator $0.10 USDC
+# Lesson 2 - Tip a Creator 0.001 SOL
 
 **Project:** LessonBlinks / BlinkDers  
 **Lesson ID:** `lesson-02`  
-**Date:** 2026-06-09  
-**Status:** Ready for implementation  
-**Spec version:** 1.0
+**Date:** 2026-06-11
+**Status:** Implemented
+**Spec version:** 1.1
 
 ---
 
 ## One-liner
 
-Lesson 2 teaches peer-to-peer USDC payments by having the learner tip a creator **$0.10 USDC** via a Solana Action Blink — reinforcing the USDC-first curriculum (not native SOL).
+Lesson 2 teaches native SOL transfers by having the learner tip a creator **0.001 SOL** via a Solana Action Blink. This keeps the course USDC-first, SOL-aware: Lesson 1 starts with stablecoin payments, then Lesson 2 shows the native asset that pays fees.
 
 ---
 
@@ -18,10 +18,10 @@ Lesson 2 teaches peer-to-peer USDC payments by having the learner tip a creator 
 
 After completing this blink, the learner should understand:
 
-1. USDC can be sent to **another person** (not just self-transfer).
-2. Tipping is a micropayment with no bank intermediary.
-3. Creators can receive payments directly to their wallet address.
-4. Social Blinks embed payments in feeds (X, dial.to).
+1. Native SOL can be sent directly to another wallet.
+2. Lamports are the smallest unit of SOL.
+3. A creator tip is a micropayment with no bank intermediary.
+4. Social Blinks can embed payments in feeds.
 
 **Prerequisite:** Lesson 1 recommended; no hard gate in MVP.
 
@@ -35,9 +35,8 @@ After completing this blink, the learner should understand:
 | Action API | `https://{domain}/api/actions/lesson-2-tip` |
 | Callback API | `https://{domain}/api/actions/lesson-2-tip/complete` |
 | Chain | Solana devnet |
-| USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
-| Tip amount | **$0.10 USDC** = `100_000` base units |
-| Creator recipient | `CREATOR_WALLET_PUBKEY` env (override `?to=`) |
+| Tip amount | **0.001 SOL** = `1_000_000` lamports |
+| Creator recipient | `CREATOR_WALLET_PUBKEY` env, overrideable with `?to=` |
 
 ---
 
@@ -45,8 +44,8 @@ After completing this blink, the learner should understand:
 
 ```typescript
 export const LESSON_02_ID = "lesson-02" as const;
-export const LESSON_02_TIP_USDC = 0.1;
-export const LESSON_02_TIP_BASE = 100_000;
+export const LESSON_02_TIP_SOL = 0.001;
+export const LESSON_02_TIP_LAMPORTS = 1_000_000;
 
 export const CREATOR_WALLET_PUBKEY =
   process.env.CREATOR_WALLET_PUBKEY ??
@@ -61,33 +60,36 @@ export const CREATOR_WALLET_PUBKEY =
 export const LESSON_02_EXPLAINER: LessonExplainerMetadata = {
   lessonId: "lesson-02",
   lessonNumber: 2,
-  slug: "tip-creator",
+  slug: "tip-creator-sol",
   durationSeconds: 30,
   prerequisites: ["lesson-01"],
   learningObjectives: [
-    "Send USDC to another wallet (a creator)",
-    "Understand tipping as instant micropayments",
+    "Send native SOL (not USDC) to another wallet",
+    "Recognize lamports as the smallest unit of SOL",
     "Complete a real onchain tip in one tap",
   ],
   explainer: {
-    headline: "Tip a creator with USDC",
+    headline: "Tip a creator with native SOL",
     summary:
-      "Creators earn when fans tip directly. USDC tips land in seconds — no platform holding your money.",
+      "SOL is Solana's native currency. Tipping sends lamports directly from your wallet to a creator - no token account required.",
     steps: [
-      { order: 1, title: "Connect wallet", body: "Your wallet holds USDC from Lesson 1." },
-      { order: 2, title: "Review tip", body: "You'll send exactly $0.10 USDC to the creator." },
-      { order: 3, title: "Confirm", body: "The tip reaches the creator's wallet instantly." },
+      { order: 1, title: "Connect your wallet", body: "Your wallet holds SOL and signs the transfer." },
+      { order: 2, title: "Review the tip", body: "You'll send exactly 0.001 SOL plus a small network fee." },
+      { order: 3, title: "Confirm onchain", body: "The tip lands in the creator's wallet in seconds." },
     ],
-    callout: "Gas fee sponsored by LessonBlinks / BlinkDers.",
+    callout:
+      "1 SOL = 1,000,000,000 lamports. This lesson sends 1,000,000 lamports.",
     glossary: {
-      USDC: "Dollar-pegged stablecoin on Solana.",
-      Tip: "A small voluntary payment to support a creator.",
+      SOL: "Solana's native token used for fees and transfers.",
+      Lamports: "Smallest unit of SOL.",
+      "Network fee": "Small SOL cost paid to validators for processing your transaction.",
     },
   },
   completion: {
-    badgeLabel: "Creator Supporter",
-    successTitle: "Lesson 2 complete — you tipped $0.10 USDC!",
-    successDescription: "You supported a creator with a real USDC payment. Next: send a remittance.",
+    badgeLabel: "SOL Tipper",
+    successTitle: "Lesson 2 complete - you tipped 0.001 SOL!",
+    successDescription:
+      "You just made a native SOL transfer on Solana. Next up: send a cross-border remittance in Lesson 3.",
     nextLessonActionHref: "/api/actions/lesson-3-remittance",
   },
 };
@@ -97,9 +99,10 @@ export const LESSON_02_EXPLAINER: LessonExplainerMetadata = {
 
 ```typescript
 export const LESSON_02_EXPLAINER_TR = {
-  headline: "USDC ile içerik üreticisine bahşiş verin",
-  summary: "Hayranlar doğrudan bahşiş verdiğinde içerik üreticileri kazanır.",
-  label: "0,10 USDC Bahşiş Ver",
+  headline: "Native SOL ile icerik ureticisine bahsis verin",
+  summary:
+    "SOL, Solana aginin native para birimidir. Bahsis lamportlari dogrudan cuzdaninizdan icerik ureticisinin adresine tasir.",
+  label: "0,001 SOL Bahsis Ver",
 };
 ```
 
@@ -112,7 +115,8 @@ export const LESSON_02_EXPLAINER_TR = {
 | Param | Required | Description |
 |-------|----------|-------------|
 | `to` | No | Creator pubkey; defaults to `CREATOR_WALLET_PUBKEY` |
-| `locale` | No | `en` \| `tr` |
+| `amount` | No | Must equal `0.001` when supplied |
+| `lang` | No | Locale code |
 | `ref` | No | Campaign id |
 
 ### Response shape
@@ -120,16 +124,16 @@ export const LESSON_02_EXPLAINER_TR = {
 ```typescript
 const payload: LessonActionGetResponse = {
   type: "action",
-  icon: new URL("/lessons/02/icon.png", origin).toString(),
-  title: locale === "tr" ? "Ders 2 · İçerik Üreticisine Bahşiş" : "Lesson 2 · Tip a creator $0.10 USDC",
+  icon: new URL("/icon.svg", origin).toString(),
+  title: "Lesson 2: Tip a creator 0.001 SOL",
   description: buildDescription(LESSON_02_EXPLAINER, locale),
-  label: "Tip $0.10 USDC",
+  label: "Tip 0.001 SOL",
   links: {
     actions: [
       {
         type: "transaction",
-        label: locale === "tr" ? "0,10 USDC Bahşiş Ver" : "Tip $0.10 USDC",
-        href: `${baseHref}&amount=0.1`,
+        label: "Tip 0.001 SOL",
+        href: `${baseHref}&amount=0.001`,
       },
     ],
   },
@@ -143,20 +147,19 @@ const payload: LessonActionGetResponse = {
 
 ### Steps
 
-1. Validate `account`, `to`, `amount === 0.1`.
-2. Check sender USDC balance ≥ `100_000`.
-3. Ensure creator USDC ATA exists (idempotent create; sponsor pays).
-4. Build `createTransferCheckedInstruction`.
-5. Sponsor as fee payer.
-6. Return tx with `links.next` → `/complete`.
+1. Validate `account`, `to`, and `amount === 0.001` when `amount` is supplied.
+2. Build a native SOL `SystemProgram.transfer`.
+3. Transfer exactly `1_000_000` lamports from learner to creator.
+4. Use the learner as fee payer so the wallet preview shows the network fee.
+5. Return the serialized transaction with `links.next` -> `/complete`.
 
 ### Validation
 
 | Check | Error |
 |-------|-------|
-| `amount !== 0.1` | `Lesson 2 requires a $0.10 USDC tip` |
+| `amount !== 0.001` | `Lesson 2 requires a 0.001 SOL tip` |
 | Missing creator env | `Creator wallet not configured` |
-| Insufficient USDC | `You need at least $0.10 USDC` |
+| Invalid sender account | `Invalid "account" provided` |
 
 ---
 
@@ -164,21 +167,20 @@ const payload: LessonActionGetResponse = {
 
 ### On-chain verification
 
-Assert parsed transaction contains:
+Assert the parsed transaction contains:
 
-- SPL Token `transfer` or `transferChecked`
-- `mint === 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
-- `amount === 100_000`
-- `destination` owner === creator pubkey
-- `authority` === learner `account`
+- `SystemProgram.transfer`
+- `lamports === 1_000_000`
+- `source === learner account`
+- `destination === CREATOR_WALLET_PUBKEY` or validated `to` override
 
 ### Success payload
 
 ```typescript
 {
   type: "completed",
-  title: "Lesson 2 complete — you tipped $0.10 USDC!",
-  label: "Creator Supporter",
+  title: "Lesson 2 complete - you tipped 0.001 SOL!",
+  label: "SOL Tipper",
   lesson: {
     lessonId: "lesson-02",
     lessonNumber: 2,
@@ -204,7 +206,7 @@ Assert parsed transaction contains:
 
 ## Sponsor integration (Tier 1 slot)
 
-Lesson 2 ideal for **creator platform** sponsor:
+Lesson 2 is ideal for a **creator platform** or wallet sponsor:
 
 - Co-brand GET description
 - `CREATOR_WALLET_PUBKEY` = partner creator for campaign week
@@ -216,13 +218,13 @@ Lesson 2 ideal for **creator platform** sponsor:
 
 | # | Test | Expected |
 |---|------|----------|
-| 1 | GET | Single tip action, USDC copy (not SOL) |
-| 2 | POST `amount=0.2` | 400 |
-| 3 | POST valid | 100_000 USDC transfer tx |
-| 4 | Complete | Verifies USDC to creator |
-| 5 | `?locale=tr` | Turkish strings |
+| 1 | GET | Single tip action, SOL copy |
+| 2 | POST `amount=0.002` | 400 |
+| 3 | POST valid | `1_000_000` lamport transfer tx |
+| 4 | Complete | Verifies SOL transfer to creator |
+| 5 | `?lang=tr` | Turkish strings |
 | 6 | dial.to | Interstitial + sign |
-| 7 | Gas sponsor | User with 0 SOL succeeds |
+| 7 | Fee preview | Wallet shows 0.001 SOL plus network fee paid by the learner |
 
 ---
 
@@ -230,8 +232,8 @@ Lesson 2 ideal for **creator platform** sponsor:
 
 | Field | Value |
 |-------|-------|
-| Title | LessonBlinks 2: Tip a Creator $0.10 USDC |
-| Description | 30-second lesson — support a creator with USDC. Gas sponsored. |
+| Title | LessonBlinks 2: Tip a Creator 0.001 SOL |
+| Description | 30-second lesson - support a creator with native SOL. |
 | Action URL | `https://{domain}/api/actions/lesson-2-tip` |
 
 ---
@@ -240,5 +242,5 @@ Lesson 2 ideal for **creator platform** sponsor:
 
 - Custom tip amounts
 - Platform fee splits
-- SOL tips (replaced by USDC-first decision)
+- USDC creator tips
 - Creator discovery UI
