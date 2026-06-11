@@ -31,9 +31,9 @@ After completing this blink, the learner should understand:
 
 | Field | Value |
 |-------|-------|
-| Blink URL | `https://{domain}/lesson/02-tip-creator` |
-| Action API | `https://{domain}/api/actions/lessons/02-tip-creator` |
-| Callback API | `https://{domain}/api/actions/lessons/02-tip-creator/complete` |
+| Blink URL | `https://{domain}/lesson/tip-creator-sol` |
+| Action API | `https://{domain}/api/actions/lesson-2-tip` |
+| Callback API | `https://{domain}/api/actions/lesson-2-tip/complete` |
 | Chain | Solana devnet |
 | USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
 | Tip amount | **$0.10 USDC** = `100_000` base units |
@@ -88,7 +88,7 @@ export const LESSON_02_EXPLAINER: LessonExplainerMetadata = {
     badgeLabel: "Creator Supporter",
     successTitle: "Lesson 2 complete — you tipped $0.10 USDC!",
     successDescription: "You supported a creator with a real USDC payment. Next: send a remittance.",
-    nextLessonActionHref: "/api/actions/lessons/03-remittance",
+    nextLessonActionHref: "/api/actions/lesson-3-remittance",
   },
 };
 ```
@@ -184,7 +184,7 @@ Assert parsed transaction contains:
     lessonNumber: 2,
     completed: true,
     signature,
-    nextLessonActionHref: "/api/actions/lessons/03-remittance",
+    nextLessonActionHref: "/api/actions/lesson-3-remittance",
   },
 }
 ```
@@ -195,8 +195,8 @@ Assert parsed transaction contains:
 
 ```json
 {
-  "pathPattern": "/lesson/02-tip-creator",
-  "apiPath": "/api/actions/lessons/02-tip-creator"
+  "pathPattern": "/lesson/tip-creator-sol",
+  "apiPath": "/api/actions/lesson-2-tip"
 }
 ```
 
@@ -232,7 +232,7 @@ Lesson 2 ideal for **creator platform** sponsor:
 |-------|-------|
 | Title | LessonBlinks 2: Tip a Creator $0.10 USDC |
 | Description | 30-second lesson — support a creator with USDC. Gas sponsored. |
-| Action URL | `https://{domain}/api/actions/lessons/02-tip-creator` |
+| Action URL | `https://{domain}/api/actions/lesson-2-tip` |
 
 ---
 

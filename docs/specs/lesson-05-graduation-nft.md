@@ -29,9 +29,9 @@ After completing this blink, the learner should understand:
 
 | Field | Value |
 |-------|-------|
-| Blink URL | `https://{domain}/lesson/05-graduation` |
-| Action API | `https://{domain}/api/actions/lessons/05-graduation-nft` |
-| Callback API | `https://{domain}/api/actions/lessons/05-graduation-nft/complete` |
+| Blink URL | `https://{domain}/lesson/claim-graduation-nft` |
+| Action API | `https://{domain}/api/actions/lesson-5/claim` |
+| Callback API | `https://{domain}/api/actions/lesson-5/claim/complete` |
 | Chain | Solana devnet → mainnet-beta |
 | User cost | ~$0 (sponsored mint) |
 | Prerequisite | Lessons 1–4 verified in DB |
@@ -75,7 +75,7 @@ Transaction (sponsored):
   "symbol": "BLINKS",
   "description": "Completed all 5 LessonBlinks micro-lessons on Solana.",
   "image": "https://cdn.lessonblinks.com/badges/graduate.png",
-  "external_url": "https://lessonblinks.com/graduate",
+  "external_url": "https://lessonblinks.com/lesson/claim-graduation-nft",
   "attributes": [
     { "trait_type": "Course", "value": "LessonBlinks 101" },
     { "trait_type": "Lessons Completed", "value": "5" },
@@ -109,7 +109,7 @@ Inject `locale` trait at mint time from `?locale=tr`.
   "description": "You finished Lessons 1–4! Claim your Graduate Badge cNFT. Sponsored — you just sign.",
   "label": "Claim Badge",
   "links": {
-    "actions": [{ "label": "Claim Badge", "href": "/api/actions/lessons/05-graduation-nft" }]
+    "actions": [{ "label": "Claim Badge", "href": "/api/actions/lesson-5/claim" }]
   }
 }
 ```
@@ -138,7 +138,7 @@ Inject `locale` trait at mint time from `?locale=tr`.
   "disabled": true,
   "error": { "message": "Finish Lessons 1–4 to unlock your graduation NFT." },
   "links": {
-    "actions": [{ "label": "Lesson 3 — Remittance", "href": "/api/actions/lessons/03-remittance" }]
+    "actions": [{ "label": "Lesson 3 — Remittance", "href": "/api/actions/lesson-3-remittance" }]
   }
 }
 ```
@@ -282,7 +282,7 @@ DATABASE_URL=...
 | Title | LessonBlinks 5: Graduation NFT |
 | Category | Education / NFT |
 | Security | Sponsored mint; no user funds at risk |
-| Action URL | `https://{domain}/api/actions/lessons/05-graduation-nft` |
+| Action URL | `https://{domain}/api/actions/lesson-5/claim` |
 
 ---
 
@@ -290,8 +290,8 @@ DATABASE_URL=...
 
 ```json
 {
-  "pathPattern": "/lesson/05-graduation",
-  "apiPath": "/api/actions/lessons/05-graduation-nft"
+  "pathPattern": "/lesson/claim-graduation-nft",
+  "apiPath": "/api/actions/lesson-5/claim"
 }
 ```
 

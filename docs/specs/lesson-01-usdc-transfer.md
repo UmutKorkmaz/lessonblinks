@@ -29,9 +29,9 @@ After completing this blink, the learner should understand:
 
 | Field | Value |
 |-------|-------|
-| Blink URL | `https://{domain}/lesson/01-usdc-transfer` |
-| Action API | `https://{domain}/api/actions/lessons/01-usdc-transfer` |
-| Callback API | `https://{domain}/api/actions/lessons/01-usdc-transfer/complete` |
+| Blink URL | `https://{domain}/lesson/tip-usdc` |
+| Action API | `https://{domain}/api/actions/lesson-1-usdc` |
+| Callback API | `https://{domain}/api/actions/lesson-1-usdc/complete` |
 | Chain | Solana devnet |
 | USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
 | Transfer amount | **$1 USDC** = `1_000_000` base units (6 decimals) |
@@ -55,7 +55,7 @@ export const USDC_DECIMALS = 6;
 ## File layout
 
 ```
-src/app/api/actions/lessons/01-usdc-transfer/
+src/app/api/actions/lesson-1-usdc/
 ├── route.ts              # GET, POST, OPTIONS
 └── complete/route.ts     # Chained completion
 src/lib/lessons/lesson-01.ts
@@ -193,7 +193,7 @@ const ix = [
     lessonNumber: 1,
     completed: true,
     signature,
-    nextLessonActionHref: "/api/actions/lessons/02-tip-creator",
+    nextLessonActionHref: "/api/actions/lesson-2-tip",
   },
 }
 ```
@@ -257,7 +257,7 @@ sequenceDiagram
 |-------|-------|
 | Title | LessonBlinks 1: Send $1 USDC |
 | Category | Education / Onboarding |
-| Action URL | `https://{domain}/api/actions/lessons/01-usdc-transfer` |
+| Action URL | `https://{domain}/api/actions/lesson-1-usdc` |
 
 ---
 

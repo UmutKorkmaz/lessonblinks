@@ -1,8 +1,8 @@
 # LessonBlinks Curriculum
 
-**Product:** LessonBlinks (EN) · BlinkDers (TR)  
-**Format:** 5 Solana Action Blinks · ~30 seconds each  
-**Network:** Solana devnet (MVP)  
+**Product:** LessonBlinks (EN) · BlinkDers (TR)
+**Format:** 5 Solana Action Blinks · ~30 seconds each
+**Network:** Solana devnet (MVP)
 **USDC mint (devnet):** `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`
 
 ---
@@ -25,11 +25,11 @@ Traditional crypto onboarding fails because it front-loads abstract concepts (ke
 
 | # | Slug | Action | Amount | Concept | Turkey relevance |
 |---|------|--------|--------|---------|------------------|
-| 1 | `01-usdc-transfer` | Send USDC to yourself | $1 USDC | SPL tokens, stablecoins, ATAs | Dollar savings without bank FX spread |
-| 2 | `02-tip-creator` | Tip a creator | $0.10 USDC | Peer payments, creator economy | TR creator tipping culture (Twitch, YouTube TR) |
-| 3 | `03-remittance` | Send USDC to family wallet | $0.50 USDC | Cross-border transfers, speed | #1 remittance corridor pain point (TR ↔ EU/US) |
-| 4 | `04-swap` | Swap SOL → USDC | 0.01 SOL | DEX, Jupiter, slippage | Introduce DeFi after payment fluency |
-| 5 | `05-graduation-nft` | Claim badge cNFT | Sponsored | NFT credentials, ownership | Shareable proof for LinkedIn / X TR community |
+| 1 | `tip-usdc` | Send USDC to education wallet | 0.01 USDC | SPL tokens, stablecoins, ATAs | Dollar savings without bank FX spread |
+| 2 | `tip-creator-sol` | Tip a creator | 0.001 SOL | Native SOL, lamports, creator economy | TR creator tipping culture (Twitch, YouTube TR) |
+| 3 | `remittance` | Send USDC to family wallet | 0.05 USDC | Cross-border transfers, speed | #1 remittance corridor pain point (TR ↔ EU/US) |
+| 4 | `swap-sol-usdc` | Swap SOL → USDC demo | 0.01 SOL | DEX, Jupiter, slippage | Introduce DeFi after payment fluency |
+| 5 | `claim-graduation-nft` | Claim badge NFT | Sponsored | NFT credentials, ownership | Shareable proof for LinkedIn / X TR community |
 
 **Total user cost (devnet):** ~$1.60 USDC + 0.01 SOL + negligible fees (sponsored where possible).
 
@@ -37,7 +37,7 @@ Traditional crypto onboarding fails because it front-loads abstract concepts (ke
 
 ## 3. Lesson 1 — Send $1 USDC
 
-**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/01-usdc-transfer`  
+**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-1-usdc`
 **Spec:** [`specs/lesson-01-usdc-transfer.md`](specs/lesson-01-usdc-transfer.md)
 
 ### Learning objectives
@@ -71,7 +71,7 @@ After completing Lesson 1, the learner can:
 
 ## 4. Lesson 2 — Tip a creator $0.10 USDC
 
-**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/02-tip-creator`  
+**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-2-tip`
 **Spec:** [`specs/lesson-02-tip-creator.md`](specs/lesson-02-tip-creator.md)
 
 ### Learning objectives
@@ -103,7 +103,7 @@ After completing Lesson 2, the learner can:
 
 ## 5. Lesson 3 — Send remittance $0.50 USDC
 
-**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/03-remittance`  
+**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-3-remittance`
 **Spec:** [`specs/lesson-03-remittance.md`](specs/lesson-03-remittance.md)
 
 ### Learning objectives
@@ -142,7 +142,7 @@ After completing Lesson 3, the learner can:
 
 ## 6. Lesson 4 — Swap 0.01 SOL → USDC
 
-**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/04-swap`  
+**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-4-swap`
 **Spec:** [`specs/lesson-04-swap.md`](specs/lesson-04-swap.md)
 
 ### Learning objectives
@@ -185,7 +185,7 @@ Default MVP path: devnet mock + mainnet opt-in for advanced users.
 
 ## 7. Lesson 5 — Claim graduation NFT
 
-**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/05-graduation-nft`  
+**Blink URL:** `https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-5/claim`
 **Spec:** [`specs/lesson-05-graduation-nft.md`](specs/lesson-05-graduation-nft.md)
 
 ### Learning objectives

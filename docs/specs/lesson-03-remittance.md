@@ -31,9 +31,9 @@ After completing this blink, the learner should understand:
 
 | Field | Value |
 |-------|-------|
-| Blink URL | `https://{domain}/lesson/03-remittance` |
-| Action API | `https://{domain}/api/actions/lessons/03-remittance` |
-| Callback API | `https://{domain}/api/actions/lessons/03-remittance/complete` |
+| Blink URL | `https://{domain}/lesson/remittance` |
+| Action API | `https://{domain}/api/actions/lesson-3-remittance` |
+| Callback API | `https://{domain}/api/actions/lesson-3-remittance/complete` |
 | Chain | Solana devnet |
 | USDC mint | `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU` |
 | Send amount | **$0.50 USDC** = `500_000` base units |
@@ -123,7 +123,7 @@ export const LESSON_03_EXPLAINER: LessonExplainerMetadata = {
     badgeLabel: "Remittance Ready",
     successTitle: "Lesson 3 complete — you sent $0.50 USDC!",
     successDescription: "You completed a cross-border USDC transfer demo. Next: learn swaps.",
-    nextLessonActionHref: "/api/actions/lessons/04-swap",
+    nextLessonActionHref: "/api/actions/lesson-4-swap",
   },
 };
 ```
@@ -218,15 +218,15 @@ emit("lesson_completed", {
 
 ```json
 {
-  "pathPattern": "/lesson/03-remittance",
-  "apiPath": "/api/actions/lessons/03-remittance"
+  "pathPattern": "/lesson/remittance",
+  "apiPath": "/api/actions/lesson-3-remittance"
 }
 ```
 
 ### dial.to URL
 
 ```
-https://dial.to/?action=solana-action:https://{domain}/api/actions/lessons/03-remittance?locale=tr
+https://dial.to/?action=solana-action:https://{domain}/api/actions/lesson-3-remittance?locale=tr
 ```
 
 ---
