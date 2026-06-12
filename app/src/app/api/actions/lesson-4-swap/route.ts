@@ -71,6 +71,12 @@ export const POST = async (req: Request): Promise<Response> => {
         type: "transaction",
         transaction,
         message: formatSuccessMessage(strings),
+        links: {
+          next: {
+            type: "post",
+            href: `${LESSON_04_ACTION_PATH}/complete`,
+          },
+        },
       },
     });
 

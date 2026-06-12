@@ -29,6 +29,8 @@ const SWAP_DEMO_MEMO: SwapDemoMemo = {
   type: "swap-demo",
 };
 
+export const SWAP_DEMO_MEMO_TEXT = JSON.stringify(SWAP_DEMO_MEMO);
+
 export interface BuildSwapDemoParams {
   connection: Connection;
   account: PublicKey;
@@ -56,7 +58,7 @@ export async function buildSwapDemoTransaction({
   const memoIx = new TransactionInstruction({
     programId: MEMO_PROGRAM_ID,
     keys: [{ pubkey: account, isSigner: true, isWritable: false }],
-    data: Buffer.from(JSON.stringify(SWAP_DEMO_MEMO), "utf8"),
+    data: Buffer.from(SWAP_DEMO_MEMO_TEXT, "utf8"),
   });
 
   const { blockhash, lastValidBlockHeight } =

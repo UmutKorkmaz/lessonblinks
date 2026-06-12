@@ -21,6 +21,7 @@ import { parseAccountPubkey } from "@/lib/lessons/validation";
 import { getConnection } from "@/lib/solana/connection";
 import { buildBadgeMintTransaction } from "@/lib/solana/badge-mint";
 import type { LessonActionGetResponse as LessonGetResponse } from "@/lib/lessons/types";
+import { getCompletionStore } from "@/lib/completion";
 
 export const OPTIONS = async () => Response.json(null, { headers: actionHeaders });
 
@@ -30,6 +31,45 @@ export const GET = async (req: Request) => {
     const requestUrl = getActionUrl(req);
     const lang = getActionLocale(requestUrl);
     const strings = buildActionStrings(getActionDict(requestUrl), 5);
+
+    const accountParam = requestUrl.searchParams.get("account");
+    if (accountParam) {
+      const store = getCompletionStore();
+      const graduate = await store.getGraduate(accountParam);
+      if (graduate) {
+        return Response.json({
+          type: "completed",
+          icon: new URL(LESSON_05_ICON_PATH, origin).toString(),
+          title: LESSON_05_EXPLAINER.completion.successTitle,
+          description: LESSON_05_EXPLAINER.completion.successDescription,
+          label: LESSON_05_EXPLAINER.completion.badgeLabel,
+        }, { headers: actionHeaders });
+      }
+
+      const ready = await store.hasCompletedLessons(accountParam, [
+        "lesson-01",
+        "lesson-02",
+        "lesson-03",
+        "lesson-04",
+      ]);
+      if (!ready) {
+        const completions = await store.listLessonCompletions(accountParam);
+        const doneIds = new Set(completions.map((c) => c.lessonId));
+        const missing = (["lesson-01", "lesson-02", "lesson-03", "lesson-04"] as const)
+          .filter((id) => !doneIds.has(id))
+          .map((id) => id.replace("lesson-0", ""));
+        return Response.json({
+          type: "action",
+          icon: new URL(LESSON_05_ICON_PATH, origin).toString(),
+          title: strings.title,
+          description: `Complete lesson${missing.length > 1 ? "s" : ""} ${missing.join(", ")} first. (${doneIds.size}/4 done)`,
+          label: strings.label,
+          disabled: true,
+          links: { actions: [] },
+          lesson: LESSON_05_EXPLAINER,
+        }, { headers: actionHeaders });
+      }
+    }
 
     const payload: LessonGetResponse = {
       type: "action",
@@ -59,6 +99,7 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request): Promise<Response> => {
   try {
+    const origin = getActionOrigin(req);
     const strings = buildActionStrings(getActionDict(getActionUrl(req)), 5);
     const body = (await req.json()) as ActionPostRequest;
     const recipient = parseAccountPubkey(body.account);
@@ -76,6 +117,12 @@ export const POST = async (req: Request): Promise<Response> => {
         message: formatSuccessMessage(strings, {
           mint: mintKeypair.publicKey.toBase58(),
         }),
+        links: {
+          next: {
+            type: "post",
+            href: new URL(`${LESSON_05_ACTION_PATH}/complete`, origin).toString(),
+          },
+        },
       },
       signers: [mintKeypair],
     });

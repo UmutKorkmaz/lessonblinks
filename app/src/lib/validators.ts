@@ -67,6 +67,19 @@ export interface ValidateTransferTxOptions {
   commitment?: "confirmed" | "finalized";
 }
 
+export interface MemoExpectation {
+  programId: PublicKey;
+  memo: string;
+}
+
+export interface ValidateMemoTxOptions {
+  connection: Connection;
+  signature: string;
+  expectedSender: PublicKey;
+  memo: MemoExpectation;
+  commitment?: "confirmed" | "finalized";
+}
+
 function findSolTransfer(
   instructions: ParsedInstruction[],
   expected: SolTransferExpectation,
@@ -157,22 +170,47 @@ function collectParsedInstructions(
   return [...outer, ...inner];
 }
 
-/**
- * Verify an on-chain transfer matches lesson expectations.
- * Used by `/complete` callback routes after the wallet confirms a transaction.
- */
-export async function validateTransferTx(
-  options: ValidateTransferTxOptions,
-): Promise<ParsedTransactionWithMeta> {
-  const {
-    connection,
-    signature,
-    expectedSender,
-    solTransfer,
-    splTransfer,
-    commitment = "confirmed",
-  } = options;
+function findMemoInstruction(
+  instructions: ParsedInstruction[],
+  expected: MemoExpectation,
+): boolean {
+  return instructions.some((ix) => {
+    if (!ix.programId.equals(expected.programId)) {
+      return false;
+    }
 
+    const parsed = ix.parsed as unknown;
+    if (typeof parsed === "string") {
+      return parsed === expected.memo;
+    }
+
+    if (!parsed || typeof parsed !== "object") {
+      return false;
+    }
+
+    const parsedRecord = parsed as {
+      memo?: string;
+      info?: { memo?: string };
+    };
+
+    return (
+      parsedRecord.memo === expected.memo ||
+      parsedRecord.info?.memo === expected.memo
+    );
+  });
+}
+
+async function getVerifiedParsedTx({
+  connection,
+  signature,
+  expectedSender,
+  commitment = "confirmed",
+}: {
+  connection: Connection;
+  signature: string;
+  expectedSender: PublicKey;
+  commitment?: "confirmed" | "finalized";
+}): Promise<ParsedTransactionWithMeta> {
   const status = await connection.getSignatureStatus(signature, {
     searchTransactionHistory: true,
   });
@@ -203,6 +241,32 @@ export async function validateTransferTx(
     throw "Transaction fee payer does not match account";
   }
 
+  return parsedTx;
+}
+
+/**
+ * Verify an on-chain transfer matches lesson expectations.
+ * Used by `/complete` callback routes after the wallet confirms a transaction.
+ */
+export async function validateTransferTx(
+  options: ValidateTransferTxOptions,
+): Promise<ParsedTransactionWithMeta> {
+  const {
+    connection,
+    signature,
+    expectedSender,
+    solTransfer,
+    splTransfer,
+    commitment = "confirmed",
+  } = options;
+
+  const parsedTx = await getVerifiedParsedTx({
+    connection,
+    signature,
+    expectedSender,
+    commitment,
+  });
+
   const instructions = collectParsedInstructions(parsedTx);
 
   if (solTransfer) {
@@ -217,6 +281,32 @@ export async function validateTransferTx(
     if (!found) {
       throw `Expected SPL transfer of ${splTransfer.amount} to ${splTransfer.to.toBase58()}`;
     }
+  }
+
+  return parsedTx;
+}
+
+export async function validateMemoTx(
+  options: ValidateMemoTxOptions,
+): Promise<ParsedTransactionWithMeta> {
+  const {
+    connection,
+    signature,
+    expectedSender,
+    memo,
+    commitment = "confirmed",
+  } = options;
+
+  const parsedTx = await getVerifiedParsedTx({
+    connection,
+    signature,
+    expectedSender,
+    commitment,
+  });
+
+  const instructions = collectParsedInstructions(parsedTx);
+  if (!findMemoInstruction(instructions, memo)) {
+    throw "Expected lesson memo instruction";
   }
 
   return parsedTx;

@@ -1,6 +1,6 @@
 import {
   createAssociatedTokenAccountInstruction,
-  createTransferInstruction,
+  createTransferCheckedInstruction,
   getAccount,
   getAssociatedTokenAddress,
   TOKEN_PROGRAM_ID,
@@ -59,11 +59,13 @@ export async function buildUsdcTransferTransaction({
   }
 
   instructions.push(
-    createTransferInstruction(
+    createTransferCheckedInstruction(
       senderAta,
+      mint,
       recipientAta,
       sender,
       amount,
+      6,
       [],
       TOKEN_PROGRAM_ID,
     ),

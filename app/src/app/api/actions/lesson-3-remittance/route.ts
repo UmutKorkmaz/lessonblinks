@@ -17,34 +17,18 @@ import {
   getActionDict,
 } from "@/lib/lessons/action-text";
 import {
+  getRemittanceRecipient,
+  LESSON_03_ACTION_PATH,
+  LESSON_03_USDC_AMOUNT,
+  LESSON_03_USDC_DECIMALS,
+} from "@/lib/lessons/lesson-03";
+import {
   getConnection,
-  getCreatorPubkey,
   getUsdcMint,
   resolveIconUrl,
 } from "@/lib/solana";
 
-const USDC_DECIMALS = 6;
-/** Fixed remittance amount: 0.05 USDC */
-const REMITTANCE_AMOUNT = 50_000;
-
 const headers = createActionHeaders();
-
-function getRemittanceRecipient(requestUrl: URL): PublicKey {
-  const to =
-    requestUrl.searchParams.get("to") ??
-    process.env.REMITTANCE_WALLET_PUBKEY ??
-    process.env.NEXT_PUBLIC_REMITTANCE_WALLET_PUBKEY;
-
-  if (to) {
-    try {
-      return new PublicKey(to);
-    } catch {
-      throw new Error('Invalid "to" query parameter');
-    }
-  }
-
-  return getCreatorPubkey();
-}
 
 export async function GET(req: Request) {
   const origin = getActionOrigin(req);
@@ -106,8 +90,8 @@ export async function POST(req: Request): Promise<Response> {
       mint,
       recipientAta,
       sender,
-      REMITTANCE_AMOUNT,
-      USDC_DECIMALS,
+      LESSON_03_USDC_AMOUNT,
+      LESSON_03_USDC_DECIMALS,
     );
 
     const transaction = new Transaction({
@@ -123,6 +107,12 @@ export async function POST(req: Request): Promise<Response> {
         message: formatSuccessMessage(strings, {
           recipient: recipient.toBase58(),
         }),
+        links: {
+          next: {
+            type: "post",
+            href: `${LESSON_03_ACTION_PATH}/complete?to=${recipient.toBase58()}`,
+          },
+        },
       },
     });
 

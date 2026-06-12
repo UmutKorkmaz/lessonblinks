@@ -85,6 +85,12 @@ export const POST = async (req: Request): Promise<Response> => {
         type: "transaction",
         transaction,
         message: formatSuccessMessage(strings, { recipient: recipient.toBase58() }),
+        links: {
+          next: {
+            type: "post",
+            href: `${LESSON_01_ACTION_PATH}/complete?to=${recipient.toBase58()}`,
+          },
+        },
       },
     });
 

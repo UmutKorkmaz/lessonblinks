@@ -91,7 +91,7 @@ export const POST = async (req: Request): Promise<Response> => {
         links: {
           next: {
             type: "post",
-            href: `${LESSON_02_ACTION_PATH}/complete`,
+            href: `${LESSON_02_ACTION_PATH}/complete?to=${toPubkey.toBase58()}`,
           },
         },
       },
